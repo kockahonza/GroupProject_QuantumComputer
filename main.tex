@@ -1,58 +1,29 @@
 \documentclass[a4paper]{article}
 \usepackage[top=60pt,bottom=80pt,left=60pt,right=60pt]{geometry}
 \usepackage[utf8]{inputenc}
-\usepackage{multicol}
 \usepackage[style=phys,url=false,doi=false,isbn=false,eprint=false]{biblatex}
-\usepackage{float}
-\usepackage{setspace}
-\usepackage{graphicx}
-\usepackage{changepage}
-\usepackage{titlesec}
-\usepackage{hyperref}
 \usepackage{cleveref}
 
 \addbibresource{bibliography.bib}
-\AtEveryBibitem{\clearlist{language}}
-% \AtEveryBibitem{\clearlist{note}}
-
-\titlespacing*{\section}{0}{0}{0.3em}
-
-\setlength{\parindent}{0pt}
-\setlength{\parskip}{0.5em}
 
 \begin{document}
-
 \begin{center}
-    \Huge \textbf{Nuclear force theory and its verification using mass spectrometry}
+    \Huge \textbf{Building a quantum computer}
 \end{center}
-
 \vspace{-1.5em}
 
 \begin{center}
-    \emph{\large Michael Donnachie, Jan Kocka, Rongfang Li, Yingxuan Li}
+    \emph{\large All of us}
 \end{center}
-
 \vspace{0.5em}
 
-\begin{center}
-    \textbf{\Large Abstract}
-    \begin{adjustwidth}{1.5em}{1.5em}
-        The current understanding of nuclear theory is outlined and the role of Mass Spectrometers (MS) in exploring the nuclear landscape is highlighted. In nuclear physics mass measurement is an essential tool for understanding the strong force and the structure of the nucleus. This is done by measuring the mass of neutron rich or proton rich isotopes approaching the nucleon dripline as these extremities are where the strong force can no longer bind nucleons (even theoretically) to the nucleus. The design and capabilities of MS are reviewed with particular focus on Penning traps and multiple reflection time of flight mass spectrometers.
-    \end{adjustwidth}
-\end{center}
+\input{sections/1Intro.tex}
+\input{sections/2NFT.tex}
+\input{sections/3MS.tex}
+\input{sections/4NMMwrtNFT}
+\input{sections/5AoMSoNFT.tex}
+\input{sections/6Summary.tex}
 
-\vspace{1em}
-
-\begin{multicols}{2}
-
-    \input{sections/1Intro.tex}
-    \input{sections/2NFT.tex}
-    \input{sections/3MS.tex}
-    \input{sections/4NMMwrtNFT}
-    \input{sections/5AoMSoNFT.tex}
-    \input{sections/6Summary.tex}
-    
-    \printbibliography
-\end{multicols}
+\printbibliography
 
 \end{document}
