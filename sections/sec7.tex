@@ -1,0 +1,23 @@
+\section{Pablo's notes}
+
+To effectively perform quantum computation it is necessary to be able to manipulate qubits and perform unitary operations on them. Furthermore, any unitary transformation can be composed of single qubit operations and CNOT gates. Thus, an experimental quantum computer should be able to implement them appropriately.
+
+\subsection{Optical Photon Quantum Computer}
+
+The correct combination of phase shifters and beam splitters allow the creation of any single qubit gate. This is a consequence of the theorem that states that any single qubit operation can be generated from z and y-axis rotations. A phase shifter performs $R_{z}$ rotations and a beamsplitter performs $R_{y}$ rotations.
+
+Nonlinear Kerr media allow for the creation of a two qubit gate. The main experimental problem with this setup is succesfully making two photons interact. The available nonlinear Kerr media today cannot reliably obtain the $\pi$ cross phase modulation necessary to implement a CNOT gate. 
+
+\subsection{Optical cavity quantum electrodynamics}
+
+The main idea behind this model is the question of whether the state of a photon can be transferred to and from single atoms, whose interactions would be easier to control. Single qubit operations are constructed in the same way as in the optical photon quantum computer.
+
+The CNOT gate can be implemented by coupling atoms enclosed in a Fabry-Perot cavity to the optical field of the photons.
+
+\subsection{Ion Trap}
+
+Have to talk it over. Have not managed to fully understand how quantum gates would be constructed in this setup.
+
+\subsection{Nuclear Magnetic Resonance}
+
+The main difference with this method compared to the previous is that we are acting on an ensemble of particles. Arbitrary single qubit transforms can be constructed from magnetic field pulses applied to spins in a strong magnetic field. Coupling between the molecules and, thus, the realization of a two qubit gate can be provided by chemical bonds between neighbouring atoms.

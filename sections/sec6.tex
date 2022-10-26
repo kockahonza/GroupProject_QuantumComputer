@@ -1,6 +1,78 @@
-\section{Summary}
-Studies of the nuclear force are a fascinating yet unfinished part of physics.
-Though most simple interactions involving it are well understood, it is yet to be applied to more complicated systems.
-Mass spectrometers have been crucial in testing nuclear theories and pushing their limits.
-They have allowed for the exploration of the nuclear landscape closer to the neutron dripline where models using only 2N interactions have been insufficient in predicting the shell closures of these exotic nuclei.
-Future MS such as the PENTATRAP experiment or the many MR-TOF spectrometers that are being developed, with improved resolving power and shorter needed observation time will be crucial in probing and improving the leading nuclear force theories.
+
+\section{Notes on Entanglement and error correction}
+\subsection{Entanglement}
+\subsubsection{What is Quantum Entanglement (basic idea)?}
+
+\subsubsection{Local Realism}
+Local Realism is the combined principle of Locality and Realism.
+\vspace{1em}
+
+\textbf{What is Locality}
+
+Locality is the principle which essentially states that objects can only be acted upon by the 'local' (or surrounding) space around it. So by locality, a particle at some far distance can only be acted upon by us if something such as an EM field travels through the medium between us to get to it.
+\vspace{1em}
+
+\textbf{What is Realism}
+
+This principle refers to the existence of a pre-existing property that has a definite value within a particle, wave-function or object before you measure said property and can determine what value that is. It can be likened to the classic 'tree in an abandoned forest' thought experiment where realism assumes that the tree always exists in a specific state of upright or fallen despite your lack of knowledge of that state.
+\vspace{1em}
+
+\subsubsection{Bell States \& the Bell Inequality}
+The reason why local realism is important is because the famous EPR paper which argues that our current understanding of quantum mechanics is incomplete (due to the phenomenon of quantum entanglement) assumes that local realism must be observed which John Bell in 1964 goes on to prove is an assumption not upheld in quantum mechanics. \\
+
+The CHSH inequality is as follows:
+\begin{itemize}
+    \item Victor prepares 2 particles for Alice and Bob who are at some large distance from each other(large enough that they cannot communicate before the particles reach them), each will get one of the two particles
+    \item Alice can decide to measure one of two properties on her particle with the measurements themselves being $A_{0}$ or $A_{1}$. These properties, once measured, can hold the values $a_{0}$ and $a_{1}$ respectively; both of these values can be $\pm 1$.  
+    \item Bob can do the same with his measurements being denoted as $B_{0}$and $B_{1}$ and the values they can take being $b_{0}$ and $b_{1}$ respectively. And just the same $b_{0,1} = \pm 1$
+    \item We're now going to perform a somewhat arbitrary sum where we go over all the possible combinations of values that can be measured: 
+    \begin{equation}
+    a_{0}b_{0} + a_{0}b_{1} + a_{1}b_{0} - a_{1}b_{1}
+    \end{equation}
+    This can be factorised to: 
+    \begin{equation} \label{CHSH classical sum}
+        (a_{0} + a_{1})b_{0} + (a_{0} - a_{1})b_{1}
+    \end{equation}
+    \item Since $a_{0}$ and $a_{1}$ can only = $\pm 1$ then $a_{0} = a_{1}$ or $a_{0} = -a_{1}$ so then looking at (\ref{CHSH classical sum}) we can see that either the $b_{0}$ term will vanish or the $b_{1}$ will
+    \item The important takeaway from this is that (\ref{CHSH classical sum}) = $\pm 2$ and now we're going to calculate the average value of (\ref{CHSH classical sum}) by having Victor send many particles (two at a time, one to each of them, per trial) and having Alice and Bob measure each of these.
+    \item Due to the fact that Alice and Bob can only perform one measurement at a time, (\ref{CHSH classical sum}) cannot be deduced in one singular trial but we'll assume that the underlying properties exist and then we'll take an average of each term to determine the average value of (\ref{CHSH classical sum}) over many trials
+    \item This then gives what we call a Bell inequality:
+    \begin{equation} \label{CHSH inequality}
+        \langle A_{0}B_{0} \rangle + \langle A_{0}B_{1} \rangle + \langle A_{1}B_{0} \rangle- \langle A_{1}B_{1}\rangle \leq 2
+    \end{equation}
+\end{itemize}
+
+The Bell inequality derived above shows that assuming locality (that Alice and Bob cannot communicate to each other through super-luminal methods) and realism (that the properties $a_{0}$, $a_{1}$, $b_{0}$ and $b_{1}$ exist without having to apply a measurement \textit{or measurement operator} such that you can take the averages of $A_{0}$, $A_{1}$, $B_{0}$ and $B_{1}$) without actually applying them to their respective particles) there is an upper bound with which the average of (\ref{CHSH classical sum}) can take and that is 2.
+
+\vspace{1em}
+
+We will show that taking Quantum Mechanics into account, we can reach an upper bound of $2\sqrt{2}$ which means that one (or both) of the two assumptions of Locality and Realism is not observed in Quantum Mechanics. This implies that Quantum Entanglement is not the result of some incomplete part of Quantum Mechanics (as suggested in the EPR paper) but rather a phenomena that just doesn't observe local realism.
+
+Proof Using Bell States and Pauli Gates:
+\begin{itemize}
+    \item Victor send a pair of qubits to Alice and Bob and prepares them in the Bell State (\ref{Bell state Definition}).....
+\end{itemize}
+
+\subsubsection{How to perform Quantum Entanglement on a QC}
+There are many ways to perform QE in a quantum circuit but the easiest and simplest methods create the maximally\footnote{When we say 'maximally entangled' we mean that the entangled state can be written as a sum of pure states and a pure state is one in which we have exact information about (such as $|0\rangle$). Beware of the fact that whilst this does mean we have information about the entangled state as a whole, we cannot say the same about the individual qubits/subsystems/bases that make that entangled state.} entangled states known as bell states \label{Bell state Definition}. One such way involves taking a 2-qubit circuit or state and performing a Hadamard Gate Operator on the first qubit, proceeding this you perform a Controlled-Not Gate Operator across the 2 qubits with the control being the first qubit and the target being the second. This then produces the Bell state $\frac{1}{\sqrt{2}}(|00\rangle + |11\rangle)$
+
+%Matrix operation Math
+
+
+
+
+\subsubsection{Using Quantum Entanglement}
+\begin{itemize}
+    \item Superdense coding
+    \item Quantum Teleportation
+    \item Quantum Key Distribution
+\end{itemize}
+
+
+
+\subsection{Error Correction}
+\begin{itemize}
+    \item Bit and Sign Flip
+    \item Shor Code
+    \item Toric Codes
+\end{itemize}
