@@ -3,15 +3,7 @@ Ok, I'm taking over this section for now
 \begin{itemize}
 
 \item
-For "types" fo QCters I see photonic and trapped ion for now at least.
-
-\item
-Trapped ion type seems quite nice, apparently it works well, but they haven't really scaled to hundreds of qubits.
-
-
-\item
-Found this thing called DiVincezo criteria which might be nice to mention or something, it's 5 criteria that need to be met for a given
-hypothetical QCter type/implementation:
+Found this thing called DiVincezo criteria which might be nice to mention or something, it's 5 criteria that need to be met for a given hypothetical quantuum computer implementation:
 \begin{itemize}
     \item A physical system containing well-defined 2 level quantum systems (qubits) which can be isolated from the environment.
     \item The ability to initialize this system in a well defined, determinate state.
@@ -21,8 +13,12 @@ hypothetical QCter type/implementation:
     \item ** In addition 2 more were mentioned by him, the ability to convert between "stationary" (like trapped ions) and "flying" (photons) states which would be necessary for a quantum network.
 \end{itemize}
 
+\item
+    The Nielsen book lists quite a few of physical implementations for quantum computers - QHO, optical photon, optical cavity, ion traps and nuclear magnetic resonance
+
 \item Trapped ion systems, kinda taken from Bruzewicz 2019, they also mention the DiVincezo stuff
 \begin{itemize}
+    \item All the main parts have been demonstrated, the problem is scaling.
     \item The actual states are the electronic states of some atom/ion.
     \item A couple types: hyperfine, Zeeman, fine structure and optical the differences between them is the particular energy levels that are used for states.
             The names make it decently clear, fine structure means the fine structure split states are used, optical means states which are transitioned between by photon emission/absorption.
@@ -36,6 +32,11 @@ hypothetical QCter type/implementation:
         \item with respect to the optional DiVincezo, ions are unlikely to be the "flying" ones even though they can be moved, however high-fielity entanglement between ions and photons has been showed.
         \item most of the main things have been demonstrated by 2004 though the maximum number of ions achieved in a register so far was 20.
     \end{itemize}
+
+    \item As far as I understand it is in fact a single ion that would represent a given qubit, the obvious way to store them are Penning or Paul traps.
+    \item Paul traps have an oscillating quadrupole E field in 2 dimensions which keeps them confined along the 2 directions and a fixed 1D voltage gradient to trap along the remaining one.
+    \item Penning traps do a mix of E and dB fields to get a fairly complicated but alright motion.
+    \item As far as I can tell Paul traps are considered the easier ones (and are more developed) but Penning traps have their advantages.
 \end{itemize}
 
 \end{itemize}
