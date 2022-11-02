@@ -1,0 +1,36 @@
+\section{Matthew's notes}
+
+\subsection{What are registers?}
+Registers are a form of memory for data instantaneously in use by the CPU (https://www.javatpoint.com/computer-registers). Any data that the CPU wants to process must first be stored in a register. Fundamentally, a register is a group of flip-flops which can each store a bit of data. 
+
+Give an example of a register..
+Explain what a flip flop is..
+
+\subsection{Quantum Registers}
+Quantum registers are analogous to classical registers because they store the data that is processed by the computer. 
+
+Rather than a group of flip-flop circuits, it is a superposition of qubits. A classical register can store one of $2^n$ different values for $n$ flip-flops. By comparison, a quantum register of $n$ qubits can store all $2^n$ values simultaneously (https://cds.cern.ch/record/383367/files/p165.pdf). A quantum computer will require multiple registers for true computation (https://arxiv.org/pdf/quant-ph/9802065), for example by adding the contents of two registers together.
+
+\subsection{Why use QCs?}
+Originally proposed by Richard Feynman to solve quantum mechanics problems, these computers will be useful for molecular simulation which can be used for drug development. Particularly good for financial calculations which involve a lot of combinatorics (https://epjquantumtechnology.springeropen.com/articles/10.1140/epjqt/s40507-021-00091-1). Financial institutions will also be able to afford high investment into QC development. Typical programs use Monte Carlo simulation of market movements. Goldman Sachs is one example (https://www.finextra.com/newsarticle/37968/goldman-sachs-makes-quantum-breakthrough)
+
+\begin{itemize}
+
+\item Explain why combinatorics problems are easily solved
+\item Could talk more about Monte Carlo
+\item Weather forecasting
+\item https://learn.microsoft.com/en-us/azure/quantum/concepts-overview
+\item https://medium.com/@markus.c.braun/a-brief-history-of-quantum-computing-a5babea5d0bd
+\end{itemize}
+Quantum computers have the potential to break much of today's encryption, particularly RSA which is based on prime factorisation. However, they also open the door to modern cryptography, such as quantum key distribution (QKD) which is theoretically unbreakable by laws of Physics rather than just mathematically difficult to solve.
+
+\subsection{Why not to use QCs}
+Although quantum computers have the potential to allow for many of the breakthroughs described above, they will not replace classical ones. Instead, both systems are likely to coexist. Many of the things that an average user uses a computer for could not be enhanced to for any practical benefit by a quantum computer. There is some classical computation that could in fact be much slower on a quantum machine due to all the extra overheads required to run one. Streaming video or writing documents involves a certainty in the data, if you press a key on the keyboard there is no ambiguity in what to store that as internally. Therefore, there is no need to consider all possibilities when doing day to day computation (https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=8322045).
+
+\subsection{Major Breakthroughs}
+\begin{itemize}
+    \item 1998 - first demonstration of two qubit system (https://semanticscholar.org/paper/6c055053f4f1605fdc0bd474c7a350dcd01f627d)
+    \item 2019 - google declares quantum supremacy by performing a series of operations in 200 seconds that would take a supercomputer about 10,000 years to complete; IBM responds by suggesting it could take 2.5 days instead of 10,000 years, highlighting techniques a supercomputer may use to maximize computing speed (https://www.forbes.com/sites/gilpress/2021/05/18/27-milestones-in-the-history-of-quantum-computing/?sh=2506dc67b23f)
+    \item 2021, IBM eagle which is 127 bit quantum processor. First QC which is so complex that it cannot be simulated reliably by a classical computer 'the number of classical bits necessary to represent a state on the 127-qubit processor exceeds the total number of atoms in the more than 7.5 billion people alive today' (https://newsroom.ibm.com/2021-11-16-IBM-Unveils-Breakthrough-127-Qubit-Quantum-Processor)
+\end{itemize}
+
