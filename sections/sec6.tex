@@ -76,3 +76,7 @@ There are many ways to perform QE in a quantum circuit but the easiest and simpl
     \item Shor Code
     \item Toric Codes
 \end{itemize}
+\subsection{Notes on Topological Quantum Computers}
+Several pairs of non-abelian anyons are created. These anyons can be compared to Majorna Zero Modes (MZM) (which are constructs that allow fermions to be described as two seperate halves). Individual anyons when locally observed are indistinguishable in their ground states but when you look at the entire system and swap two anyon positions then the wave function that describes the system changes. The action of swapping two anyons can be described by a 'braid' matrix that transforms the wave function. The idea of braiding anyons is important because unlike Bosons and Fermions whose wave functions remain the exact same after you swap two of them around each other twice, the anyon wave function keeps a count of how many times they were swapped (or rather, braided)
+A QC can be built up by creating pairs of anyons (initialising your qubits), treating the braid matrices as different gate operators (depending on which anyons are swapped) and then bringing pairs of anyons together (effectively taking a measurement) and seeing which anyons annihilate completely and which ones release a fermion (the fermion produced from the two halves of the MZM.\\
+\textit{Important note: Abelian anyons were first detected in 2020, Non-abelian anyons are yet to be detected but are an active area of experiment and research}

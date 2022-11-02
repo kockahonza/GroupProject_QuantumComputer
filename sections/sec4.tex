@@ -37,9 +37,7 @@ You require a system with many degrees of freedom that can encode quantum inform
     \end{itemize}
 \end{itemize}
 \vspace{1em}
-
 {\bf Quantum Dot}
-
 \begin{itemize}
     \item Quantum dots can (kinda) be a single photon source
     \item from wiki quantum dots seem to be `semiconducting particles a few nanometers in size' therefor shining light on it would emit one photon is the idea
@@ -47,8 +45,54 @@ You require a system with many degrees of freedom that can encode quantum inform
     \item anyway... using a narrow-linewidth laser which had the same resonance as the quantum dot single photon emission was achieved with a $T_2=22ns$ (apparently long) was achieved. \cite{lodahl_interfacing_2015}
 \end{itemize}
 \vspace{1em}
-
-{\bf bad stuff}
+{\bf DiVincenzo Criteria} \cite{bergou_quantum_2021}
 \begin{itemize}
-    \item do
+    \item Scalability with well defined qubits
+    
+    \begin{itemize}
+        \item $\left\vert 0 \right\rangle = \left\vert H\right\rangle $ and $\left\vert 1 \right\rangle = \left\vert V\right\rangle $ where H and V are horizontal and vertical polarisation.  
+        \item polarisation state can be maintained for a long time
+        \item or timebin/path encoding \cite{obrien_optical_2007}
+
+        \item eventually need like $10^11$ single photon states. posible way of doing this is using $10^11$ sources that can reliably produce a photon as in when requested
+        \begin{itemize}
+            \item don't exist yet, but are being worked on some promising are quantum dots, trapped ions and atoms, color centers in diamonds, semiconductors \cite{slussarenko_photonic_2019}
+        \end{itemize}
+    \end{itemize}
+
+    \item Initializing qubits to a simple fiducial state
+    \begin{itemize}
+        \item quantum dot - single photon source. when excited on resonance by low laser prob of emmiting two photons instead of one is super low \cite{santori_indistinguishable_2002}
+    \end{itemize}
+
+    \item  A qubit-specific measurement capability
+    \begin{itemize}
+        \item an ideal photon detector which detects every individual photon with no dark count (false positive) doesn't yet exist. 
+        \item one of the most used detectors currently is the Si avalanche photodiode... only has a detection efficiency of 65$\%$! so the probability of detecting 10 photons with 10 detectors is less than $2\%$. \cite{slussarenko_photonic_2019}
+        \item better now we have superconducting nanowire single-photon detectors (SNSPDs) with reset rate $\sim$40ns and detection efficiency $>95\%$ ... but these need temos of around 2K. \cite{santori_indistinguishable_2002}
+        
+    \end{itemize}
+    
+    \item Long relevant decoherence times
+    \begin{itemize}
+        \item 
+    \end{itemize}
+
+    \item A ``universal'' set of quantum gates
+    \begin{itemize}
+        \item birefringent wave plates for one qubit gates \cite{obrien_optical_2007}
+    
+        \item deeterministic CNOT gates difficult (these are the double qubit ones). A 2007 paper suggests that for a near deterministic CNOT gate (i.e. not deterministic just low prob) it requires $>$10 000 entangled photons for only $>95\%$ success probability \cite{obrien_optical_2007}
+    \end{itemize}
+
+    \item The ability to interconvert stationary and flying qubits
+    \begin{itemize}
+        \item can use polarizing beam splitters to convert between polarisation and path encoding \cite{obrien_optical_2007}
+    \end{itemize}
+
+    \item The ability to transmit flying qubits between specified locations
+    \begin{itemize}
+        \item well photons are transmitted all the time!
+        \item actually kind of difficult cause photons are always 'flying' so some kind of optical quantum memory may be necesarry to store them. 
+    \end{itemize}
 \end{itemize}
