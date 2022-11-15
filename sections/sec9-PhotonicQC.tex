@@ -1,0 +1,52 @@
+\section{Linear Optical Quantum Computing}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Qubit representation}
+\subsubsection{Polarisation modes}
+Horizontal and Vertical Polarisation
+\subsubsection{Spatial Modes}
+Single Rail and Dual Rail Encoding
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Useful Linear Optical Tools}
+\subsubsection{Beam Splitters}
+\subsubsection{Phase Shifters}
+\subsubsection{Photo-detectors}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Single Qubit Operations}
+As we have seen above, all other important single qubit operators can be constructed from the Pauli gates so all that we need to do is ensure we can that we have some physical representation for the Pauli gate operations.
+\subsubsection{Pauli X Representation}
+\subsubsection{Pauli Y Representation}
+\subsubsection{Pauli Z Representation}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Efficiency}
+As we know by now, the real magic of quantum computation occurs when we can implement 2 qubit gates as this allows us to perform quantum entanglement between qubit states which is then instrumental in many other constructs such as Quantum Teleportation, Quantum Algorithms, etc.
+
+The issue we tend to run across with LOQC is that photons tend to not naturally interact with each other. One suggested method of overcoming this uses photo-detectors to make projective measurements which can induce an interaction between photons\cite{Kok:2005jip}. This is a probabilistic approach with the probability of success being rather small and the method for increasing this probability to "near-one" values scales exponentially with resources (optical modes required). This makes optical computation seem quite unfeasible on the large scale but thanks to a few interesting results in quantum optics we can implement what is referred to as the KLM protocol to construct scalable 2-qubit gates.
+
+
+\subsubsection{Three results that allow for efficient LOQC}
+Due to the following results the additional resources for a LOQC that scales with n, scales with O($n^2$):
+\begin{itemize}
+    \item Non-deterministic quantum computation is possible with linear optics
+    \item The probability of success can be increased close to one
+    \item The resources needed for "accurately" (probability of success close to 1) encoded qubits scales efficiently  
+\end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Two Qubit Operations}
+\subsubsection{Attempting Entanglement}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+\subsection{Fault tolerance}
+\subsubsection{Photon loss}
