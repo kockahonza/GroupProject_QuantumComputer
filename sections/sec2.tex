@@ -1,2 +1,42 @@
-    \section{The Theory of nuclear forces}
-\lipsum[2-3]
+    \section{Background}
+\subsection{The DiVincenzo Criteria -- to be polished}
+The DiVincenzo criteria is a set of objectives that must be met for the physical realisation of a quantum computer. 
+It sets out five basic principles which must met to build a functional quantum computer and two more principles for quantum information networks. \cite{bergou_quantum_2021}
+This report focuses on the implementation of a single quantum computer and therefore focused on the first five principles.
+The principles are:
+\begin{enumerate}
+    \item Scalability with well defined qubits
+    \item The ability to initialise the system in a well defined, determinate state
+    \item The ability to read out qubit state with high accuracy
+    \item A set of universal quantum gates
+    \item Long relevant decoherence times
+    \newcounter{enumTemp}
+    \setcounter{enumTemp}{\theenumi}
+\end{enumerate}
+The two principles for the implementation of quantum information networks are:
+\begin{enumerate}
+    \setcounter{enumi}{\theenumTemp}
+    \item The ability to convert between `stationery' and `flying' qubits
+    \item The ability to transmit flying qubits between specified locations
+\end{enumerate}
+
+There are various physical approaches for quantum computing that satisfy some of the DiVincenzo criteria, however no current approach has successfully satisfied all five.
+\vspace{1em}
+
+The first objective to implement well defined qubits which are saliable. An example of a well defined qubit is superposition of vertical and horizontal polarisation of a photons, or the spin up and spin down of electrons. 
+There are many methods of creating well defined qubits, however scalability and producing multiple which remain in a superposition state is challenging - up to millions of qubits are required for most quantum algorithms. \cite{bergou_quantum_2021} (is this right?)
+IBM claimed in 2021 to have created the worlds largest quantum processor, the 127 qubit Eagle. \cite{authorfullname_ibm_nodate}
+\vspace{1em}
+
+The second objective is to initialise the qubits into a well defined determinate state i.e. initialise the qubit register so all are in the 0 state $\vert 0\rangle \vert 0\rangle$...$\vert 0 \rangle$. \cite{lapierre_divincenzo_2021}
+\vspace{1em}
+
+The third objective is to read out qubit state $\vert 0\rangle$ or $\vert 1 \rangle$ with high accuracy. 
+This is a challenge with photons as a method for detecting individual photons with no dark count (false positives) does not exist yet.
+\vspace{1em}
+
+The fourth objective is to implement a universal set of gates, all operations can be preformed using two quantum gates.
+One is gate which flips the state of a single qubit. The other is a CNOT gate which acts on two qubits and flips the state of one qubit only if the 'control' qubit is in state $\vert 1 \rangle$. \cite{lapierre_divincenzo_2021} 
+\vspace{1em}
+
+The final objective is for long `relevant' decoherence times, this requires the qubit to stay in a superposition quantum state for longer than the duration of gate operations before the state collapses. 
