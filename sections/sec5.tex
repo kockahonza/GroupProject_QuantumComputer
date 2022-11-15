@@ -67,20 +67,20 @@ Found this thing called DiVincezo criteria which might be nice to mention or som
 \end{itemize}
 
 \section{Trapped Ion Quantum Computing}
-In this section we provide a short introduction to the implementation details of trapped ion quantum computers (**once done possibly elaborate what exactly).
+In this section we provide an introduction to the implementation details of trapped ion quantum computers (**once done possibly elaborate what exactly we covered).
 The qubits in a trapped ion system are represented by individual trapped ions, as would have been seen in a quantum mechanics class, electrons bound in atoms can occupy a certain number of possible quantum states, here 2 of these level are chosen and used as the \kz and \ko states.
 Though it isn't quite as simple as that, for quantum computing we must have a way of entangling these 2 states.
-Partly to achieve that and partly for other reasons, the qubits are trapped in the same trap (this will be explained further later on) and their motion within it is coupled as a quantum system through which entanglement is achieved.
-Finally, for manipulating the qubits various lasers are used to excite or cool down the electrons and or ions.
+To achieve that, the qubits are trapped in the same trap (this will be explained further later on) and their motion within it is coupled as a quantum system through which entanglement is achieved.
+Finally for qubit manipulation, lasers are used to excite and cool down the electrons and the ions themselves.
 
 \subsection{Ion Trapping and the Paul Trap}
-Ion trapping is an extensive field/expertise used for many purposes across physics and other sciences, it is an essential component of many experiments that try to manipulate individual particles, molecules or so on.
+Ion trapping is an extensive field of expertise used for many purposes across physics and other sciences, it is an essential component of many experiments that try to manipulate individual particles, molecules or so on.
 For a brief sketch of what this involves, these experiments must be done in vacuum (otherwise there would be too many other atoms around) and rely on complex electric and magnetic fields to manipulate the motion of charged atoms.
-For quantum computing we are interested in trapping individual ions in a stable way, and while we want to trap multiple of them (currently about 5-100 has been achieved !43) it is important that we can tell them apart (often ions are trapped in bunches).
+For quantum computing we are interested in trapping individual ions in a stable way, and while we want to trap multiple of them (currently about 5-100 has been achieved !43) it is important that we can tell them apart (as opposed to trapping them in bunches as is often done).
 
 There are currently 2 dominant suitable ion trap designs, the Penning trap which uses a combination of magnetic and electric fields, and the Paul trap which uses time varying electric fields.
-Penning traps are able to hold larger amounts of ions and more stably, however the motion of the ions themselves is much more complicated and leads to qubit manipulation being harder to perform.
-Because of that Paul traps are more commonly used for quantum computers and also due to the scope of this report we will mainly focus on them.
+Penning traps are able to hold larger amounts of ions and more stably (300 ion crystals have been achieved !46), however the motion of the ions themselves is much more complicated and leads to qubit manipulation being harder to perform.
+Because of that Paul traps are more commonly used for quantum computers and due to the scope of this report we will mainly focus on them.
 
 \subsubsection{Simple Paul Trap}
 Paul trap designs use time varying fields as it is not possible to confine an ion in 3D space with only static fields.
