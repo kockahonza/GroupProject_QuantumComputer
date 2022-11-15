@@ -4,7 +4,9 @@
 \usepackage[style=phys,url=false,doi=false,isbn=false,eprint=false]{biblatex}
 \usepackage{amsmath}
 \usepackage{cleveref}
-\usepackage{lipsum}a
+\usepackage{physics}
+\usepackage{siunitx}
+\usepackage{lipsum}
 
 \addbibresource{bibliographies/bib1.bib}
 \addbibresource{bibliographies/bib2.bib}
@@ -12,6 +14,10 @@
 \addbibresource{bibliographies/bib4.bib}
 \addbibresource{bibliographies/bib5.bib}
 \addbibresource{bibliographies/bib6.bib}
+
+% Macros for the 0 and 1 kets, might be a useful shorthand, if you want to use it just do \kz or \ko anywhere
+\newcommand{\kz}{$\ket{0}$ }
+\newcommand{\ko}{$\ket{1}$ }
 
 \begin{document}
 \begin{center}
