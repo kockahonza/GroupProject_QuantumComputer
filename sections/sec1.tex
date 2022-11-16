@@ -4,12 +4,20 @@
     \item brief timeline/history of quantum computers
     \item where does this report fit into current literature
 \end{itemize}
+{\bf this is copied from 1.2 but think it sounds better here}
+The purpose of this report is to describe the physical realisation of a quantum computer. 
+It will give a brief explanation of the quantum mechanical concepts which are key to quantum computing such as entanglement and superposition. 
+The theory of storing and processing of information using quantum mechanical systems is described broadly before a detailed insight into `building' a quantum computer.
+Quantum computing is a very active field of research with numerous methods of implementation being studied including photonic and superconducting systems. 
 \subsection{Why build a quantum computer?}
-\begin{itemize}
-    \item RSA encryption
-    \item How QC is better at breaking RSA encryption (explain simultaneous states)
-    \item Where else can the benefits be used (other than in cryptography, e.g. bio simulation)
-\end{itemize}
+In order to understand the power of quantum computers, it is helpful to look to cryptography for an example. Most of computer security in the late 20th and early 21st century has been underpinned by RSA encryption. In the simplest terms, RSA encrypted data has some number, $P$, associated with it, which is a semiprime - it is the product of two prime factors. If you can determine these two factors then you can decrypt the data. If you know one of the factors then it is very easy to find the other, simply by dividing $P$ by the known factor. However, even with some holistic assumption and simplification there is no mathematical formula to compute both factors without any prior knowledge. Therefore, it becomes a case of trial and error which is trivial for a small number such as 15, as you quickly find 5 and 3. However, for a semiprime such as 403135, there are a much larger number of possible factors to trial. In fact, modern RSA encryption uses semiprimes comprising over 1000 digits.\\
+
+A typical classical computer with $n$ bits can represent $2^n$ different values, so in theory could trial $2^n$ factors. It would process each trial value sequentially. If we take the computation time for trialling one value to be constant, then the entire processing time scales as $2^n$. Therefore, for RSA encryption using significantly large semiprimes, the vast number of factors necessary to trial makes the computation time so long that the the encrypted data is effectively secure. It would take a classical computer 300 trillion years to trial all possible factors necessary to break RSA encryption using a semiprime of approximately 600 digits, as you would need a classical computer with 112 bits (https://www.quintessencelabs.com/blog/breaking-rsa-encryption-update-state-art).\\
+
+This is where a quantum computer comes in. A quantum computer with $n$ qbits (quantum bits) can also represent $2^n$ different values, however, it can do so simultaneously. This is possible because of quantum mechanically phenomena such as superposition. If a quantum computer can try all possible factors at once, the processing time is now a constant. Therefore, a 112 qbit quantum computer could, in constant time, break the 600 bit RSA encryption that takes a classical computer 300 trillion years to solve.\\
+
+This incredible processing power makes quantum computers ideal at solving many other combinatorics based problems, where finding the solution involves trying a vast number of possibilities.
+
 \subsection{How to build a quantum computer}
 This is basically just acknowledging there's different ways of doing it, mention where Google, IBM and IonQ are at. Then say we've chose Trapped Ion and explain structure of report 
 \begin{itemize}
@@ -18,18 +26,20 @@ This is basically just acknowledging there's different ways of doing it, mention
     \item who are the key players in building quantum computers
     \item briefly explain how the report will be structured, why have we chosen it this way
 \end{itemize}
-
-The purpose of this report is to describe the physical realisation of a quantum computer. 
-It will give a brief explanation of the quantum mechanical concepts which are key to quantum computing such as entanglement and superposition. 
-The theory of storing and processing of information using quantum mechanical systems is described broadly before a detailed insight into `building' a quantum computer.
-Quantum computing is a very active field of research with numerous methods of implementation being studied including photonic and superconducting systems. 
-
+There are multiple approaches to building a quantum computer with no single method becoming the leading approach.
+Supper conducting qubits (qubits are the quantum realisation of classical bits) is the method currently being researched by IBM, Google and a select few others, it was the first method to claim quantum supremacy. \cite{gibney_hello_2019}
 Quantum supremacy is a term used to describe when a quantum computer is able to complete a calculation that a classical computer could not achieve in a reasonable amount of time. 
-Google was first to claim quantum supremacy in 2019 with their 53 bit `Sycamore' quantum computer which reportedly solved a problem in under 5 hours which would take a classical computer over 10 000 years. \cite{gibney_hello_2019} 
+Google was first to claim it in 2019 with their 53 bit `Sycamore' quantum computer which reportedly solved a problem in under 5 hours which would take a classical computer over 10 000 years. \cite{gibney_hello_2019} 
 However these claims were disputed by IBM - another large company heavily invested in the quantum computing race.
-The largest quantum computer to date is the IBM osprey with 433 qubits announced in November 2022, both the Osprey and Sycamore computers use superconducting qubits (where qubits are the quantum realisation of classical computer bits).
+The largest quantum computer to date is the IBM osprey with 433 qubits announced in November 2022.
 
 This report will focus on trapped ion systems where in [date] [company] announced a [nbit] computer. Although trapped ions have not yet reached the number of qubits seen from superconducting systems there are many advantages to them, some of these are: 
-\begin{enumerate}
-    \item The cost of ion trap systems is relatively low - therefore research can be carried out by academics and be peer-reviewed. This affects the amount of research materials available on the public domain. As opposed to superconducting systems which require vast investments leading to only a select few companies able to reseach it and they do not publish much reseach due to their stategic ad
-\end{enumerate}
+\begin{itemize}
+    \item The cost of ion trap systems is relatively low - therefore research can be carried out by academics and be peer-reviewed. This affects the amount of research materials available on the public domain. As opposed to superconducting systems which require vast investments leading to only a select few companies willing to research this approach - therefore significantly less detailed research is published on superconducting systems. 
+    \item 
+\end{itemize}
+
+This report will finally discus optical qubits due to their likely scalability for the future. 
+Quantum computers are likely to require up to millions of qubits for most quantum algorithms - as compared to the current record of 433 qubtis from IBM. \cite{bergou_quantum_2021} 
+Optical qubits currently have some large hurdles to overcome - as will be discussed in section [hereee] however once these are overcome it is likely to be an attractive attender for future quantum computing and information transfer.
+In particular, photons can maintain entanglement over long distances and time periods allowing secure transition of quantum information - this has been demonstrated for over 1200km. \cite{yin_satellite-based_2017}
