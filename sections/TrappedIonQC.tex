@@ -17,8 +17,8 @@ Because of that Paul traps are more commonly used for quantum computers and due 
 
 \subsubsection{Simple Paul Trap}
 Paul trap designs use time varying fields as it is not possible to confine an ion in 3D space with only static fields.
-The simplest Paul trap design is composed of 4 conducting rods run in parallel to create a quadrupole electric field in the middle.
-Then have each of the diagonally opposite rods connected at the same voltage and have these 2 voltages be some periodic function (usually a sine or a square wave) in antiphase, so that if at some time one is set to positive voltage, the other should be at negative voltage (**hopefully add a diagram/picture).
+The simplest Paul trap design is composed of 4 conducting rods run in parallel to create a quadrupole electric field in the middle, \cref{fig:ITQC_RFQ_Flour} showcases a simple demo version.
+Then have each of the diagonally opposite rods connected at the same voltage and have these 2 voltages be some periodic function (usually a sine or a square wave at approximatelly raio frequencies, hence the name) in antiphase, so that if at some time one is set to positive voltage, the other should be at negative voltage.
 This results in a net effect of trapping a charged particle (within some range of mass to charge ratios, this setup can be used as a mass filter) along the axis of the quadrupole, why exactly this is so is well explained in (**add a source here).
 Finally, for trapping along the last axis a static electric field is used, this can be achieved by for example 2 more rod segments along the quadrupole axis at either end of the whole setup, both at some positive voltage, resulting in a potential well along the axis.
 
@@ -28,7 +28,12 @@ Finally, for trapping along the last axis a static electric field is used, this 
     \caption{Charged flour grains trapped in a simple Paul trap, the mentioned 4 parallel rods are visible and the electrodes creating the potential well are in the end caps.(**cite Pavelka, found on wikipedia)}\label{fig:ITQC_RFQ_Flour}
 \end{figure}
 
-\subsubsection{Notes on Advanced Paul Trap designs}
+\subsubsection{Notes on Other Paul Trap Designs}
+Firstly, the aforementioned simple Paul trap was a linear Paul trap, in these types of Paul traps the ion's motion is confined in 2 dimensions by an RF quadrupole and the last is taken care of using a linear static potential, this is the type of trap on which we will focus.
+There are also point Paul traps, which utilise oscillating RF fields for trapping in all 3 dimensions, these are also used for quantum computing, however when multiple ions are trapped together, which we need for entanglement, their motion is more complex.
+
+Finally, there are also many different geometries for linear Paul traps, all of them result in the same ion motion along an axis, though differ greatly in design.
+
 
 
 % There are many different ways of constructing a Paul trap, different electrode geometries give different benefits and downsides.
