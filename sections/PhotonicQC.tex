@@ -1,6 +1,22 @@
-\section{Linear Opticasubsubsection{Spatial Modes}
-Single Rail and Dual Rail Encoding
-
+\section{Linear Optical Quantum Computing}
+\subsection{Types of Encoding}
+\subsubsection{Spatial Modes}
+Single Rail
+\begin{itemize}
+    \item This involves sending a photon down a single rail or cavity.
+    \item The existence of a photon in the cavity represents $\bra{1}$ and the photon not being present represents $\bra{0}$
+    \item With this representation entanglement can be achieved using a beam splitter and taking advantage of the Hong-Ou-Mandel effect
+    \item Single gate operators can only be achieved probabilistically
+\end{itemize}
+Dual Rail Encoding
+\begin{itemize}
+    \item Involves sending a photon down one of two rails
+    \item When the photon is present in the first rail this corresponds to the state $\bra{0}$ and when the photon is present in the second rail this corresponds to the states $\bra{1}.$
+    \item In this representation superposition is pretty simple with the presence of photons in both rails.
+    \item Single qubit gate operators are very easy to perform as these correspond to linear optical tools being applied to one of the two rails
+    \item Two qubit operations on dual rail optical quantum computers are probabilistic but using KLM protocols we can increase the probabilities of getting 'correct' results 
+\end{itemize}
+\subsubsection{Mixed Polarisation,Parity Encoding, etc.}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -20,9 +36,9 @@ As we have seen above, all other important single qubit operators can be constru
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{Efficiency}
-As we know by now, the real magic of quantum computation occurs when we can implement 2 qubit gates as this allows us to perform quantum entanglement between qubit states which is then instrumental in many other constructs such as Quantum Teleportation, Quantum Algorithms, etc.
+As we know by now, the real magic of quantum computation occurs when we can implement two qubit gates as this allows us to perform quantum entanglement between qubit states which is then instrumental in many other constructs such as Quantum Teleportation, Quantum Algorithms, etc.
 
-The issue we tend to run across with LOQC is that photons tend to not naturally interact with each other. One suggested method of overcoming this uses photo-detectors to make projective measurements which can induce an interaction between photons\cite{Kok:2005jip}. This is a probabilistic approach with the probability of success being rather small and the method for increasing this probability to "near-one" values scales exponentially with resources (optical modes required). This makes optical computation seem quite unfeasible on the large scale but thanks to a few interesting results in quantum optics we can implement what is referred to as the KLM protocol to construct scalable 2-qubit gates.
+The issue we tend to run across with LOQC is that photons tend to not naturally interact with each other. This makes the practical implementation of a two qubit gate a very difficult task. One suggested method is to use nonlinear Kerr media to provide a cross phase modulation of $\pi$ between photon states. This combined with a beamsplitter can be used to construct a CNOT gate, from which a universal set of gates can be obtained. However, as stated in Section 7.4.3 in \cite{nielsen_chuang_2010}, obtaining nonlinear Kerr media with the sufficient cross phase modulation is not possible without incurring an excessive absorption loss: for every photon that incurs a $\pi$ cross phase modulation, approximately 50 photons must be absorbed. Another suggested method of overcoming this uses photo-detectors to make projective measurements which can induce an interaction between photons\cite{Kok:2005jip}. This is a probabilistic approach with the probability of success being rather small and the method for increasing this probability to "near-one" values scales exponentially with resources (optical modes required). This makes optical computation seem quite unfeasible on the large scale but thanks to a few interesting results in quantum optics we can implement what is referred to as the KLM protocol to construct scalable 2-qubit gates.
 
 
 \subsubsection{Three results that allow for efficient LOQC}
@@ -40,10 +56,6 @@ Due to the following results the additional resources for a LOQC that scales wit
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\subsection{Two Qubit Operations}
-\subsubsection{Attempting Entanglement}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{Fault tolerance}
 \subsubsection{Photon loss}
