@@ -1,25 +1,26 @@
 
-\section{Trapped Ion Quantum Computing} \label{sec:Trapped}
+\section{Trapped Ion Quantum Computing \cite{bruzewiczTrappedionQuantumComputing2019}} \label{sec:Trapped}
 In this section we provide an introduction to the implementation details of trapped ion quantum computers (**once done possibly elaborate what exactly we covered).
-The qubits in a trapped ion system are represented by individual trapped ions, as would have been seen in a quantum mechanics class, electrons bound in atoms can occupy a certain number of possible quantum states, here 2 of these level are chosen and used as the \kz and \ko states.
+The qubits in a trapped ion system are represented by individual trapped ions.
+As would have been seen in a quantum mechanics class, electrons bound in atoms can occupy a certain number of possible quantum states, here 2 of these level are chosen and used as the \kz and \ko states.
 Though it isn't quite as simple as that, for quantum computing we must have a way of entangling these 2 states.
-To achieve that, the qubits are trapped in the same trap (explained later on) and their motion within it is coupled as a quantum system, through which entanglement is achieved.
-Finally for qubit manipulation, lasers are used to excite and cool down the electrons and the ions themselves.
+To achieve that, the qubit ions are trapped in the same trap (explained later on) and their motion within it is coupled as a quantum system, through which entanglement is achieved.
+The rest of the required features for quantum computing including state preparation, readout and quantum gates are all achieved through tuned lasers and or the mentioned entanglement.
 
 \subsection{Ion Trapping and the Paul Trap}
 Ion trapping is an extensive field of expertise used for many purposes across physics and other sciences, it is an essential component of many devices and experiments that try to manipulate individual particles, molecules or so on.
 For a brief sketch of what this involves, these experiments must be done in vacuum (otherwise there would be too many other atoms around) and rely on complex electric and magnetic fields to manipulate the motion of charged atoms.
-For quantum computing we are interested in trapping individual ions in a stable way, and while we want to trap multiple of them (currently about 5-100 has been achieved !43) it is important that we can tell them apart (as opposed to trapping them in bunches as is often done).
+For quantum computing we are interested in trapping individual ions in a stable way, and while we want to trap multiple of them (currently about 5-100 has been achieved \cite{paganoCryogenicTrappedionSystem2018}) it is important that we can tell them apart (as opposed to trapping them in bunches as is often done).
 
 There are currently 2 dominant, suitable classes of ion traps, Penning traps which uses a combination of magnetic and electric fields, and Paul traps (also known as Quadrupole or Radio-Frequency-Quadrupole ion traps) which uses time varying electric fields.
-Penning traps are able to hold larger amounts of ions and more stably (300 ion crystals have been achieved !46), however the motion of the ions themselves is much more complicated and leads to qubit manipulation being harder to perform.
+Penning traps are able to hold larger amounts of ions and more stably (300 ion crystals have been achieved \cite{bohnetQuantumSpinDynamics2016}), however the motion of the ions themselves is much more complicated and leads to qubit manipulation being harder to perform.
 Because of that Paul traps are more commonly used for quantum computers and due to the scope of this report we will focus on them.
 
 \subsubsection{Simple Paul Trap}
 Paul trap designs use time varying fields as it is not possible to confine an ion in 3D space with only static fields.
-The simplest Paul trap design is composed of 4 conducting rods run in parallel to create a quadrupole electric field in the middle (\cref{fig:ITQC_RFQ_Flour} showcases a demonstrative model).
+The simplest Paul trap design is composed of 4 conducting rods run in parallel to create a quadrupole electric field in the middle (\cref{fig:ITQC_RFQ_Flour} shows a demonstrative model).
 Then have each of the diagonally opposite rods connected at the same voltage and have these 2 voltages be some periodic function (usually a sine or a square wave at approximately radio frequencies, hence the name) in antiphase, so that if at some time one pair is set to positive voltage, the other should be at negative voltage.
-This results in a net effect of trapping a charged particle (within some range of mass to charge ratios, the setup can be used as a mass filter) along the axis of the quadrupole, why exactly this is so is well explained in (**add a source here).
+This results in a net effect of trapping a charged particle (within some range of mass to charge ratios of the ions, the setup can be used as a mass filter) along the axis of the quadrupole, why exactly this is so is well explained in (**add a source here).
 Finally, for trapping along the last axis a static electric field is used, this can be achieved by for example 2 more rod segments along the quadrupole axis at either end of the whole setup, both at some positive voltage, resulting in a potential well along the axis.
 
 \begin{figure}[H]
@@ -29,16 +30,41 @@ Finally, for trapping along the last axis a static electric field is used, this 
 \end{figure}
 
 \subsubsection{Notes on Other Paul Trap Designs}
-Firstly, the aforementioned simple Paul trap was a linear Paul trap, in this type of Paul traps the ion's motion is confined in 2 dimensions by an RF quadrupole and the last is taken care of using a linear static potential, this is the type of trap on which we will focus.
+The aforementioned simple Paul trap is in fact a linear Paul trap, in this type of Paul traps the ion's motion is confined in 2 dimensions by an RF quadrupole and the last is taken care of using a linear static potential, this is the type of trap on which we will focus.
 There are also point Paul traps, which utilise oscillating RF fields for trapping in all 3 dimensions, these are also used for quantum computing, however when multiple ions are trapped together (which is necessary for entanglement) their motion is significantly more complex.
 
-With focus on linear Paul traps there is still a plethora of different designs, most notably there are "surface" Paul traps.
-These are usually microfabricated plates with a layout of electrodes on their surface which when driven by the correct voltages give rise to the same fields as the aforementioned simple linear Paul trap above their surface.
+However there is still a plethora of different designs being explored for further progress, most interestingly there are "surface" Paul traps.
+These are usually microfabricated plates with a layout of electrodes on their surface which when driven by the correct voltages give rise to a trapping field above their surface.
 These designs offer great advantages for quantum computing, as not only are they cheaper and quicker to manufacture, but can be produced with a much higher precision than manually assembled devices.
-In addition, they also have the benefit of the trapped ions being much more accessible for manipulation through lasers, in fact 
+They also have the benefit of the trapped ions being much more accessible for manipulation through lasers.
+Recently chips with integrated photonics have been developed too, these are surface Paul traps with optical channels running through them with openings in the surface aimed at the ion see \cref{fig:ITQC_MIT} for diagrams of one developed at MIT \cite{niffeneggerIntegratedMultiwavelengthControl2020}.
+This further reduces the need for precision assembly and calibration, however complications arise with generating and maintaining entangled states if each ion is stored separately in these modules \cite{bruzewiczTrappedionQuantumComputing2019}.
 
 
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}[b]{0.45\textwidth}
+        \centering
+        \includegraphics[width=0.9\textwidth]{images/ITQC_MIT_1.jpg}
+        \subcaption{Layout of the surface Paul trap}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.45\textwidth}
+        \centering
+        \includegraphics[width=0.9\textwidth]{images/ITQC_MIT_2.jpg}
+        \subcaption{Diagram showing the photon beams}
+    \end{subfigure}
+    \caption{Surface Paul trap with integrated photonics for quantum computing developed at MIT in 2020.}\label{fig:ITQC_MIT}
+\end{figure}
 
-% There are many different ways of constructing a Paul trap, different electrode geometries give different benefits and downsides.
+\subsection{The ions}
+Some of the main requirements for a suitable isotope is that it is radioactively stable, can be produced, is (ideally) singly ionizable and most importantly that the valence electron has suitable stable available quantum mechanical states to occupy.
+Group 2 elements or similar (namely group 12 elements and Yb \cite{ozeriTrappedionQubitTool2011}) are typically used, as they have a full shell except a single valence electron.
+However there are many suitable electron states available for use, based on which are used these are classified as Zeeman, Hyperfine, Optical or Fine-structure qubits.
 
-% For quantum computing we are mainly interested to trap individual ions in a predictable and stable way, there are 2 main types of ions traps that are used, the Penning tr
+
+\subsection{Trapped ions - what type of excited states there is and maybe mention particular isotopes}
+
+
+\subsection{Qubit (ion) manipulation, the lasers for state prep, readout and so on, and entanglement!}
+
