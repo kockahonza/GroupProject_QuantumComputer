@@ -1,27 +1,19 @@
 \section{Introduction}
-\begin{itemize}
-    \item brief overview of what a quantum computer is
-    \item brief timeline/history of quantum computers
-    \item where does this report fit into current literature
-\end{itemize}
+A quantum computer uses quantum mechanical phenomena to perform calculations which any classical computer, including supercomputers, would be unable to compute within a lifetime. \cite{noauthor_what_nodate}
+The report will explain the physical process and technologies behind building such a machine. Initially, we provide the motivation for wanting to build a quantum computer, which will be followed by an overview of the progress made in both industry and academic research. In order to understand the complex methods used to construct a quantum computer, the report provides explanations of the basic fundamentals of classical computing and the key quantum mechanical concepts, such as entanglement and superposition. Then, we explore a current method for implementing quantum computers - trapped ions, before looking into the next possible breakthrough in the field with photonic quantum computers.
 
-A quantum computer uses quantum mechanical phenomena to preform computations which which are too complex for any classical computer, including supercomputers. \cite{noauthor_what_nodate}
-The purpose of this report is to describe the physical realisation of a quantum computer. 
-It will give a brief explanation of the quantum mechanical concepts which are key to quantum computing such as entanglement and superposition. 
-The theory of storing and processing of information using quantum mechanical systems is described broadly before a detailed insight into `building' a quantum computer.
-Quantum computing is a very active field of research with numerous methods of implementation being studied including photonic and superconducting systems. 
 \subsection{Why build a quantum computer?}
 In order to understand the power of quantum computers, it is helpful to look to cryptography for an example. Most of computer security in the late 20th and early 21st century has been underpinned by RSA encryption. In the simplest terms, RSA encrypted data has some number, $P$, associated with it, which is a semiprime - it is the product of two prime factors. If you can determine these two factors then you can decrypt the data. If you know one of the factors then it is very easy to find the other, simply by dividing $P$ by the known factor. However, even with some holistic assumption and simplification there is no mathematical formula to compute both factors without any prior knowledge. Therefore, it becomes a case of trial and error which is trivial for a small number such as 15, as you quickly find 5 and 3. However, for a semiprime such as 403135, there are a many more possible factors to trial. In fact, modern RSA encryption uses semiprimes comprising over 1000 digits.\\
 
 A typical classical computer with $n$ bits can represent $2^n$ different values, so in theory could trial $2^n$ factors. It would process each trial value sequentially. If we take the computation time for trialling one value to be constant, then the entire processing time scales as $2^n$. Therefore, for RSA encryption using significantly large semiprimes, the vast number of factors necessary to trial makes the computation time so long that the the encrypted data is effectively secure. It would take a classical computer 300 trillion years to trial all possible factors necessary to break RSA encryption using a semiprime of approximately 600 digits, as you would need a classical computer with 112 bits \cite{mahto2016security}\cite{quintessencelabs_2022}.\\
 
-This is where a quantum computer comes in. A quantum computer with $n$ qbits (quantum bits) can also represent $2^n$ different values, however, it can do so simultaneously. This is possible because of quantum mechanically phenomena such as superposition. If a quantum computer can try all possible factors at once, the processing time is now a constant. Therefore, a 112 qbit quantum computer could, in constant time, break the 600 bit RSA encryption that takes a classical computer 300 trillion years to solve.\\
+This is where a quantum computer comes in. A quantum computer with $n$ qbits (quantum bits) can also represent $2^n$ different values, however, it can do so simultaneously. This is possible because of quantum mechanically phenomena such as superposition. If a quantum computer can try all possible factors at once, the processing time is now a constant. Therefore, a 112 qbit quantum computer could, in constant time, break the 600 bit RSA encryption that would take a classical computer 300 trillion years to solve.\\
 
 This incredible processing power makes quantum computers ideal at solving many other combinatorics based problems, where finding the solution involves trying a vast number of possibilities. Two particularly interesting applications are in financial and medical simulation. Monte Carlo simulation calculates the likely outcome of a certain event by running enough simulations that it covers a suitable range of possibilities; these repeated simulations are equivalent to trialling different factors for RSA encryption. Goldman Sachs has invested heavily in this technology, and executed a quantum version of its Monte Carlo simulation on a trapped ion computer - they believe it will allow traders to obtain up-to-date risk predictions 10 times faster within the next five years \cite{Giurgica_Tiron_2022}. Quantum computers also have the potential to rapidly advance drug development by allowing researchers to test many different combinations of atoms and molecules simultaneously \cite{bova2021commercial}).\\
 
 If you want a computer to watch YouTube or write a word processing document, then a quantum computer probably isn't necessary for you. However, if you want to accelerate humanity's innovation in medicine, Physics, finance, cybersecurity and more, hopefully it's now clear why you should build a quantum computer.
 
-\subsection{How to build a quantum computer}
+\subsection{Current Methods of Quantum Computing}
 This is basically just acknowledging there's different ways of doing it, mention where Google, IBM and IonQ are at. Then say we've chose Trapped Ion and explain structure of report 
 \begin{itemize}
     \item multiple ways of doing it
@@ -48,6 +40,14 @@ One of the largest contenders in this area is IonQ with a 23 qubit computer.
     \item The company ionq produces commercially available quantum computer using trapped ion systems which can be accessed from public clouds such as Microsoft Azure. \cite{sonialopezbravo_ionq_nodate} Goldman Sachs have been using this service to test quantum algorithms relevant to the financial services industry. \cite{noauthor_goldman_2021}
 \end{itemize}
 
+
+
+\vspace{1em}
+The next section in this report will provide some background information and explain some key fundamential ideas in classical computing and quatum information. 
+The following section will then venture into trapped ion systems where quantum computers have been built using this method.
+It will cover how physical qubits are created and manipulated using gates for calculations to be carried out and finally how the qubit states can be readout. 
+
+\vspace{1em}
 This report will finally discus optical qubits due to their likely scalability for the future. 
 Quantum computers are likely to require up to millions of qubits for most quantum algorithms - as compared to the current record of 433 qubtis from IBM. \cite{bergou_quantum_2021} 
 Optical qubits currently have some large hurdles to overcome - as will be discussed in section \ref{sec:Photonic}. However once these are overcome it is likely to be an attractive attender for future quantum computing and information transfer.
