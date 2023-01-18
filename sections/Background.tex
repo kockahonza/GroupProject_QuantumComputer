@@ -1,8 +1,40 @@
 \section{Background}
 
-\subsection{Quantum}
+This section will cover some of the fundamental concepts both in quantum mechanics and classical computing which are required for understanding this paper. 
+Finally the DiVincenzo criteria will be introduced which is five objectives to be m
+
+
+\subsection{Fundamentals of Classical Computing}
+Quantum computers are an extension of the founding principles of classical computation, which take advantage of quantum mechanical phenomena. Therefore, in order to understand how to build a quantum computer, it is beneficial to have a strong understanding of a classical computer's basic components. In order to build a functioning quantum computer, every fundamental feature described in the sections below must have an analogous, albeit quantum, implementation.
+\subsubsection{What is a bit? Or a nibble, or even a byte...}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{images/binary.jpg}
+    \caption{A table illustrating how to convert the binary number 101101 into its decimal equivalent, 45 \cite{binary}}\label{fig:BINARY}
+\end{figure}
+\subsubsection{How is a bit physically stored?}
+Use figure here
+\subsubsection{Gates - Manipulating bits}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{images/andgate.jpeg}
+    \caption{A logic diagram of a binary half adder, including truth table output for all possible input combinations. \cite{andgate}}\label{fig:ANDGATE}
+\end{figure}
+\subsection{Computation - Many gates}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{images/adder.jpeg}
+    \caption{A logic diagram of a binary half adder, including truth table output for all possible input combinations. \cite{adder}}\label{fig:ADDER}
+\end{figure}
+
+\subsection{Relevant Quantum Physics}
+
+Quantum computing's advantages are a direct result of the quantum mechanical properties such as superposition and entanglement that distinguish it from classical computers. 
+These two properties along with quantum teleportation and the Bell inequality will be discussed.
+Finally decoherence times of quantum states will introduced as a means of demonstraiting the difficulty with 
+
 \subsubsection{Superposition}
-Superposition is a uniquely quantum mechanical phenomenon where an object may exist in multiple states at once. 
+Superposition is a quantum mechanical phenomenon where an object may exist in multiple states at once. 
 For example an electron may be said to be in two places at once - or more accurately its probability function covers multiple areas in space. \cite{noauthor_whatCal_nodate}
 
 Superposition can be observed in the polarisation of light. 
@@ -28,10 +60,12 @@ This is what is experimentally observed - however if a third polariser is placed
 \end{figure}
 
 \subsubsection{Entanglement}
-Entanglement is when the measurement of one particles state will effect the state of another particle.
-I.e. for interacting states A and B their combined wavefunction cannot be expressed as the product of the individual wavefunction's of A and B if states A and B are entangled. \cite{bransden_quantum_2000}
+Entanglement is a uniquely quantum mechanical phenomenon where the measurement of one particle's state will effect the state of another particle.
+I.e. for interacting states A and B their combined wavefunction cannot be expressed as the product of the individual wavefunctions of A and B if states A and B are entangled. \cite{bransden_quantum_2000}
 $\psi(A,B)\neq \psi(A)\cdot \psi(B)$ 
 
+Although progress has been made in studying quantum entanglement, there is no complete theory to explain it. 
+It does play an integral role in quantum computing however and deeper investigation of it and how to manipulate this property is likely to lead to further applications. \cite{nielsen_quantum_2010}
 
 
 \subsection{The DiVincenzo Criteria -- to be polished}
