@@ -57,10 +57,31 @@ This further reduces the need for precision assembly and calibration, however co
     \caption{Surface Paul trap with integrated photonics for quantum computing developed at MIT in 2020.}\label{fig:ITQC_MIT}
 \end{figure}
 
-\subsection{The ions}
-Some of the main requirements for a suitable isotope is that it is radioactively stable, can be produced, is (ideally) singly ionizable and most importantly that the valence electron has suitable stable available quantum mechanical states to occupy.
-Group 2 elements or similar (namely group 12 elements and Yb \cite{ozeriTrappedionQubitTool2011}) are typically used, as they have a full shell except a single valence electron.
-However there are many suitable electron states available for use, based on which are used these are classified as Zeeman, Hyperfine, Optical or Fine-structure qubits.
+\subsection{The ions and types of qubits}
+As the trapping was briefly covered, the next logical step is to focus on the ion itself.
+First question is what element should be use and some of the main requirements are that it is radioactively stable, can be easily produced, can singly ionized and finally that it has 2 suitable states to use as \kz and \ko.
+For this, the valence electron (also the one that is "free" due to ionization) is the important part, the energy levels available to it are used as our needed states.
+
+For a quick summary of atomic structure, an electron is bound to the nucleus by the Coulomb interaction, if this is considered only and the quantum problem is solved, we get the gross structure, giving rise to different energy levels with different quantum numbers n.
+The next step is to consider the interaction between the electrons spin and angular momentum, and also certain relativistic corrections.
+This gives rise to the fine structure and the known quantum numbers: the same n, l usually given letters s, p, d and so on, and the total spin j.
+Next, there is another correction which comes from the interaction between the electron's spin and the total spin of the nucleus.
+This gives rise to more splitting and the resulting energy levels are called the hyperfine structure.
+Finally, in very vague terms, if an atom is in a magnetic field there is again more splitting, this is called the Zeeman effect.
+Details on all of this can be found in \cite{woodgateELEMENTARYATOMICSTRUCTURE1970}.
+
+Coming back to quantum computing, we need 2 of these energy levels to use as \kz and \ko and there are many options, in general the typical choice can be classified into the following categories.
+\subsubsection{Zeeman qubits}
+\subsubsection{Hyperfine qubits}
+\subsubsection{Optical qubits}
+\subsubsection{Fine structure qubits}
+
+% some of the main requirements for a suitable isotope is that it is radioactively stable, can be produced, is singly ionizable and most importantly that the valence electron has suitable stable available quantum mechanical states to occupy, to use for \kz and \ko.
+% Group 2 elements or similar (namely group 12 elements and Yb \cite{ozeriTrappedionQubitTool2011}) are typically used, as they have a full shell except a single valence electron.
+% However for many of them, there are multiple suitable electron states available for use, based on which are used the qubits would be classified as Zeeman, Hyperfine, Optical or Fine-structure.
+% To summarize what these are, in either case we start with the typical electron orbitals around an atom
+
+% \subsubsection{Zeeman qubits}
 
 
 \subsection{Trapped ions - what type of excited states there is and maybe mention particular isotopes}
