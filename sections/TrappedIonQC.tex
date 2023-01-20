@@ -1,6 +1,6 @@
 
 \section{Trapped Ion Quantum Computing \cite{bruzewiczTrappedionQuantumComputing2019}} \label{sec:Trapped}
-In this section we provide an introduction to the implementation details of trapped ion quantum computers (**once done possibly elaborate what exactly we covered).
+In this section we provide an introduction to the implementation details of trapped ion quantum computers (**once done possibly elaborate what exactly we cover).
 The qubits in a trapped ion system are represented by individual trapped ions.
 As would have been seen in a quantum mechanics class, electrons bound in atoms can occupy a certain number of possible quantum states, here 2 of these level are chosen and used as the \kz and \ko states.
 Though it isn't quite as simple as that, for quantum computing we must have a way of entangling these 2 states.
@@ -23,7 +23,7 @@ Then have each of the diagonally opposite rods connected at the same voltage and
 This results in a net effect of trapping a charged particle (within some range of mass to charge ratios of the ions, the setup can be used as a mass filter) along the axis of the quadrupole, why exactly this is so is well explained in (**add a source here).
 Finally, for trapping along the last axis a static electric field is used, this can be achieved by for example 2 more rod segments along the quadrupole axis at either end of the whole setup, both at some positive voltage, resulting in a potential well along the axis.
 
-\begin{figure}[H]
+\begin{figure}[h]
     \centering
     \includegraphics[width=0.9\textwidth]{images/TIQC_RFQ_Flour.jpg}
     \caption{Charged flour grains trapped in a simple Paul trap, the mentioned 4 parallel rods are visible and the electrodes creating the potential well are in the end caps.(**cite Pavelka, found on wikipedia)}\label{fig:TIQC_RFQ_Flour}
@@ -41,7 +41,7 @@ Recently chips with integrated photonics have been developed too, these are surf
 This further reduces the need for precision assembly and calibration, however complications arise with generating and maintaining entangled states if each ion is stored separately in these modules \cite{bruzewiczTrappedionQuantumComputing2019}.
 
 
-\begin{figure}[H]
+\begin{figure}[h]
     \centering
     \begin{subfigure}[b]{0.45\textwidth}
         \centering
@@ -61,6 +61,7 @@ This further reduces the need for precision assembly and calibration, however co
 As the trapping was briefly covered, the next logical step is to focus on the ion itself.
 First question is what element should be use and some of the main requirements are that it is radioactively stable, can be easily produced, can singly ionized and finally that it has 2 suitable states to use as \kz and \ko.
 For this, the valence electron (also the one that is "free" due to ionization) is the important part, the energy levels available to it are used as our needed states.
+Typically, group 2 elements or similar (namely group 12 elements and Yb \cite{ozeriTrappedionQubitTool2011}) are used, as they are stable and have a full shell except a single valence electron -- leading to a suitable electronic structure.
 
 For a quick summary of atomic structure, an electron is bound to the nucleus by the Coulomb interaction, if this is considered only and the quantum problem is solved, we get the gross structure, giving rise to different energy levels with different quantum numbers n.
 The next step is to consider the interaction between the electrons spin and angular momentum, and also certain relativistic corrections.
@@ -70,9 +71,15 @@ This gives rise to more splitting and the resulting energy levels are called the
 Finally, in very vague terms, if an atom is in a magnetic field there is again more splitting, this is called the Zeeman effect.
 Details on all of this can be found in \cite{woodgateELEMENTARYATOMICSTRUCTURE1970} and a diagram of the typical fine structure of the ions used for trapped ion QC along with some of the zeeman and hyperfine splittings are shown in \cref{fig:TIQC_levels}.
 
-Coming back to quantum computing there are many options for our states and they can usually be classified as one of following types.
+% some of the main requirements for a suitable isotope is that it is radioactively stable, can be produced, is singly ionizable and most importantly that the valence electron has suitable stable available quantum mechanical states to occupy, to use for \kz and \ko.
+% However for many of them, there are multiple suitable electron states available for use, based on which are used the qubits would be classified as Zeeman, Hyperfine, Optical or Fine-structure.
+% To summarize what these are, in either case we start with the typical electron orbitals around an atom
 
-\begin{figure}[H]
+This gives rise to a plethora of options for the 2 levels and depending on their choice the resulting qubit can be classified into the following categories.
+
+% Coming back to quantum computing there are many options for our states and they can usually be classified as one of following types.
+
+\begin{figure}[h]
     \centering
     \includegraphics[width=0.9\textwidth]{images/TIQC_levels.jpeg}
     \caption{Fine structure and Zeeman and hyperfine splittings of typical atoms used for quantum computing. Some of the possible choices for the sates are also shown.}\label{fig:TIQC_levels}
@@ -103,10 +110,6 @@ As a downside comes a more complicated level structure, for example the readout 
 
 Overall there is not a clear winner and which choice is made depends on the particulars of the given company or research team, depending on their expertise and the equipment available to them.
 
-% some of the main requirements for a suitable isotope is that it is radioactively stable, can be produced, is singly ionizable and most importantly that the valence electron has suitable stable available quantum mechanical states to occupy, to use for \kz and \ko.
-% Group 2 elements or similar (namely group 12 elements and Yb \cite{ozeriTrappedionQubitTool2011}) are typically used, as they have a full shell except a single valence electron.
-% However for many of them, there are multiple suitable electron states available for use, based on which are used the qubits would be classified as Zeeman, Hyperfine, Optical or Fine-structure.
-% To summarize what these are, in either case we start with the typical electron orbitals around an atom
 
 
 \subsection{Qubit (ion) manipulation, the lasers for state prep, readout and so on, and entanglement!}
