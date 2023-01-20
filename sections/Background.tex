@@ -3,15 +3,6 @@
 This section will cover some of the fundamental concepts both in quantum mechanics and classical computing which are required for understanding this paper. 
 Finally the DiVincenzo criteria will be introduced which is five objectives that should be met by any system in order to be an effective large scale quantum computer. 
 
-\subsection{qubit}
-Following the general introduction of a qubit in the introduction, a qubit is the quantum form of a classical bit. 
-A classical bit can either hold the value of 0 or 1 while a qubit is a superposition of both $|0\rangle$ and $|1\rangle$ as seen in \ref{eqn:qubit}
-\begin{equation}\label{eqn:qubit}
-    |\psi\rangle = \alpha|0\rangle + \beta|1\rangle
-\end{equation}
-where $\alpha$ and $\beta$ are complex numbers.
-Operations can be preformed on this superposition state and only once the qubit has been measured the state will collapse to either $|0\rangle$ or $|1\rangle$. \cite{nielsen_quantum_2010}
-
 \subsection{Fundamentals of Classical Computing}
 Quantum computers are an extension of the founding principles of classical computation, which take advantage of quantum mechanical phenomena. Therefore, in order to understand how to build a quantum computer, it is beneficial to have a strong understanding of a classical computer's basic components. In order to build a functioning quantum computer, every fundamental feature described in the sections below must have an analogous, albeit quantum, implementation.
 \subsubsection{What is a bit? Or a nibble, or even a byte...}
@@ -88,13 +79,6 @@ However the system in equation \ref{eqn:entqubit} is entangled as the total syst
     |1\rangle_\phi|1\rangle_\psi}{\sqrt{2}}
 \end{equation}
 
-The state in equation \ref{eqn:entqubit} is particularly interesting and is known as the bell state (the $\sqrt{2}$ is a normalising factor).
-It is 2-Qubit entangled state which is used frequently in quantum computing and can be achieved by applying a `Hadamard' and a `cNOT' quantum gate to two qubits. \cite{mermin_quantum_2007} 
-{\bf check if mathew talks about quatum gates yet}
-Measuring only one of the qubits in this state would reveal the state of the other qubit. 
-If a $|0\rangle$ is measured from one qubit then the other qubit must be $|0\rangle$ while if a $|1\rangle$ is measured then the other qubit must also be in a $|1\rangle$ state. 
-The probability of measuring $|0\rangle$ is 50$\%$ and similarly for measuring $|1\rangle$. 
-
 \vspace{1em}
 
 Although progress has been made in studying quantum entanglement, there is no complete theory to explain it. 
@@ -113,9 +97,26 @@ One exciting application is quantum teleportation
 \subsubsection{no cloning theorem}
 
 
+\subsection{Quantum Computing}
+\subsubsection{Qubits}
+Following the general introduction of a qubit in the introduction, a qubit is the quantum form of a classical bit. 
+A classical bit can either hold the value of 0 or 1 while a qubit is a superposition of both $|0\rangle$ and $|1\rangle$ as seen in \ref{eqn:qubit}
+\begin{equation}\label{eqn:qubit}
+    |\psi\rangle = \alpha|0\rangle + \beta|1\rangle
+\end{equation}
+where $\alpha$ and $\beta$ are complex numbers.
+Operations can be preformed on this superposition state and only once the qubit has been measured the state will collapse to either $|0\rangle$ or $|1\rangle$. \cite{nielsen_quantum_2010}
+
+\subsubsection{Quantum Gates}
+The state in equation \ref{eqn:entqubit} is particularly interesting and is known as the bell state (the $\sqrt{2}$ is a normalising factor).
+It is 2-Qubit entangled state which is used frequently in quantum computing and can be achieved by applying a `Hadamard' and a `cNOT' quantum gate to two qubits. \cite{mermin_quantum_2007} 
+{\bf check if mathew talks about quatum gates yet}
+Measuring only one of the qubits in this state would reveal the state of the other qubit. 
+If a $|0\rangle$ is measured from one qubit then the other qubit must be $|0\rangle$ while if a $|1\rangle$ is measured then the other qubit must also be in a $|1\rangle$ state. 
+The probability of measuring $|0\rangle$ is 50$\%$ and similarly for measuring $|1\rangle$. 
 
 
-\subsection{The DiVincenzo Criteria -- to be polished}
+\subsubsection{The DiVincenzo Criteria -- to be polished}
 The DiVincenzo criteria is a set of objectives that must be met for the physical realisation of a quantum computer. 
 It sets out five basic principles which must met to build a functional quantum computer and two more principles for quantum information networks. \cite{bergou_quantum_2021}
 This report focuses on the implementation of a single quantum computer and therefore focused on the first five principles.
