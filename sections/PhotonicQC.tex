@@ -21,20 +21,38 @@ Dual Rail Encoding
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\subsection{Useful Linear Optical Tools}
+\subsection{Useful Linear Optical Tools and Single Qubit Representations}
 Before we go into any of the complex techniques that really make photonic quantum computers seem like a viable, scalable direction for quantum computers of the future we need to discuss some of the basic tools that we can use to manipulate our photons and by extension, our qubits.
 \subsubsection{Beam Splitters}
 \begin{itemize}
     \item The name is very apt, beam splitters divide a beam of light into two beams with the intensity of each beam being dependent on the angle the beam splitter is placed at in relation to the incoming beam
     \item Depending on the type of encoding you choose, the 'beamsplitter' can be made in different ways due to the way it effects the photon but in our dual rail encoding the beamsplitter is made of two glass prisms placed back to back with a half-silvered mirror placed in between them %place image of this from QC&QI
-    \item 
+    \item When we apply a beamsplitter to a qubit it is the equivalent of performing some form of transformation to the state of that qubit, this transformation can be represented as $B_{\theta\phi} = $ $\begin{pmatrix}
+    cos(\theta) & -e^{i\phi}sin(\theta) \\
+    e^{-i\phi}sin(\theta) & cos(\theta) 
+    \end{pmatrix}$ where $\theta$ is related to the transmission and reflection amplitudes of the outgoing beams (the reflection amplitude R= $sin^2(\theta)$ and the transmission amplitude T = 1-R = $cos^2(\theta)$) and $\phi$ is the phase shift applied by the beamsplitter
+    \item It should be noted that the Pauli X gate can be constructed from this beamsplitter by setting $\theta = \phi = \frac{\pi}{2}$
+    
 \end{itemize}
 \subsubsection{Phase Shifters}
 \begin{itemize}
-    \item 
+    \item Phase shifters are an even simpler tool but very useful. 
+    \item We simply use a material that has a higher refractive index than air (or whichever medium our photons are travelling through in the rails) and have the beams pass through this medium to phase shift them
+    \item The phase shifter performs a transformation on the qubit that can be described as $P_\phi = $ $\begin{pmatrix}
+    1 & 0 \\
+    0 & e^{i\phi}
+    \end{pmatrix}$ where the phase shift $\phi$ is given by the thickness and refractive index of the phase shifter.
+    \item An important thing to note that applies for all phase shift gates (and not just specifically the optical one we describe here) is that when $\phi = \frac{\pi}{2}$ then this phase shift gate is equivalent to the Pauli Z transformation.
+\end{itemize}
+\subsubsection{Mirror}
+\begin{itemize}
+    \item A mirror is even simpler than the tools listed before. As you likely already know, a mirror simply reflects our beams with near 100\% intensity.
+    \item We can describe the action of a mirror on our photonic qubit as a special case of the beamsplitter where the reflection intensity is 100\% and the phase shift $\phi = 0$
 \end{itemize}
 \subsubsection{Photo-detectors}
 \subsubsection{Kerr Media}
+\subsubsection{Hadamard}
+Apparently, the hadamard can be constructed one of two ways. The first involves applying a mirror (which applies a simple euclidean rotation matrix but with $\theta$ set to $\frac{\pi}{4}$) and then applying a beamsplitter with $\phi = \theta = \frac{\pi}{2}$ 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 

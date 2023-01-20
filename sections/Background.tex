@@ -1,7 +1,7 @@
 \section{Background}
 
 This section will cover some of the fundamental concepts both in quantum mechanics and classical computing which are required for understanding this paper. 
-Finally the DiVincenzo criteria will be introduced which is five objectives that must be met by any system in order to be an effective large scale quantum computer. 
+Finally the DiVincenzo criteria will be introduced which is five objectives that should be met by any system in order to be an effective large scale quantum computer. 
 
 \subsection{qubit}
 Following the general introduction of a qubit in the introduction, a qubit is the quantum form of a classical bit. 
@@ -46,16 +46,14 @@ Finally decoherence times of quantum states will be introduced as a means of dem
 \subsubsection{Superposition}
 Superposition is a quantum mechanical phenomenon where an object may exist in multiple states at once. 
 For example an electron may be said to be in two places at once - or more accurately its probability function covers multiple areas in space. \cite{noauthor_whatCal_nodate}
-
+\vspace{1em}
 Superposition can be observed in the polarisation of light. 
 Light can be horizontally, vertically and circularly polarized and much of the light around us is a superposition of the three.
 However when light interacts with surfaces their properties can change such as light reflecting off a pond being horizontally polarized. 
 Using a linear polariser one can control the direction of polarisation of the light passing through it.
-Constructing two polarisers at right angles (vertical and horizontal respectively) one would expect only vertical polarised light to emitted from the first and then no light to be emitted from the second polariser. 
+Constructing two polarisers at right angles (horizontal and vertical respectively) one would expect only horizontal polarised light to emitted from the first and then no light to be emitted from the second polariser. 
 This is what is experimentally observed - however if a third polariser is placed between the horizontal and vertical polarisers orientated at 45$^\circ$ (as in figure \ref{fig:polarisers}) from both then light will now be transmitted through the final horizontal polariser (at 50$\%$ intensity). \cite{noauthor_whatCal_nodate}
-This also emphasises this highly probabilistic behavior of QM where after exciting the second polariser the light is again a superposition of all the states that produce the diagonal polarisation. {\bf make this sentence clearer}
-!!! make the link to superposition clearer here!!!
-
+This also emphasises this highly probabilistic behavior of QM where after exiting the second polariser the light is in a superposition of the states which allow diagonal polarisation - some of which is vertical and therefore can pass through the final filter.
 \begin{figure}[H]
   \centering
   \begin{subfigure}[b]{0.44\linewidth}
@@ -71,6 +69,7 @@ This also emphasises this highly probabilistic behavior of QM where after exciti
 \end{figure}
 
 It is this superposition of states which allows a single qubit to trial multiple values at once. \cite{sonialopezbravo_understanding_nodate}
+
 
 \subsubsection{Entanglement}
 Entanglement is a uniquely quantum mechanical phenomenon where the measurement of one particle's state will effect the state of another particle.
@@ -90,10 +89,10 @@ However the system in equation \ref{eqn:entqubit} is entangled as the total syst
 \end{equation}
 
 The state in equation \ref{eqn:entqubit} is particularly interesting and is known as the bell state (the $\sqrt{2}$ is a normalising factor).
-It is 2-Qubit entangled state which is used frequently in quantum computing and can be achieved by applying a `Hadamard' and `cNOT' quantum gates to two qubits. \cite{mermin_quantum_2007} 
+It is 2-Qubit entangled state which is used frequently in quantum computing and can be achieved by applying a `Hadamard' and a `cNOT' quantum gate to two qubits. \cite{mermin_quantum_2007} 
 {\bf check if mathew talks about quatum gates yet}
-Measuring only one of the qubits in this state would also reveal the state of the other qubit. 
-If a $|0\rangle$ is measured from one qubit then the other qubit must also be $|0\rangle$ while if a $|1\rangle$ is measured then the other qubit must also be in a $|1\rangle$ state. 
+Measuring only one of the qubits in this state would reveal the state of the other qubit. 
+If a $|0\rangle$ is measured from one qubit then the other qubit must be $|0\rangle$ while if a $|1\rangle$ is measured then the other qubit must also be in a $|1\rangle$ state. 
 The probability of measuring $|0\rangle$ is 50$\%$ and similarly for measuring $|1\rangle$. 
 
 \vspace{1em}
@@ -140,13 +139,12 @@ The two principles for the implementation of quantum information networks are:
 There are various physical approaches for quantum computing that satisfy some of the DiVincenzo criteria, however no current approach has successfully satisfied all five.
 \vspace{1em}
 
-The first objective to implement well defined qubits which are saliable. An example of a well defined qubit is superposition of vertical and horizontal polarisation of a photons, or the spin up and spin down of electrons. 
+The first objective to implement well defined qubits which are scaleable. An example of a well defined qubit is superposition of vertical and horizontal polarisation of a photons, or the spin up and spin down of electrons. 
 There are many methods of creating well defined qubits, however scalability and producing multiple which remain in a superposition state is challenging.
-IBM claimed in 2021 to have created the worlds largest quantum processor, the 127 qubit Eagle. \cite{authorfullname_ibm_nodate}
 \vspace{1em}
 
 The second objective is to initialise the qubits into a well defined determinate state i.e. initialise the qubit register so all are in the 0 state $\vert 0\rangle \vert 0\rangle$...$\vert 0 \rangle$. \cite{lapierre_divincenzo_2021}
-\vspace{1em}
+
 
 The third objective is to read out qubit state $\vert 0\rangle$ or $\vert 1 \rangle$ with high accuracy. 
 This is a challenge with photons as a method for detecting individual photons with no dark count (false positives) does not exist yet.
