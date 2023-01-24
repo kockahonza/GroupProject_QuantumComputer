@@ -1,23 +1,12 @@
 \section{Linear Optical Quantum Computing}
+Trapped Ion Quantum Computing looks like a very promising route for quantum computation but because the concepts qubits and entanglement aren't limited to any one particular implementation but revolve around a quantum system (or systems) there exists multiple ways thought of (and achieved) to create these new types of computers, the method we'll look at in this section uses photons to represent qubits and then performs operations on those photons which represents quantum logic gate operations on qubits. Linear Optical Quantum Computing is the name used for photonic quantum computers that make use of classical linear optical tools such as beamsplitters, polarisers, phase shifters, etc. to perform these operations but the most interesting thing (at least in our opinion) when it comes to building LOQC's is the protocol which is used that makes a photonic quantum computer viable at the large qubit scale (this protocol makes use of quantum teleportation and we'll cover both at the end of this section). Before we discuss this, however, we need to talk about how we make photons into qubits. 
+
 \subsection{Types of Encoding}
+When we talk about the ways in which a photon can be made to represent a qubit we are talking about the method of "encoding". Much like the different methods for quantum computing in general, there are many different ways we can encode photons to represent qubit states; there exists mixed polarisation encoding, parity encoding etc. but for the purposes of this article we'll focus on spatial encoding, specifically "dual rail" encoding. 
+
 \subsubsection{Spatial Modes}
-For the rest of this section about photonic quantum computers we're going to talk about a Quantum Computer that uses dual rail encoding for its representation of qubit states but here are some examples of other types of encoding.
-Single Rail
-\begin{itemize}
-    \item This involves sending a photon down a single rail or cavity.
-    \item The existence of a photon in the cavity represents $\bra{1}$ and the photon not being present represents $\bra{0}$
-    \item With this representation entanglement can be achieved using a beam splitter and taking advantage of the Hong-Ou-Mandel effect
-    \item Single gate operators can only be achieved probabilistically
-\end{itemize}
-Dual Rail Encoding
-\begin{itemize}
-    \item Involves sending a photon down one of two rails
-    \item When the photon is present in the first rail this corresponds to the state $\bra{0}$ and when the photon is present in the second rail this corresponds to the states $\bra{1}.$
-    \item In this representation superposition is pretty simple with the presence of photons in both rails.
-    \item Single qubit gate operators are very easy to perform as these correspond to linear optical tools being applied to one of the two rails
-    \item Two qubit operations on dual rail optical quantum computers are probabilistic but using KLM protocols we can increase the probabilities of getting 'correct' results 
-\end{itemize}
-\subsubsection{Mixed Polarisation,Parity Encoding, etc.}
+Single Rail encoding involves sending a photon down a single rail or cavity, imagine a photon travelling down a wire. We then say the existence of a photon in the rail is representative of a qubit with state $\ket{1}$ and then nothing but vacuum in the rail is representative of a qubit in state $\ket{0}$. Dual rail encoding is very similar but instead of a single rail/cavity there are two. In this case we can label the rails (sometimes called modes) A and B; when a photon is detected in mode A but not B this is representative of a qubit with the state $\ket{0}$ abd when a photon is detected in mode B but not A this is representative of a quibt with the state $\ket{1}$. \\ So what is the difference between these types of encoding? As it turns out, performing 2 qubit gate operations (and then entangling multiple qubits) in a single rail encoded quantum computer is very simple, it involves the use of a linear optical tool called the beamsplitter and the phenomena known as the Hong-Ou-Mandel effect (both of these we discuss in more detail later) but in a dual-rail representation achieving this deterministically isn't physically possible. Similarly, in the dual rail representation, performing 1 qubit operations is quite simple but is not physically possible to achieve deterministically in the single rail representation. For the rest of this section we will have a heavy focus on the dual-rail representation and we'll discuss how non-deterministic, or rather probabilistic, tools are used to create 2 qubit gate operations here. We should note that mathematically the horizontal-vertical polarisation representation is identical to the dual rail representation. 
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -49,20 +38,78 @@ Before we go into any of the complex techniques that really make photonic quantu
     \item A mirror is even simpler than the tools listed before. As you likely already know, a mirror simply reflects our beams with near 100\% intensity.
     \item We can describe the action of a mirror on our photonic qubit as a special case of the beamsplitter where the reflection intensity is 100\% and the phase shift $\phi = 0$
 \end{itemize}
-\subsubsection{Photo-detectors}
+\subsubsection{Photodetectors}
+\begin{itemize}
+    \item A photodetector detects the arrival of photons. It accomplishes this by converting the energy deposited by the photon onto its surface into an electrical signal which can be measured and quantified.
+    
+    \item The quantum efficiency $\eta$ of a photodetector is the probability that a single incident photon generates an electrical signal that contributes to the overall detector current.
+    
+    \item This component is crucial in an optical quantum computer as it allows the readout of the output of the quantum computer.
+\end{itemize}
 \subsubsection{Kerr Media}
-\subsubsection{Hadamard}
-Apparently, the hadamard can be constructed one of two ways. The first involves applying a mirror (which applies a simple euclidean rotation matrix but with $\theta$ set to $\frac{\pi}{4}$) and then applying a beamsplitter with $\phi = \theta = \frac{\pi}{2}$ 
+
+\begin{itemize}
+    \item The most important property of a Kerr medium is the cross phase modulation it provides.  
+    \item For a two qubit register, Kerr media has the following effect:
+    
+    \begin{align*} 
+    K \ket{00} &=  \ket{00}\\
+    K \ket{01} &=  \ket{01}\\
+    K \ket{10} &=  \ket{10}\\
+    K \ket{11} &=  e^{i\chi L}\ket{11}
+    \end{align*}
+    
+    \item If the cross-phase modulation $\chi L$ is taken to be $\pi$, then $K \ket{11} &=  -\ket{11}$. This can be expressed as a matrix K acting on two qubits. 
+    
+    $$K = \begin{pmatrix}
+    1 & 0 & 0 & 0\\
+    0 & 1 & 0 & 0\\
+    0 & 0 & 1 & 0\\
+    0 & 0 & 0 & -1\\
+    \end{pmatrix}$$
+    
+    \item If the matrix K were then left and right multiplied by the Hadamard gate acting individually on both qubits, a C-NOT gate can be constructed.
+    
+    \item If this were the only method to entangle photons, a single photon quantum computer would be extremely hard to physically construct. The needed nonlinear Kerr media with large ratio of cross phase modulation to absorption loss are difficult to create. It is theoretically estimated that, in the best possible case, approximately 50 photons must be absorbed for each photon which experiences a $\pi$ phase modulation.
+\end{itemize}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\subsection{Single Qubit Operations}
-As we have seen above, all other important single qubit operators can be constructed from the Pauli gates so all that we need to do is ensure we can that we have some physical representation for the Pauli gate operations.
-\subsubsection{Pauli X Representation}
-\subsubsection{Pauli Y Representation}
-\subsubsection{Pauli Z Representation}
 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Two Qubit Operations}
+With our dual rail encoding of a linear quantum computer it turns out that implementing a two qubit operation is quite difficult. Physically this is fairly easy to understand, manipulating photons to interact with each other is quite difficult but what is interesting is that this problem persists no matter the type of encoding we use; for single rail encoding implementing two qubit operations is fairly easy but single qubit operations becomes difficult. The Bougoliubov transformation which describes the linear optical circuit that is supposed to transform our computational basis states into the maximally entangled Bell states is described by .... \\ Given that these are different we cannot actually reach maximal entanglement in a deterministic way (maximal entanglement can be achieved with the most simple of two qubit gates and so this implies that two qubit gates cannot be implemented deterministically either). To work around this we could implement the use of Kerr media as discussed above but for the purpose of keeping this guide readable, we'll focus on the far more interesting probabilistic methods.
+
+
+\subsubsection{Control-Z gate (Control Phase Shift Gate)}
+We start by talking about the Hong-Ou-Mandel (HOM) effect. This is an interesting phenomenon that plays a pivotal role in optical quantum computing. Imagine two photons enter a 50:50 beamsplitter from rails A and B which can be written as $\ket{1,1}_{a,b}$. This state can be written in terms of the creation operators $\hat{a}^\dagger$ (acting on A) and $\hat{b}^\dagger$ (acting on B) in the following way $\hat{a}^\dagger\hat{b}^\dagger\ket{0,0}$. When the photons exit the beamsplitter there is a 50:50 chance that the photons could come out through rail C or rail D and so by going through the beamsplitter the state $\hat{a}^\dagger\hat{b}^\dagger\ket{0,0}_{a,b}$ is transformed into $\frac{1}{2}((\hat{c}^\dagger)^2 - (\hat{d}^\dagger)^2)\ket{0,0}_{c,d}$ \footnote{ the beamsplitter transforms $\hat{a}^\dagger\ket{0}_a$ into the state $\frac{1}{\sqrt{2}}(\hat{c}^\dagger + \hat{d}^\dagger)\ket{0}_c$ whilst transforming  $\hat{b}^\dagger\ket{0}_b$ into the state $\frac{1}{\sqrt{2}}(\hat{c}^\dagger - \hat{d}^\dagger)\ket{0}_c$. Physically this can be described as the photon from rail B being phase shifted by $\pi$ when reflected from the beamsplitter and going into rail D}. This is important because if we remember that $\hat{a}^\dagger, \hat{b}^\dagger, \hat{c}^\dagger$ and $\hat{d}^\dagger$ are creation operators then this is equivalent to $\frac{1}{\sqrt{2}}(\ket{2,0}_{c,d} - \ket{0,2}_{c,d})$. In words, when 2 photons coming from different rails enter into a 50:50 beamsplitter at the same time, they will both go down the exact same rail together, either C or D, but they will not exit in different rails like they came. This can be described as photon bunching but it is known as the Hong-Ou-Mandel effect and "lies at the heart of linear optical quantum computing" (cite peter kiok). \\
+As stated earlier, implementing two-qubit gates must have some probabilistic, non deterministic element to them and to achieve this we will be using the non deterministic sign shift gates which we'll cover in more detail in the next section but the important thing to note now is that when looking at the 3 lowest Fock states, these NS gates phase flip the 3rd lowest:
+\begin{equation} \label{NS evolution}
+    \alpha\ket{0} + \beta\ket{1} + \gamma\ket{2} \rightarrow \alpha\ket{0} + \beta\ket{1} - \gamma\ket{2}
+\end{equation}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.9\textwidth]{images/CZ-gate.png}
+    \caption{Circuit for probabilistic CZ gates in LOQC using NS gates}\label{fig:CZ_gate}
+\end{figure}
+
+As we can see in \ref{fig:CZ_gate}, when $\ket{\phi_1}$ and $\ket{\phi_2}$ are both equal to $\ket{1}$ then there will be a photon in the middle two modes ($\ket{\phi_2}$ is flipped). This means that the two photons will interact at the first beamsplitter, via the Hong-Ou-Mandel effect they will "bunch" and go down the same mode together towards the NS gate. The NS gate will sign shift the photons in the mode they went down due to the NS evolution \ref{NS evolution} and then the photons will interact with the second beamsplitter to finally give the state $-\ket{1,1}$.\textbf{EVERYTHING AFTER THIS IS WRONG} What makes this circuit interesting is that because of the HOM effect, this situation only occurs when $\ket{\phi_1}$ and $\ket{\phi_2}$ are both equal to $\ket{1}$. In the case where only one photon goes through the middle modes, the photon will be split by the beam splitter into both modes, each mode will interact with the NS gate, acquiring a phase shift each but these phase shifts destructively cancel when the modes are brought together at the second beam splitter and the HOM effect occurs again. Due to the fact that the NS gate has a 1/4th probability of operating correctly and this gate requires two in tandem, the probability of the CZ gate operating as we expect is $p_{CZ} = p_{NS}^2 $
+
+\subsubsection{Nonlinear sign shift gate}
+As stated above, the nonlinear sign shift gate is a very useful tool as its non-deterministic effects allow us to achieve maximally entangled states when we otherwise couldn't but how is the NS gate made? The circuit is actually fairly simple; it involves 2 ancillary modes, one with a photon present and the other without, 3 beam splitters set at differing angles with no phase shift and then 2 "perfect" photon detectors. We can see this in \ref{fig:NS_gate}. Going through each case for this NS gate is quite exhaustive which we won't cover here but the important thing to note is that 1/4 of the time the fock states $\alpha\ket{0}$ and $\beta\ket{1}$ are left untouched and when two photons come through from $\phi$, $\gamma\ket{2} \rightarrow -\gamma\ket{2}$ 
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.9\textwidth]{images/NS gate.png}
+    \caption{Circuit for probabilistic NS gates in LOQC using ancillary modes}\label{fig:NS_gate}
+\end{figure}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
 
 \subsection{Efficiency}
 As we know by now, the real magic of quantum computation occurs when we can implement two qubit gates as this allows us to perform quantum entanglement between qubit states which is then instrumental in many other constructs such as Quantum Teleportation, Quantum Algorithms, etc.
@@ -78,14 +125,7 @@ Due to the following results the additional resources for a LOQC that scales wit
     \item The resources needed for "accurately" (probability of success close to 1) encoded qubits scales efficiently  
 \end{itemize}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\subsection{Two Qubit Operations}
-%\subsubsection{Attempting Entanglement}
-\subsubsection{Nonlinear sign shift gate}
-\subsubsection{Control-Z gate (Control Phase Shift Gate)}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
+\subsection{Scalability and the KLM Protocol}
 
 \subsection{Fault tolerance}
 \subsubsection{Photon loss}
