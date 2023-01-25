@@ -9,6 +9,8 @@ The rest of the required features for quantum computing including state preparat
 The section is largely based on the review by Brunzewicz \cite{bruzewiczTrappedionQuantumComputing2019} and for a more detailed review on the subject we recommend that.
 
 \subsection{Ion Trapping and the Paul Trap}
+\textbf{TODO: Also, a section on cooling might be a good idea}
+
 Ion trapping is an extensive field of expertise used for many purposes across physics and other sciences, it is an essential component of many devices and experiments that try to manipulate individual particles, molecules or so on.
 For a brief sketch of what this involves, these experiments must be done in vacuum (otherwise there would be too many other atoms around) and rely on complex electric and magnetic fields to manipulate the motion of charged atoms.
 For quantum computing we are interested in trapping individual ions in a stable way, and while we want to trap multiple of them (currently about 5-100 has been achieved \cite{paganoCryogenicTrappedionSystem2018}) it is important that we can tell them apart (as opposed to trapping them in bunches as is often done).
@@ -115,15 +117,22 @@ Overall there is not a clear winner and which choice is made depends on the part
 
 \subsection{Qubit manipulation and ion-light interactions}
 In the previous sections we have described how we achieve the necessary 2 states from the 1st DiVincenzo criteria, however we still have all the others to address.
-All of these (in summary they are state initialization and readout, a set of universal gates and long decoherence times) are achieved through different light beams interacting with the ions.
-These are quite complex and we only describe them at a fairly surface level, for more detail we recommend \cite{schaferFastGatesMixedSpecies2020} (the main source for this section) and specifically section 3.2 as an introduction to these phenomena.
+All of these (in summary they are state initialization and readout, a set of universal gates and long decoherence times) are achieved through different light beams interacting with the.
+% These are quite complex and we only describe them at a fairly surface level, for more detail we recommend \cite{schaferFastGatesMixedSpecies2020} (the main source for this section) and specifically section 3.2 as an introduction to these phenomena.
 
 Firstly, here we are considering the ions to be trapped within the same trap.
-Typically this is modeled along the lines of the linear Paul trap where we only take into account motion along the z axis, where we trap some number of ions in an approximately harmonic potential\footnotemark.
-It should also be noted that the ions do not interact directly with each other while in the trap.
+Typically this is modeled along the lines of the linear Paul trap where we only take into account motion along the z axis.
+We trap some number of ions in an approximately harmonic potential\footnotemark and they form essentially a 1D crystal through the Coulomb force interactions.
+It should be noted that the ions do not interact directly with each others electronic states while in the trap.
 This is because they are simply too far from each other, for example \cite{schaferFastGatesMixedSpecies2020} quotes typical sizes of the ions wavefunctions to be $\sim 8 \si{\nano m}$ and the ions separations to be $\sim 3 \si{\micro m}$.
 
 \footnotetext{This is simpler than many of the moderns systems like the ones mentioned in \cref{sec:other_paultraps}, however the while ion manipulation and entanglement is more complicated with these it is fairly analogous.}
+
+At this point it really becomes necessary to look at the system quantum mechanically.
+As the ions are within the same trap their motion is strongly coupled and can only be described together in one quantum system.
+This essentially means we must look at the ions in the trap more as a collective motional wavefunction than a collection of individual atoms.
+However at the same time each atoms electronic state is still kept separate and localised.
+
 
 % The system and its interaction has to be examined using quantum mechanics, for this the starting point is always the Hamiltonian/the energy of the system.
 % As has been established, each ion will be in some internal state which is a superposition of the 2 levels, this gives :w.
