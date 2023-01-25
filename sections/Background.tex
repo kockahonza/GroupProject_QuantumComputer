@@ -141,7 +141,7 @@ This is a particularly helpful way of visualising qubits with regards to gate op
     \centering
     \includegraphics[scale=0.3]{images/Bloch-sphere-representation-of-a-qubit.png}
     \caption{Diagram of a Bloch sphere - 
- representing a qubit as a vector. x-axis is $\frac{|0\rangle + |1\rangle}{\sqrt{2}}$ and y-axis is $\frac{|0\rangle+i|1\rangle}{\sqrt{2}}$.\cite{sebastiano_cryo-cmos_2017}}.\label{fig:bloch}
+ representing a qubit as a vector. x-axis is $\frac{|0\rangle + |1\rangle}{\sqrt{2}}$ and y-axis is $\frac{|0\rangle+i|1\rangle}{\sqrt{2}}$.\cite{sebastiano_cryo-cmos_2017}}. \label{fig:bloch}
 \end{figure}
 
 As with classical computing, quantum computing requires gates to preform basic manipulation of qubits. 
@@ -155,7 +155,7 @@ Single qubit gates are ones which act on only one qubit.
 This section will describe the Hadamard, Phase Gate and the three Rotation gates. 
 
 {\bf Hadamard gate} is represented as a rotation about the y-axis of 90$^\circ$ and x-axis of 180$^\circ$ of figure \ref{fig:bloch}.
-The matrix representation of this is in equation \ref{eqn:hadamard}. i.e. it turned the $|0\rangle$ state into a equal superpostion of $|0\rangle$ and $|1\rangle$
+The matrix representation of this is in equation \ref{eqn:hadamard}. 
 
 \begin{equation}\label{eqn:hadamard}
     H = \frac{1}{\sqrt{2}} \begin{bmatrix}
@@ -163,7 +163,8 @@ The matrix representation of this is in equation \ref{eqn:hadamard}. i.e. it tur
 1 & -1 
 \end{bmatrix}  
 \end{equation}
-The effect of this gate on a qubit is seen in equation \ref{eqn:qH}
+The effect of this gate on a qubit is seen in equation \ref{eqn:qH}.
+i.e. it turned the $|0\rangle$ state into a equal superposition of $|0\rangle$ and $|1\rangle$ - the same happened to the $|1\rangle$ state.
 \begin{equation}\label{eqn:qH}
     \left( \alpha \begin{bmatrix}
 1 \\
@@ -178,15 +179,27 @@ The effect of this gate on a qubit is seen in equation \ref{eqn:qH}
 \end{equation}
 
 
-{\bf Phase gate} is 
-The matrix representation of this is in equation \ref{eqn:phase}
+{\bf Phase gate} is a rotation about the z-axis of figure \ref{fig:bloch} and requires an angle $\phi$. 
+The matrix representation of this is in equation \ref{eqn:phase}.
 \begin{equation}\label{eqn:phase}
     P =  \begin{bmatrix}
 1 & 0 \\
 0 & e^{i \phi}
 \end{bmatrix}  
 \end{equation}
-
+The effect of this gate on a qubit is seen in equation \ref{eqn:qP}.
+\begin{equation}\label{
+    \left( \alpha \begin{bmatrix}
+1 \\
+0 
+\end{bmatrix}  + \beta  \begin{bmatrix}
+0 \\
+1 
+\end{bmatrix}   \right) \cdot \begin{bmatrix}
+1 & 0 \\
+0 & e^{i\phi} 
+\end{bmatrix}  = \alpha |0\rangle + \beta e^{i\phi}|1\rangle
+\end{equation}
 
 \subsubsection{Two Qubit Gates}\label{sec:twoqubit}
 CNOT
