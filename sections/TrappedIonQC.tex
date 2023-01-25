@@ -1,11 +1,12 @@
 
-\section{Trapped Ion Quantum Computing \cite{bruzewiczTrappedionQuantumComputing2019}} \label{sec:Trapped}
+\section{Trapped Ion Quantum Computing} \label{sec:Trapped}
 In this section we provide an introduction to the implementation details of trapped ion quantum computers (**once done possibly elaborate what exactly we cover).
 The qubits in a trapped ion system are represented by individual trapped ions.
 As would have been seen in a quantum mechanics class, electrons bound in atoms can occupy a certain number of possible quantum states, here 2 of these level are chosen and used as the \kz and \ko states.
 Though it isn't quite as simple as that, for quantum computing we must have a way of entangling these 2 states.
-To achieve that, the qubit ions are trapped in the same trap (explained later on) and their motion within it is coupled as a quantum system, through which entanglement is achieved.
-The rest of the required features for quantum computing including state preparation, readout and quantum gates are all achieved through tuned lasers and or the mentioned entanglement.
+To achieve that, the qubit ions are trapped in the same trap and their motion within it is coupled as a quantum system, through which entanglement is achieved.
+The rest of the required features for quantum computing including state preparation, readout and quantum gates are all achieved through tuned lasers (we use the word a bit loosely, it is to mean any source of a particular type of light) and or the mentioned entanglement.
+The section is largely based on the review by Brunzewicz \cite{bruzewiczTrappedionQuantumComputing2019} and for a more detailed review on the subject we recommend that.
 
 \subsection{Ion Trapping and the Paul Trap}
 Ion trapping is an extensive field of expertise used for many purposes across physics and other sciences, it is an essential component of many devices and experiments that try to manipulate individual particles, molecules or so on.
@@ -29,7 +30,7 @@ Finally, for trapping along the last axis a static electric field is used, this 
     \caption{Charged flour grains trapped in a simple Paul trap, the mentioned 4 parallel rods are visible and the electrodes creating the potential well are in the end caps.(**cite Pavelka, found on wikipedia)}\label{fig:TIQC_RFQ_Flour}
 \end{figure}
 
-\subsubsection{Notes on Other Paul Trap Designs}
+\subsubsection{Notes on Other Paul Trap Designs} \label{sec:other_paultraps}
 The aforementioned simple Paul trap is in fact a linear Paul trap, in this type of Paul traps the ion's motion is confined in 2 dimensions by an RF quadrupole and the last is taken care of using a linear static potential, this is the type of trap on which we will focus.
 There are also point Paul traps, which utilise oscillating RF fields for trapping in all 3 dimensions, these are also used for quantum computing, however when multiple ions are trapped together (which is necessary for entanglement) their motion is significantly more complex.
 
@@ -59,7 +60,7 @@ This further reduces the need for precision assembly and calibration, however co
 
 \subsection{The ions and types of qubits}
 As the trapping was briefly covered, the next logical step is to focus on the ion itself.
-First question is what element should be use and some of the main requirements are that it is radioactively stable, can be easily produced, can singly ionized and finally that it has 2 suitable states to use as \kz and \ko.
+First question is what element should be use and some of the main requirements are that it is radioactively stable, can be easily produced and singly ionized and finally that it has 2 suitable states to use as \kz and \ko from the DiVincenzo criteria.
 For this, the valence electron (also the one that is "free" due to ionization) is the important part, the energy levels available to it are used as our needed states.
 Typically, group 2 elements or similar (namely group 12 elements and Yb \cite{ozeriTrappedionQubitTool2011}) are used, as they are stable and have a full shell except a single valence electron -- leading to a suitable electronic structure.
 
@@ -85,24 +86,25 @@ This gives rise to a plethora of options for the 2 levels and depending on their
     \caption{Fine structure and Zeeman and hyperfine splittings of typical atoms used for quantum computing. Some of the possible choices for the sates are also shown.}\label{fig:TIQC_levels}
 \end{figure}
 
-\subsubsection{Zeeman qubits}
+\paragraph{Zeeman qubits}
 Zeeman qubits are qubits where the 2 states are in the same hyperfine and fine structure orbital, but result from the Zeeman effect.
 They offer near infinite lifetimes and most operations can be done relatively simply, but their main drawback is that these states are very sensitive to magnetic field fluctuations (they arise from external magnetic fields after all).
 This limits their coherence times, however coherence times of 300 ms have been achieved \cite{rusterLonglivedZeemanTrappedion2016}
 
-\subsubsection{Hyperfine qubits}
+\paragraph{Hyperfine qubits}
 With these the 2 states are hyperfine split levels from the ground state.
 Among their advantages are also an near infinite lifetime and possibly and an easier read out than Zeeman qubits along with a relative insensitivity to magnetic field fluctuations.
 The main drawback to them is the more complicated structure of the energy levels, thus requiring greater precision in laser frequencies \cite{bruzewiczTrappedionQuantumComputing2019}.
 
-\subsubsection{Optical qubits}
+\paragraph{Optical qubits}
 In some ions it is possible to use an S and a D level as our states, this has the benefit of very simple level structure.
 However these D states are only metastable, of lifetimes on the order of seconds \cite{ozeriTrappedionQubitTool2011}.
 Furthermore, the more precise the laser frequencies are the longer the achieved lifetimes are, however as the energy gap is relatively large for these states, the required lasers for manipulation need to have frequencies of visible to infrared light (hence the name).
+The long wavelength of the manipulating lasers also results in less localised beams ($\lambda \sim \si{m}$) which means it is tough to address individual ions (cite oxford thesis 2).
 As suitable laser precisions are very hard to attain optical qubits tend to be less popular, however their popularity is growing with advances in laser sources \cite{bruzewiczTrappedionQuantumComputing2019}.
 % However as the energy gap gets bigger so does the required lasers wavelength and for optical qubits the frequencies are of visible to infrared light (hence the name) and achieving the required frequency precision is a very difficult task.
 
-\subsubsection{Fine structure qubits}
+\paragraph{Fine structure qubits}
 This type of qubit uses 2 of the D levels mentioned in the last section.
 The obvious downside is then their short lifetimes, however as the energy gap between these levels is much smaller, higher frequency precision can be more easily attained in the required lasers.
 As a downside comes a more complicated level structure, for example the readout has to be done by first transferring one of the possible states to another one before reading out.
@@ -111,13 +113,35 @@ As a downside comes a more complicated level structure, for example the readout 
 Overall there is not a clear winner and which choice is made depends on the particulars of the given company or research team, depending on their expertise and the equipment available to them.
 
 
+\subsection{Qubit manipulation and ion-light interactions}
+In the previous sections we have described how we achieve the necessary 2 states from the 1st DiVincenzo criteria, however we still have all the others to address.
+All of these (in summary they are state initialization and readout, a set of universal gates and long decoherence times) are achieved through different light beams interacting with the ions.
+These are quite complex and we only describe them at a fairly surface level, for more detail we recommend \cite{schaferFastGatesMixedSpecies2020} (the main source for this section) and specifically section 3.2 as an introduction to these phenomena.
+
+Firstly, here we are considering the ions to be trapped within the same trap.
+Typically this is modeled along the lines of the linear Paul trap where we only take into account motion along the z axis, where we trap some number of ions in an approximately harmonic potential\footnotemark.
+It should also be noted that the ions do not interact directly with each other while in the trap.
+This is because they are simply too far from each other, for example \cite{schaferFastGatesMixedSpecies2020} quotes typical sizes of the ions wavefunctions to be $\sim 8 \si{\nano m}$ and the ions separations to be $\sim 3 \si{\micro m}$.
+
+\footnotetext{This is simpler than many of the moderns systems like the ones mentioned in \cref{sec:other_paultraps}, however the while ion manipulation and entanglement is more complicated with these it is fairly analogous.}
+
+% The system and its interaction has to be examined using quantum mechanics, for this the starting point is always the Hamiltonian/the energy of the system.
+% As has been established, each ion will be in some internal state which is a superposition of the 2 levels, this gives :w.
+% In addition to that, each is in a harmonic potential, thus we get a 
+
+% As has been established, each ion is in a superposition of 2 internal states, each has a certain energy associated with it, this gives a spin-like term in the Hamiltonian - $\frac{\hbar \omega_0}{2}$ with $\hbar \omega_0$ being the energy required for the transition between the states.
+% Further, each ion is in a harmonic potential so we get the usual quantum harmonic oscillator term $$
+
+
 
 \subsection{Qubit (ion) manipulation, the lasers for state prep, readout and so on, and entanglement!}
 
 TODO
 \begin{itemize}
+    \item lamb-dicke limit might be good to mention
     \item Mention DiVincezo in above, essentially what was now described is how the \kz and \ko states are stored
     \item motional states! and entanglement through them, can get long
     \item actual manipulation - ideally structure along DiVincezo
+    \item redout is apparently done by "quantum jump" technique with unit efficiency - reference 11 in cirac and zoller
 \end{itemize}
 
