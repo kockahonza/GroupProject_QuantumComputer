@@ -113,7 +113,7 @@ A classical bit can either hold the value of 0 or 1 while a qubit is a superposi
 \begin{equation}\label{eqn:qubit}
     |\psi\rangle = \alpha|0\rangle + \beta|1\rangle
 \end{equation}
-where $\alpha$ and $\beta$ are complex numbers.
+where $\alpha$ and $\beta$ are complex numbers such that $|\alpha|^2 + |\beta|^2 = 1$.
 Operations can be preformed on this superposition state and only once the qubit has been measured the state will collapse to either $|0\rangle$ or $|1\rangle$. \cite{nielsen_quantum_2010}
 The matrix representations of the $|0\rangle$ and $|1\rangle$ states can be seen in equation \ref{eqn:qmatrix} and is useful for understanding gate operations.
 
@@ -127,6 +127,22 @@ The matrix representations of the $|0\rangle$ and $|1\rangle$ states can be seen
 \end{bmatrix}  
 \end{equation}
 
+Qubits can also be represented as a vector within a radius 1 bloch sphere and represented by angles $\theta$ and $\phi$ as opposed to the complex numbers $\alpha$ and $\beta$, see equation {eqn:bloch}
+
+\begin{equation}\label{eqn:bloch}
+    |\psi \rangle = \cos \frac{\theta}{2}|0\rangle + e^{i \phi}\sin \frac{\theta}{2} |1\rangle
+\end{equation}
+
+The visual representation of a Bloch sphere can be seen in figure \ref{fig:bloch}.
+This is a particularly helpful way of visualising qubits with regards to gate operations as they can be seen as rotations and reflections within this sphere. \cite{noauthor_representing_nodate}
+
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.3]{images/Bloch-sphere-representation-of-a-qubit.png}
+    \caption{Diagram of a Bloch sphere - 
+ representing a qubit as a vector. x-axis is $\frac{|0\rangle + |1\rangle}{\sqrt{2}}$ and y-axis is $\frac{|0\rangle+i|1\rangle}{\sqrt{2}}$.\cite{sebastiano_cryo-cmos_2017}}.\label{fig:bloch}
+\end{figure}
 
 As with classical computing, quantum computing requires gates to preform basic manipulation of qubits. 
 Calculations are then preformed by using these gates in series.
@@ -138,8 +154,8 @@ The universal set of quantum gates is explained which can be comprised of the ga
 Single qubit gates are ones which act on only one qubit. 
 This section will describe the Hadamard, Phase Gate and the three Rotation gates. 
 
-{\bf Hadamard gate} is
-The matrix representation of this is in equation \ref{eqn:hadamard}
+{\bf Hadamard gate} is represented as a rotation about the y-axis of 90$^\circ$ and x-axis of 180$^\circ$ of figure \ref{fig:bloch}.
+The matrix representation of this is in equation \ref{eqn:hadamard}. i.e. it turned the $|0\rangle$ state into a equal superpostion of $|0\rangle$ and $|1\rangle$
 
 \begin{equation}\label{eqn:hadamard}
     H = \frac{1}{\sqrt{2}} \begin{bmatrix}
