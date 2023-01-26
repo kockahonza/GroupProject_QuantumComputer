@@ -132,6 +132,35 @@ At this point it really becomes necessary to look at the system quantum mechanic
 As the ions are within the same trap their motion is strongly coupled and can only be described together in one quantum system.
 This essentially means we must look at the ions in the trap more as a collective motional wavefunction than a collection of individual atoms.
 However at the same time each atoms electronic state is still kept separate and localised.
+Thus we end up with essentially a register of n 2 state qubits with a shared motional state acting as a bus between them.
+This motional state is also kept as simple as possible, the ions are cooled to attain the ground state and often only the first excited motional state is used for operations.
+
+\subsubsection{Single qubit gates}
+Firstly, there is not a single unified method for achieving these gates as different methods can be more suited for a particular application and choice of qubit.
+Common to all of them however is that single ion gates only deal with the electronic state of a particular ion and they manipulate it by inducing transitions using light beams.
+These light ion interactions are quite complex and are studied for example in \cite{loudonQuantumTheoryLight2000}, here we only try to build some intuition for them without real analysis.
+
+As these are a quantum interactions, the key thing is to construct a Hamiltonian.
+This being a complicated interaction however we don't solve it directly, instead we expand it and only look at the first (possibly couple of the first) non-zero terms, the results are taken from \cite{schaferFastGatesMixedSpecies2020}.
+
+\paragraph{Electric dipole transitions}
+The electric dipole term is the dominant term if not zero.
+The analysis of the problem leads to the following quantum mechanical propagator, which can be viewed essentially as the matrix representation of the gate's effect on the ion's state,
+\begin{equation}
+    U = \begin{pmatrix}
+        \cos{(\frac{\Omega_R t}{2})} & i \sin{(\frac{\Omega_R t}{2})} e^{-i \phi_l} \\
+        i \sin{(\frac{\Omega_R t}{2})} e^{i \phi_l} & \cos{(\frac{\Omega_R t}{2})} \\
+    \end{pmatrix}
+\end{equation}
+where $\Omega_R$ is the Rabi frequency which depends on the choice energy levels and the electric field amplitude of the incoming light, so it can be set.
+Further $t$ is just the time (the effect of the light will depend on how long it was turned on for) and $\phi_l$ the phase of the laser light at the ion, so it can be manipulated by tuning the laser source position relative to the ion.
+This type of propagator then results in what is called Rabi oscillations, the state will be changing in some deterministic way periodically in time.
+In summary then as $\Omega_R$ and $\phi_l$ can be almost arbitrarily chosen we can choose in what way it oscillates, and by choosing the time for which the laser is kept on we can achieve any rotation of the qubit on the Bloch sphere \cite{schaferFastGatesMixedSpecies2020}.
+
+
+
+
+
 
 
 % The system and its interaction has to be examined using quantum mechanics, for this the starting point is always the Hamiltonian/the energy of the system.
