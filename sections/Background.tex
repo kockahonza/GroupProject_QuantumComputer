@@ -188,7 +188,7 @@ The matrix representation of this is in equation \ref{eqn:phase}.
 \end{bmatrix}  
 \end{equation}
 The effect of this gate on a qubit is seen in equation \ref{eqn:qP}.
-\begin{equation}\label{
+\begin{equation}\label{eqn:qP}
     \left( \alpha \begin{bmatrix}
 1 \\
 0 
@@ -201,8 +201,26 @@ The effect of this gate on a qubit is seen in equation \ref{eqn:qP}.
 \end{bmatrix}  = \alpha |0\rangle + \beta e^{i\phi}|1\rangle
 \end{equation}
 
+{\bf Rotation}
+
 \subsubsection{Two Qubit Gates}\label{sec:twoqubit}
-CNOT
+Similar to classical computing there requires to be gates that act on multiple qubits for calculations to be preformed. 
+The quantum two bit gate is known as a controlled NOT or CNOT gate, where one qubit is the `control' qubit and the other is the `target' qubit. \cite{nielsen_quantum_2010}
+A two qubit state can be represented by $|\psi\rangle = \alpha |00\rangle + \beta|01\rangle + \gamma|10\rangle + \delta |11\rangle$ with $|ij\rangle=|i\rangle \otimes |j\rangle$ where $i$ is the control and $j$ is the target. 
+
+The matrix representation of the CNOT gate can be seen in equation \ref{eqn:CNOT}.
+
+\begin{equation}\label{eqn:CNOT}
+    \begin{bmatrix}
+1 & 0 & 0 & 0 \\
+0 & 1 & 0 & 0 \\
+0 & 0 & 0 & 1 \\
+0 & 0 & 1 & 0 
+\end{bmatrix}  
+\end{equation}
+The effect of the CNOT gate is that if the control qubit is in state $|0\rangle$ then the state of the target qubit is unchanged, however if the state of the control qubit is $|1\rangle$ then the state of the target qubit is flipped. 
+For each state the following occurs $|00\rangle \Rightarrow |00\rangle$,$ |01\rangle \Rightarrow |01\rangle$,$ |10\rangle \Rightarrow |11\rangle$ and $|11\rangle \Rightarrow |10\rangle$.
+
 
 \subsubsection{The Universal Set of Quantum Gates}
 As in classical computing, quantum algorithms are executed as qubits are passed through and manipulated by a series of consecutive gates. 
