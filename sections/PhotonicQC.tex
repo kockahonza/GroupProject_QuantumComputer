@@ -49,7 +49,7 @@ Before we go into any of the complex techniques that really make photonic quantu
 \subsubsection{Kerr Media}
 
 \begin{itemize}
-    \item The most important property of a Kerr medium is the cross phase modulation it provides.  
+    \item The most important property of a Kerr medium is the cross-phase modulation it provides.  
     \item For a two qubit register, Kerr media has the following effect:
     
     \begin{align*} 
@@ -97,7 +97,7 @@ As stated earlier, implementing two-qubit gates must have some probabilistic, no
     \caption{Circuit for probabilistic CZ gates in LOQC using NS gates}\label{fig:CZ_gate}
 \end{figure}
 
-As we can see in \ref{fig:CZ_gate}, when $\ket{\phi_1}$ and $\ket{\phi_2}$ are both equal to $\ket{1}$ then there will be a photon in the middle two modes ($\ket{\phi_2}$ is flipped). This means that the two photons will interact at the first beamsplitter, via the Hong-Ou-Mandel effect they will "bunch" and go down the same mode together towards the NS gate. The NS gate will sign shift the photons in the mode they went down due to the NS evolution \ref{NS evolution} and then the photons will interact with the second beamsplitter to finally give the state $-\ket{1,1}$.\textbf{EVERYTHING AFTER THIS IS WRONG} What makes this circuit interesting is that because of the HOM effect, this situation only occurs when $\ket{\phi_1}$ and $\ket{\phi_2}$ are both equal to $\ket{1}$. In the case where only one photon goes through the middle modes, the photon will be split by the beam splitter into both modes, each mode will interact with the NS gate, acquiring a phase shift each but these phase shifts destructively cancel when the modes are brought together at the second beam splitter and the HOM effect occurs again. Due to the fact that the NS gate has a 1/4th probability of operating correctly and this gate requires two in tandem, the probability of the CZ gate operating as we expect is $p_{CZ} = p_{NS}^2 $
+As we can see in \ref{fig:CZ_gate}, when $\ket{\phi_1}$ and $\ket{\phi_2}$ are both equal to $\ket{1}$ then there will be a photon in the middle two modes ($\ket{\phi_2}$ is flipped). This means that the two photons will interact at the first beamsplitter, via the Hong-Ou-Mandel effect they will "bunch" and go down the same mode together towards the NS gate. The NS gate will sign shift the photons in the mode they went down due to the NS evolution \ref{NS evolution} and then the photons will interact with the second beamsplitter to finally give the state $-\ket{1,1}$.%\textbf{EVERYTHING AFTER THIS IS WRONG} What makes this circuit interesting is that because of the HOM effect, this situation only occurs when $\ket{\phi_1}$ and $\ket{\phi_2}$ are both equal to $\ket{1}$. In the case where only one photon goes through the middle modes, the photon will be split by the beam splitter into both modes, each mode will interact with the NS gate, acquiring a phase shift each but these phase shifts destructively cancel when the modes are brought together at the second beam splitter and the HOM effect occurs again. Due to the fact that the NS gate has a 1/4th probability of operating correctly and this gate requires two in tandem, the probability of the CZ gate operating as we expect is $p_{CZ} = p_{NS}^2 $
 
 \subsubsection{Nonlinear sign shift gate}
 As stated above, the nonlinear sign shift gate is a very useful tool as its non-deterministic effects allow us to achieve maximally entangled states when we otherwise couldn't but how is the NS gate made? The circuit is actually fairly simple; it involves 2 ancillary modes, one with a photon present and the other without, 3 beam splitters set at differing angles with no phase shift and then 2 "perfect" photon detectors. We can see this in \ref{fig:NS_gate}. Going through each case for this NS gate is quite exhaustive which we won't cover here but the important thing to note is that 1/4 of the time the fock states $\alpha\ket{0}$ and $\beta\ket{1}$ are left untouched and when two photons come through from $\phi$, $\gamma\ket{2} \rightarrow -\gamma\ket{2}$ 
@@ -126,6 +126,13 @@ Due to the following results the additional resources for a LOQC that scales wit
 \end{itemize}
 
 \subsection{Scalability and the KLM Protocol}
-
+\begin{itemize}
+    \item As more probabilistic elements are added to a photonic quantum computer the probability of success decreases exponentially - A circuit with n probabilistic gates will have to be repeated to the order of n times just to get a single success
+    \item This is obviously very inefficient and resource intensive but using quantum teleportation, the discrete quantum Fourier transform and n amount of modes the probability of success can become 'near-deterministic' with a success rate of $\frac{n^2}{(n+1)^2}$ which tends to 1 as n becomes sufficiently large
+    \item How teleportation works
+    \item How the commutativity of the cz gate and the x and z gates means that we can prepare the cz gate 'offline' (we can prepare these ahead of time using several trials and then store it for use later) with the entangled qubits that make teleportation work - the qubits we want to apply the cz gate on can then be teleported onto modes that have had the cz gate applied to them.
+    \item If teleportation was deterministic then the probabilistic part (the cz gate) will have been moved offline, meaning that with enough preparation (and storage) our qc's would never fail but the bell measurements that make teleportation work are only successful half the time, given that there are two bell measurements being made, this modified cz-gate is back to the same probability
+    \item KLM Near deterministic teleporter
+\end{itemize}
 \subsection{Fault tolerance}
 \subsubsection{Photon loss}

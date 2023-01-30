@@ -15,8 +15,13 @@ Individual bits don't allow us to represent much, however, we can chain them tog
     \caption{A table illustrating how to convert the binary number 101101 into its decimal equivalent, 45 \cite{binary}}\label{fig:BINARY}
 \end{figure}
 
+Clearly bits are a good way of representing numbers, however, they can also be mapped to other useful properties. For example, we can represent a text file by assigning a bit pattern to each letter. Or, we could apply our computer to DNA simulation using 2 bits to represent each of the four chemical bases. 
+
 \subsubsection{How is a bit physically stored?}
-Use figure here
+In order to represent a bit, it must be possible to distinguish between two distinct states; like a light switch which can be off or on. Classical computers are formed of many complex, intricate electrical components. Therefore, it makes sense to represent bits as an electrical voltage. In a simple explanation, we can consider a bit with value 0 to be when there is no voltage (the ground state) and a bit with value 1 to be when the voltage is equal to the supply voltage. In practice, there is tolerance of approximately 30\% about these states \cite{voltage}.
+
+It is important to point out, that the essence of building a quantum computer lies in the method of physically representing the quantum analogy to bits (qubits). 
+
 \subsubsection{Gates - Manipulating bits}
 Clearly bits can be used to represent different values or states, however, it is their processing and manipulation which allows for computation. Gates are components which take one or more bits as input, and output a single bit with a state dependent on the input values. Figure \ref{fig:ANDGATE} shows the diagrammatic symbol for an AND gate along with all of its possible outputs. The AND gate will output 1 only if both of its inputs are also 1 (otherwise it outputs 0).
 \begin{figure}[H]
@@ -108,7 +113,7 @@ Therefore a good physical system for quantum computing must have a long $T_2$ an
 
 \subsection{Quantum Computing}
 \subsubsection{Qubits}
-Following the general introduction of a qubit in the introduction, a qubit is the quantum form of a classical bit. 
+Following the explanation of bits in a classical computer, a qubit is the quantum analogy to a classical bit. Qubits are crucical to perfoming calculations on a quantum computer but have fundamental variation on their classical counterpart.
 A classical bit can either hold the value of 0 or 1 while a qubit is a superposition of both $|0\rangle$ and $|1\rangle$ as seen in equation \ref{eqn:qubit}
 \begin{equation}\label{eqn:qubit}
     |\psi\rangle = \alpha|0\rangle + \beta|1\rangle
@@ -179,7 +184,7 @@ i.e. it turned the $|0\rangle$ state into a equal superposition of $|0\rangle$ a
 \end{equation}
 
 
-{\bf Phase gate} is a rotation about the z-axis of figure \ref{fig:bloch} and requires an angle $\phi$. 
+{\bf Phase gate} is a rotation about the z-axis of figure \ref{fig:bloch} for the $|1\rangle$ state and requires an angle $\phi$. 
 The matrix representation of this is in equation \ref{eqn:phase}.
 \begin{equation}\label{eqn:phase}
     P =  \begin{bmatrix}
@@ -201,7 +206,26 @@ The effect of this gate on a qubit is seen in equation \ref{eqn:qP}.
 \end{bmatrix}  = \alpha |0\rangle + \beta e^{i\phi}|1\rangle
 \end{equation}
 
-{\bf Rotation}
+There are {\bf three rotation} gates $R_x(\theta)$, $R_y(\theta)$ and $R_z(\theta)$ for rotations of the Bloch sphere (figure \ref{fig:bloch}) about the x, y and z axes respectively. 
+\begin{equation}
+    R_x(\theta) = \begin{bmatrix}
+\cos (\theta/2) & -i \sin (\theta/2) \\
+-i \sin (\theta/2) & \cos (\theta/2) 
+\end{bmatrix}  
+\end{equation}
+\begin{equation}
+    R_y(\theta) = \begin{bmatrix}
+\cos (\theta/2) & - \sin (\theta/2) \\
+\sin (\theta/2) & \cos (\theta/2) 
+\end{bmatrix}  
+\end{equation}
+\begin{equation}
+    R_z(\theta) = \begin{bmatrix}
+\exp (-i \theta/2) & 0 \\
+0 & \exp (i \theta/2) 
+\end{bmatrix}  
+\end{equation}
+
 
 \subsubsection{Two Qubit Gates}\label{sec:twoqubit}
 Similar to classical computing there requires to be gates that act on multiple qubits for calculations to be preformed. 
