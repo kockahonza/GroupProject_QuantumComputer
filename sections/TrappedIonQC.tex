@@ -102,6 +102,8 @@ The main drawback to them is the more complicated structure of the energy levels
 In some ions it is possible to use an S and a D level as our states, this has the benefit of very simple level structure.
 However these D states are only metastable, of lifetimes on the order of seconds \cite{ozeriTrappedionQubitTool2011}.
 Furthermore, the more precise the laser frequencies are the longer the achieved lifetimes are, however as the energy gap is relatively large for these states, the required lasers for manipulation need to have frequencies of visible to infrared light (hence the name).
+% Furthermore, longer lifetimes can usually be achieved by making the manipulation laser's frequencies very precise.
+% However, as the energy gap is relatively big for these states large wavelength light (visible to infrared, hence the name) for which it is difficult to achieve the required precision, though recent developments in laser technology might make them more suitable.
 The long wavelength of the manipulating lasers also results in less localised beams ($\lambda \sim \si{m}$) which means it is tough to address individual ions (cite oxford thesis 2).
 As suitable laser precisions are very hard to attain optical qubits tend to be less popular, however their popularity is growing with advances in laser sources \cite{bruzewiczTrappedionQuantumComputing2019}.
 % However as the energy gap gets bigger so does the required lasers wavelength and for optical qubits the frequencies are of visible to infrared light (hence the name) and achieving the required frequency precision is a very difficult task.
@@ -117,11 +119,13 @@ Overall there is not a clear winner and which choice is made depends on the part
 
 \subsection{Qubit manipulation and ion-light interactions}
 In the previous sections we have described how we achieve the necessary 2 states from the 1st DiVincenzo criteria, however we still have all the others to address.
-All of these (in summary they are state initialization and readout, a set of universal gates and long decoherence times) are achieved through different light beams interacting with the.
+All of these (ie state initialization and readout, a set of universal gates and long decoherence times) are achieved through different light beams interacting with the ions.
 % These are quite complex and we only describe them at a fairly surface level, for more detail we recommend \cite{schaferFastGatesMixedSpecies2020} (the main source for this section) and specifically section 3.2 as an introduction to these phenomena.
 
-Firstly, here we are considering the ions to be trapped within the same trap.
-Typically this is modeled along the lines of the linear Paul trap where we only take into account motion along the z axis.
+Firstly, unsurprisingly the methods differ based on the particular quantum computer design.
+To simplify things we will focus on designs where all the ions are trapped within the same trap.
+Typically the reader can imagine a setup along the lines of a linear Paul trap where we only take into account motion along the z axis.
+% Typically this is modeled along the lines of the linear Paul trap where we only take into account motion along the z axis.
 We trap some number of ions in an approximately harmonic potential\footnotemark and they form essentially a 1D crystal through the Coulomb force interactions.
 It should be noted that the ions do not interact directly with each others electronic states while in the trap.
 This is because they are simply too far from each other, for example \cite{schaferFastGatesMixedSpecies2020} quotes typical sizes of the ions wavefunctions to be $\sim 8 \si{\nano m}$ and the ions separations to be $\sim 3 \si{\micro m}$.
@@ -133,10 +137,10 @@ As the ions are within the same trap their motion is strongly coupled and can on
 This essentially means we must look at the ions in the trap more as a collective motional wavefunction than a collection of individual atoms.
 However at the same time each atoms electronic state is still kept separate and localised.
 Thus we end up with essentially a register of n 2 state qubits with a shared motional state acting as a bus between them.
-This motional state is also kept as simple as possible, the ions are cooled to attain the ground state and often only the first excited motional state is used for operations.
+This motional state is also kept as simple as possible, the ions are cooled as close to the ground state as possible and often only the first excited motional state is used for gate operations.
 
 \subsubsection{Single qubit gates}
-Firstly, there is not a single unified method for achieving these gates as different methods can be more suited for a particular application and choice of qubit.
+Again, there is not a single unified method for achieving these gates as different methods can be more suited for a particular application and choice of qubit.
 Common to all of them however is that single ion gates only deal with the electronic state of a particular ion and they manipulate it by inducing transitions using light beams.
 These light ion interactions are quite complex and are studied for example in \cite{loudonQuantumTheoryLight2000}, here we only try to build some intuition for them without real analysis.
 
@@ -144,18 +148,32 @@ As these are a quantum interactions, the key thing is to construct a Hamiltonian
 This being a complicated interaction however we don't solve it directly, instead we expand it and only look at the first (possibly couple of the first) non-zero terms, the results are taken from \cite{schaferFastGatesMixedSpecies2020}.
 
 \paragraph{Electric dipole transitions}
-The electric dipole term is the dominant term if not zero, this leads to certain selection rules governing when this transition can be used.
-The analysis of the problem leads to the following quantum mechanical propagator, which can be viewed essentially as the matrix representation of the gate's effect on the ion's state,
+The electric dipole term is the dominant term (if not zero, this leads to certain selection rules governing when this transition can be used).
+The analysis of the problem leads to the following quantum mechanical propagator\footnotemark, which can be viewed essentially as the matrix representation of the gate's effect on the ion's state,
+\footnotetext{In the Lamb-Dicke regime when the ion's wavefunction is much smaller than the lights wavelength \cite{leibfriedQuantumDynamicsSingle2003}.}
 \begin{equation}
     U = \begin{pmatrix}
         \cos{(\frac{\Omega_R t}{2})} & i \sin{(\frac{\Omega_R t}{2})} e^{-i \phi_l} \\
         i \sin{(\frac{\Omega_R t}{2})} e^{i \phi_l} & \cos{(\frac{\Omega_R t}{2})} \\
     \end{pmatrix}
 \end{equation}
-where $\Omega_R$ is the Rabi frequency which depends on the choice energy levels and the electric field amplitude of the incoming light, so it can be set.
-Further $t$ is just the time (the effect of the light will depend on how long it was turned on for) and $\phi_l$ the phase of the laser light at the ion, so it can be manipulated by tuning the laser source position relative to the ion.
-This type of propagator then results in what is called Rabi oscillations, the state will be changing in some deterministic way periodically in time.
+here $\Omega_R$ is the Rabi frequency which depends on the choice energy levels and the electric field amplitude of the incoming light, so it can be set.
+Further $t$ is the time for which the light acts (how long the pulse was) and $\phi_l$ the phase of the laser light at the ion, so it can be manipulated by tuning the laser source position relative to the ion.
+% Further $t$ is the time (the effect of the light will depend on how long it was turned on for) and $\phi_l$ the phase of the laser light at the ion, so it can be manipulated by tuning the laser source position relative to the ion.
+This form of propagator then results in what is called Rabi oscillations, the state will be changing in some deterministic way periodically in time.
+
 In summary then as $\Omega_R$ and $\phi_l$ can be almost arbitrarily chosen we can choose in what way it oscillates, and by choosing the time for which the laser is kept on we can achieve any rotation of the qubit on the Bloch sphere \cite{schaferFastGatesMixedSpecies2020}.
+Electric dipole transitions are generally preferred both due to their relative simplicity and as they involve the highest energies and so allow very short wavelengths of the light (allowing for better localisation), however they are rarely available for the given states.
+
+\paragraph{Magnetic dipole transitions}
+If an electric dipole transition cannot be used, the next leading contributions are the magnetic dipole and electric quadrupole interactions \cite{schaferFastGatesMixedSpecies2020}.
+While the Hamiltonian is very different, under certain conditions it results in a very similar propagator and also gives rise to Rabi oscillations and the same gate logic can be achieved as when using the electric dipole transition.
+These type of transitions can be used with certain species of hyperfine qubits, however as microwave to radio frequency light is required, the level of addressability is limited \cite{bruzewiczTrappedionQuantumComputing2019}.
+
+
+
+
+
 
 % \section{State Prep and Readout}
 % Mention -- https://jonathan-hui.medium.com/qc-how-to-build-a-quantum-computer-with-trapped-ions-88b958b81484 -- as primary source?
