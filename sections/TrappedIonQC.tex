@@ -6,7 +6,7 @@ As would have been seen in a quantum mechanics class, electrons bound in atoms c
 Though it isn't quite as simple as that, for quantum computing we must have a way of entangling these 2 states.
 To achieve that, the qubit ions are trapped in the same trap and their motion within it is coupled as a quantum system, through which entanglement is achieved.
 The rest of the required features for quantum computing including state preparation, readout and quantum gates are all achieved through tuned lasers (we use the word a bit loosely, it is to mean any source of a particular type of light) and or the mentioned entanglement.
-The section is largely based on the review by Brunzewicz \cite{bruzewiczTrappedionQuantumComputing2019} and for a more detailed review on the subject we recommend that.
+The section is largely based on the review by Bruzewicz \cite{bruzewiczTrappedionQuantumComputing2019} and for a more detailed review on the subject we recommend that.
 
 \subsection{Ion Trapping and the Paul Trap}
 \textbf{TODO: Also, a section on cooling might be a good idea}
@@ -26,7 +26,7 @@ Then have each of the diagonally opposite rods connected at the same voltage and
 This results in a net effect of trapping a charged particle (within some range of mass to charge ratios of the ions, the setup can be used as a mass filter) along the axis of the quadrupole, why exactly this is so is well explained in (**add a source here).
 Finally, for trapping along the last axis a static electric field is used, this can be achieved by for example 2 more rod segments along the quadrupole axis at either end of the whole setup, both at some positive voltage, resulting in a potential well along the axis.
 
-\begin{figure}[h]
+\begin{figure}[H]
     \centering
     \includegraphics[width=0.9\textwidth]{images/TIQC_RFQ_Flour.jpg}
     \caption{Charged flour grains trapped in a simple Paul trap, the mentioned 4 parallel rods are visible and the electrodes creating the potential well are in the end caps.(**cite Pavelka, found on wikipedia)}\label{fig:TIQC_RFQ_Flour}
@@ -44,7 +44,7 @@ Recently chips with integrated photonics have been developed too, these are surf
 This further reduces the need for precision assembly and calibration, however complications arise with generating and maintaining entangled states if each ion is stored separately in these modules \cite{bruzewiczTrappedionQuantumComputing2019}.
 
 
-\begin{figure}[h]
+\begin{figure}[H]
     \centering
     \begin{subfigure}[b]{0.45\textwidth}
         \centering
@@ -82,7 +82,7 @@ This gives rise to a plethora of options for the 2 levels and depending on their
 
 % Coming back to quantum computing there are many options for our states and they can usually be classified as one of following types.
 
-\begin{figure}[h]
+\begin{figure}[H]
     \centering
     \includegraphics[width=0.9\textwidth]{images/TIQC_levels.jpeg}
     \caption{Fine structure and Zeeman and hyperfine splittings of typical atoms used for quantum computing. Some of the possible choices for the sates are also shown.}\label{fig:TIQC_levels}
@@ -136,6 +136,7 @@ This essentially means we must look at the ions in the trap more as a collective
 However at the same time each atom's electronic state is still kept separate and localised.
 Thus we end up with essentially a register of n 2 state qubits with a shared motional state acting as a bus between them.
 This motional state is also kept as simple as possible, the ions are cooled as close to the ground state as possible and often only the first excited motional state is used for gate operations.
+% More detail on these topics can be found for example in 
 
 \subsubsection{Simple light ion interactions}
 While there are many ways to manipulate the ions and our qubits, all of these are achieved by shining coherent light beams at the ions.
@@ -175,7 +176,7 @@ Then we choose an energy offset $\Delta$ (and possibly $\delta$) and tune our tw
 The energy offset $\Delta$ is very important to suppress the possible transitions to state $\ket{2}$, once tuned the transition can be neglected.
 The frequencies of light beams is usually denoted $\omega_b$ and $\omega_r$, standing for "blue" and "red" with the blue being the more energetic, this often carries through into terms like blue/red sideband transitions and similar.
 
-\begin{figure}[h]
+\begin{figure}[H]
     \centering
     \includegraphics[width=0.3\textwidth]{images/TIQC_raman.jpg}
     \caption{Diagram of the level structure and process of a Raman transition between states \kz and \ko through $\ket{2}$ by use of 2 light beams of energies $\hbar \omega_b > \hbar \omega_r$. Figure taken from \cite{schaferFastGatesMixedSpecies2020}}\label{fig:TIQC_raman}
@@ -183,12 +184,29 @@ The frequencies of light beams is usually denoted $\omega_b$ and $\omega_r$, sta
 
 
 \subsubsection{Single qubit gates}
-Again, there is not a single unified method for achieving these gates as different methods can be more suited for a particular application and choice of qubit.
-Common to all of them however is that single ion gates only deal with the electronic state of a particular ion and they manipulate it by inducing transitions using light beams.
-These light ion interactions are quite complex and are studied for example in \cite{loudonQuantumTheoryLight2000}, here we only try to build some intuition for them without real analysis.
+How specifically single qubit gates are implemented is still highly system dependent, however in all cases it holds true that they only affect the internal state of the given ion.
+Here we provide a short summary of which methods are generally used for which qubits.
 
-As these are a quantum interactions, the key thing is to construct a Hamiltonian.
-This being a complicated interaction however we don't solve it directly, instead we expand it and only look at the first (possibly couple of the first) non-zero terms, the results are taken from \cite{schaferFastGatesMixedSpecies2020}.
+Optical qubit levels are generally separated by an electric quadrupole transition (or possibly dipole or octupole for shorter and longer excited state lifetimes respectively), thus their gates are very simple and can be implemented by a single light source using the described Rabi oscillations \cite{bruzewiczTrappedionQuantumComputing2019}.
+Single qubit gates for hyperfine qubits can be implemented either by a direct transition using microwave radiation or using Raman coupling, which is the most common single gate method for Zeeman qubits as well.
+Single gates have been implemented with all of these method with a variety of different qubits and generally their fidelities have been demonstrated to be above 99\%, often better than 99.99\% with gate times usually 5-12 $\si{\micro s}$ \cite{bruzewiczTrappedionQuantumComputing2019}.
+Aside from that ultrafast gates have been implemented using $^{171}$Yb$^+$ with times of $50\si{\pico s}$ with fidelities of 99\% \cite{campbellUltrafastGatesSingle2010}.
+
+\subsection{Multi qubit gates}
+There is again a variety of methods, we will first describe in detail the CNOT gate theorized by Cirac and Zoller in 1995 \cite{ciracQuantumComputationsCold1995} as it was one of the earliest designs and is often mentioned and cited.
+% Here it is necessary to include the effect light has on the collective motional states, however it is a complex process and so is mostly glossed over, more details can be found in for example 
+
+\paragraph{The Cirac and Zoller CNOT gate \cite{ciracQuantumComputationsCold1995}} This design is specifically for an array of ions confined in a linear Paul trap.
+The ions considered as trapped along the 3 dimensions in harmonic potentials at frequencies $f_x, f_y and f_z$ and the ions are (laser) cooled to their ground state.
+Their motion can then be described in terms of normal modes and we setup the system so that $f_x, f_y > f_z$ where we take the z axis along the trap, this is so that the modes along the axis are the only to be excited (as it has the lowest energy and also as the excited motional states are well separated).
+
+If we then use an adequately tuned light source at one of the ions so that it couples to the internal states and the lowest collective motional we can achieve entanglement between the two.
+The theoretical calculation of the tuning can be found in the paper, but in short the frequency needs to be detuned by $f_x$ from an internal state and the ion position should be at a node of the light wave.
+As we have an array of N atoms let us use the kets $\ket{0}_n$ and $\ket{1}_n$ to refer to the nth atom's internal state and the kets \kz and \ko to refer to the collective motional state.
+
+
+
+
 
 
 
@@ -200,13 +218,4 @@ This being a complicated interaction however we don't solve it directly, instead
 % Optical pumping is well-known well-working technique, so DVC2 is easily satisfied because easy to initialise qubits in ground state this way
 % |0> and |1> will have different energies, so by using light of specific frequency that can only excite for e.g. |0> to some auxiliary level, then if the electron is in |0> it will excite and return back to original state by emitting light again so if we see a glow when we shine light of this frequency that means electron was in |0> after the calculation but otherwise if it stays dark it means electron was in |1> because the light we shone did not excite anything in the ground state because there was nothing there to excite
 
-
-TODO
-\begin{itemize}
-    \item lamb-dicke limit might be good to mention
-    \item Mention DiVincezo in above, essentially what was now described is how the \kz and \ko states are stored
-    \item motional states! and entanglement through them, can get long
-    \item actual manipulation - ideally structure along DiVincezo
-    \item redout is apparently done by "quantum jump" technique with unit efficiency - reference 11 in cirac and zoller
-\end{itemize}
 
