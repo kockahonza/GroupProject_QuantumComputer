@@ -126,9 +126,24 @@ Due to the following results the additional resources for a LOQC that scales wit
 \end{itemize}
 
 \subsection{Scalability and the KLM Protocol}
+As you probably might have guessed by now, there is a major problem with photonic quantum computing as we've discussed that uses probabilistic gates and that is the fact that the probabilities of these gates are quite low. Having a CZ gate that only works 1/nth of the time means that to get some reasonable result we need to run our circuit n times. As we implement more complicated circuits that involve some number, n, of deterministic gates with probabilities $\frac{1}{p}$, the chance of success of our circuit is $\frac{1}{p^n}$. This is obviously infeasible as any interesting circuit will require many gates and with our current set-up that means any scalable photonic quantum computer is too resource intensive to be worth it. \par
+This alone sounds like it would be the nail in the coffin for further development into LOQC's but using quantum teleportation, the discrete quantum Fourier transform and n number of photonic modes the probability of success for a given non-deterministic gate can become 'near-deterministic' with a success rate of $\frac{n^2}{(n+1)^2}$ which tends to 1 as n becomes sufficiently large. This is a process named the KLM protocol after Knill, Leflamme and Milburn after it was developed in 2000 and it is essential for any photonic quantum computer we could hope to build on a scale larger than a few gates.
+
+\subsubsection{How does Quantum Teleportation work?}
+
 \begin{itemize}
-    \item As more probabilistic elements are added to a photonic quantum computer the probability of success decreases exponentially - A circuit with n probabilistic gates will have to be repeated to the order of n times just to get a single success
-    \item This is obviously very inefficient and resource intensive but using quantum teleportation, the discrete quantum Fourier transform and n amount of modes the probability of success can become 'near-deterministic' with a success rate of $\frac{n^2}{(n+1)^2}$ which tends to 1 as n becomes sufficiently large
+    \item quantum teleportation is not as luxurious as it sounds, we're simply transferring the state of one qubit to another exactly but the state of the original qubit is destroyed which we can imagine is a result of the no-cloning theorem. The best part about this is that we do not need any information about the original state which means that in quantum teleportation, the original state doesn't deconstruct as we 'teleport' it to another qubit
+    \item The process is as followed:
+    \begin{itemize}
+        \item Eve prepares 2 entangled qubit and passes one to Alice and one to Bob without them deconstructing. 
+        \item Alice has 2 qubits, the one Eve gave and the one she wants to teleport. She then proceeds to perform a Bell Measurement on the 2 qubits she has which gives one of 4 possible outcomes \textit{no matter the state of her original qubit}. 
+        \item She then classically tells Bob which of the 4 outcomes she got.
+        \item Bob then uses this information to perform one of 4 possible procedures to his qubit (the one prepared by Eve) and upon performing this procedure his qubit will be in the exact state Alice's qubit was before the Bell Measurement.
+    \end{itemize}
+    
+\end{itemize}
+
+\begin{itemize}
     \item How teleportation works
     \item How the commutativity of the cz gate and the x and z gates means that we can prepare the cz gate 'offline' (we can prepare these ahead of time using several trials and then store it for use later) with the entangled qubits that make teleportation work - the qubits we want to apply the cz gate on can then be teleported onto modes that have had the cz gate applied to them.
     \item If teleportation was deterministic then the probabilistic part (the cz gate) will have been moved offline, meaning that with enough preparation (and storage) our qc's would never fail but the bell measurements that make teleportation work are only successful half the time, given that there are two bell measurements being made, this modified cz-gate is back to the same probability
