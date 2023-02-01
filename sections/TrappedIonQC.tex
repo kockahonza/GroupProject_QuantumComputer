@@ -9,8 +9,7 @@ The rest of the required features for quantum computing including state preparat
 The section is largely based on the review by Bruzewicz \cite{bruzewiczTrappedionQuantumComputing2019} and for a more detailed review on the subject we recommend that.
 
 \subsection{Ion Trapping and the Paul Trap}
-\textbf{TODO: Also, a section on cooling might be a good idea}
-
+% \textbf{TODO: Also, a section on cooling might be a good idea}
 Ion trapping is an extensive field of expertise used for many purposes across physics and other sciences, it is an essential component of many devices and experiments that try to manipulate individual particles, molecules or so on.
 For a brief sketch of what this involves, these experiments must be done in vacuum (otherwise there would be too many other atoms around) and rely on complex electric and magnetic fields to manipulate the motion of charged atoms.
 For quantum computing we are interested in trapping individual ions in a stable way, and while we want to trap multiple of them (currently about 5-100 has been achieved \cite{paganoCryogenicTrappedionSystem2018}) it is important that we can tell them apart (as opposed to trapping them in bunches as is often done).
@@ -183,7 +182,7 @@ The frequencies of light beams is usually denoted $\omega_b$ and $\omega_r$, sta
 \end{figure}
 
 
-\subsubsection{Single qubit gates}
+\subsection{Single qubit gates}
 How specifically single qubit gates are implemented is still highly system dependent, however in all cases it holds true that they only affect the internal state of the given ion.
 Here we provide a short summary of which methods are generally used for which qubits.
 
@@ -196,17 +195,103 @@ Aside from that ultrafast gates have been implemented using $^{171}$Yb$^+$ with 
 There is again a variety of methods, we will first describe in detail the CNOT gate theorized by Cirac and Zoller in 1995 \cite{ciracQuantumComputationsCold1995} as it was one of the earliest designs and is often mentioned and cited.
 % Here it is necessary to include the effect light has on the collective motional states, however it is a complex process and so is mostly glossed over, more details can be found in for example 
 
-\paragraph{The Cirac and Zoller CNOT gate \cite{ciracQuantumComputationsCold1995}} This design is specifically for an array of ions confined in a linear Paul trap.
-The ions considered as trapped along the 3 dimensions in harmonic potentials at frequencies $f_x, f_y and f_z$ and the ions are (laser) cooled to their ground state.
+\subsubsection{The Cirac and Zoller CNOT gate \cite{ciracQuantumComputationsCold1995}} This design is specifically for an array of ions confined in a linear Paul trap.
+The ions considered as trapped along the 3 dimensions in harmonic potentials at frequencies $f_x, f_y$ and $f_z$ and the ions are (laser) cooled to their ground state.
 Their motion can then be described in terms of normal modes and we setup the system so that $f_x, f_y > f_z$ where we take the z axis along the trap, this is so that the modes along the axis are the only to be excited (as it has the lowest energy and also as the excited motional states are well separated).
+We also require that the ions internal states has not only the 2 states required for qubits, but another excited internal state that will be used for the operation, notably we only ever use transitions between the ground states and one of the excited states, not between the two excite states directly.
 
-If we then use an adequately tuned light source at one of the ions so that it couples to the internal states and the lowest collective motional we can achieve entanglement between the two.
-The theoretical calculation of the tuning can be found in the paper, but in short the frequency needs to be detuned by $f_x$ from an internal state and the ion position should be at a node of the light wave.
-As we have an array of N atoms let us use the kets $\ket{0}_n$ and $\ket{1}_n$ to refer to the nth atom's internal state and the kets \kz and \ko to refer to the collective motional state.
+Then as we have an array of N atoms let us use the kets $\ket{0}_n, \ket{1}_n$ and $\ket{2}_n$ to refer to the $n$th atom's internal state and the kets \kz and \ko to refer to the collective motional state.
+Then for example $\ket{0}_n\ket{2}_m\ket{1}$ would refer to the state where the $n$th atom is in its ground state, the $m$th atom is in the second excited state and the collective motion is in its excited state, all other atoms can be in any state.
 
+If we then apply an adequately tuned light source to one of the ions so that it couples to one of the internal state transitions and the lowest collective motional state we can achieve entanglement between the two otherwise independent systems.
+The theoretical calculation of the tuning can be found in the paper, but in short the laser frequency needs to be detuned by $f_z$ from one of the internal state transitions and the ion position should be at a node of the light wave.
+We then use q to denote which of the internal states the light is coupled to, let it be 1 if it couples to the $\ket{0}_n$ to $\ket{1}_n$ transition and 2 for the $\ket{0}_n$ to $\ket{2}_n$ transition ($n$ being whichever ion we illuminate).
+We then have the light on for a set amount of time, such that the total phase difference experienced by the ion is $k \pi$, so we can choose $k$ as well.
+The effect of this operation can then be described by the following operator
 
+\newcommand{\bigfrac}{(\frac{k\pi}{2})}
+\begin{equation}
+    \begin{aligned}
+        \hat{U}^{k,q}_n &= \ket{0}_n\ket{0}&\bra{0}_n\bra{0} \\
+        &+ (\cos{\bigfrac}\ket{0}_n\ket{1} -i e^{i\phi} \sin{\bigfrac}\ket{q}_n\ket{0})&\bra{0}_n\bra{1} \\
+        &+ (-i e^{-i\phi} \sin{\bigfrac}\ket{0}_n\ket{1} + \cos{\bigfrac}\ket{q}_n\ket{0})&\bra{q}_n\bra{0} \\
+        &+ \ket{q}_n\ket{1}&\bra{q}_n\bra{1}
+    \end{aligned}
+\end{equation}
 
+which clearly entangles the internal and motional states.
+Then to implement a CNOT equivalent gate between 2 ion internal states we will need to apply 3 operations in total, which use the following versions of $\hat{U}^{k,q}_n$.
 
+\begin{equation}
+    \begin{aligned}
+        \hat{U}^{1,1}_n &= \ket{0}_n\ket{0}&\bra{0}_n\bra{0} \\
+        &-i \ket{1}_n\ket{0}&\bra{0}_n\bra{1} \\
+        &-i \ket{0}_n\ket{1}&\bra{1}_n\bra{0} \\
+        &+ \ket{1}_n\ket{1}&\bra{1}_n\bra{1}
+    \end{aligned}
+\end{equation}
+
+\begin{equation}
+    \begin{aligned}
+        \hat{U}^{2,2}_n &= \ket{0}_n\ket{0}&\bra{0}_n\bra{0} \\
+        &- \ket{0}_n\ket{1}&\bra{0}_n\bra{1} \\
+        &- \ket{2}_n\ket{0}&\bra{2}_n\bra{0} \\
+        &+ \ket{2}_n\ket{1}&\bra{2}_n\bra{1}
+    \end{aligned}
+\end{equation}
+
+The gate is then applied by first cooling the motional state to the ground state so that if we consider the system of some two ions $n$ and $m$ and the total motional state, it will be in a superposition of the following 4 states:
+\footnote{Also we only prepare the internal states into $\ket{0}_n$ and $\ket{1}_n$ states all the operations will leave them in these as well so that there is never a $\ket{2}_n$ component at the end of any operation.}
+\begin{equation}\label{eqn:ovrl_states}
+    \begin{aligned}
+        &\ket{0}_n\ket{0}_m\ket{0}, \\
+        &\ket{0}_n\ket{1}_m\ket{0}, \\
+        &\ket{1}_n\ket{0}_m\ket{0} \text{and} \\
+        &\ket{1}_n\ket{1}_m\ket{0}
+    \end{aligned}
+\end{equation}
+and then applying $\hat{U}^{1,1}_n$, $\hat{U}^{2,2}_m$ and $\hat{U}^{1,1}_n$, so that $\hat{G} = \hat{U}^{1,1}_n \hat{U}^{2,2}_m \hat{U}^{1,1}_n$ which will result in the following transformation:
+\begin{equation}
+    \begin{aligned}
+        &\ket{0}_n\ket{0}_m\ket{0} \rightarrow & \ket{0}_n\ket{0}_m\ket{0} \rightarrow & \ket{0}_n\ket{0}_m\ket{0} \rightarrow & \ket{0}_n\ket{0}_m\ket{0} \\
+        &\ket{0}_n\ket{1}_m\ket{0} \rightarrow & \ket{0}_n\ket{1}_m\ket{0} \rightarrow & \ket{0}_n\ket{1}_m\ket{0} \rightarrow & \ket{0}_n\ket{1}_m\ket{0} \\
+        &\ket{1}_n\ket{0}_m\ket{0} \rightarrow & -i\ket{0}_n\ket{0}_m\ket{1} \rightarrow & +i\ket{0}_n\ket{0}_m\ket{1} \rightarrow & \ket{1}_n\ket{0}_m\ket{0} \\
+        &\ket{1}_n\ket{1}_m\ket{0} \rightarrow & -i\ket{0}_n\ket{1}_m\ket{1} \rightarrow & -i\ket{0}_n\ket{1}_m\ket{1} \rightarrow & -\ket{1}_n\ket{1}_m\ket{0}
+    \end{aligned}
+\end{equation}
+
+To see how this is equivalent to a CNOT consider expressing the $m$th ion's state in the basis $\ket{\pm}_m = \frac{\ket{0}_m \pm \ket{1}_m}{\sqrt{2}}$.
+It might be clear that in this basis $\hat{G}$ is the CNOT gate, if not then note that the Hadamard gate represents the transformation between the $\ket{0/1}_m$ and $\ket{\pm}_m$ basis, meaning we can apply the single qubit Hadamard to qubit $m$ before and after applying $\hat{G}$ to get a typical CNOT, in matrix representation where we take the states in the same order as in \cref{eqn:ovrl_states} it is done as follows
+\begin{equation}
+    \hat{H_m}\hat{G}\hat{H_m} \leftrightarrow \frac{1}{2}
+    \begin{pmatrix}
+        1 & 0 & 0 & 0 \\
+        0 & 1 & 0 & 0 \\
+        0 & 0 & 1 & 1 \\
+        0 & 0 & 1 & -1
+    \end{pmatrix}
+    \begin{pmatrix}
+        1 & 0 & 0 & 0 \\
+        0 & 1 & 0 & 0 \\
+        0 & 0 & 1 & 0 \\
+        0 & 0 & 0 & -1
+    \end{pmatrix}
+    \begin{pmatrix}
+        1 & 0 & 0 & 0 \\
+        0 & 1 & 0 & 0 \\
+        0 & 0 & 1 & 1 \\
+        0 & 0 & 1 & -1
+    \end{pmatrix} = 
+    \begin{pmatrix}
+        1 & 0 & 0 & 0 \\
+        0 & 1 & 0 & 0 \\
+        0 & 0 & 0 & 1 \\
+        0 & 0 & 1 & 0
+    \end{pmatrix}
+\end{equation}
+
+Which is a recognisable CNOT, the Cirac and Zoller gate is one of the first to be theorized and demonstrated \cite{monroeDemonstrationFundamentalQuantum1995}, both in 1995, since then it has often been cited.
+Though many other designs have been developed they generally rely on similar techniques, specifically on coupling the ions internal states through their motion, it is often described as a quantum bus.
 
 
 
