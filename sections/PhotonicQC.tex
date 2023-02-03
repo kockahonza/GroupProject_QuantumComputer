@@ -1,45 +1,45 @@
 
 \section{Linear Optical Quantum Computing}\label{sec:Photonic}
-Trapped ion quantum computing has made significant practical advances, however, the fundamental concepts of qubits and entanglement aren't limited to any one particular implementation but rather revolve around a quantum system (or systems). Therefore, this section explores a method using photons to represent qubits and then performs operations on those photons to implement quantum logic gate operations on qubits. Linear Optical Quantum Computing (LOQC) is the name used for photonic quantum computers that make use of classical linear optical tools such as beamsplitters, polarisers, phase shifters, etc. to perform these operations. The significant improvement made by LOQC's is the protocol which is used that makes a photonic quantum computer viable at the large qubit scale (this protocol makes use of quantum teleportation and we'll cover both at the end of this section). Before we discuss this, however, we need to talk about how we make photons into qubits. 
+Trapped ion quantum computing has made significant practical advances, however, the fundamental concepts of qubits and entanglement aren't limited to any one particular implementation but rather revolve around a quantum system (or systems). Therefore, this section explores a method using photons to represent qubits and then performs operations on those photons to implement quantum logic gate operations on qubits. Linear Optical Quantum Computing (LOQC) is the name used for photonic quantum computers that make use of classical linear optical tools such as beamsplitters, polarisers, phase shifters, etc. to perform these operations. The significant improvement made by LOQC's is the protocol used to make a photonic quantum computer viable at the large qubit scale; this protocol makes use of quantum teleportation as explained at the end of this section. The first step is to transform photons into qubits.
 
 \subsection{Types of Encoding}
-When we talk about the ways in which a photon can be made to represent a qubit we are talking about the method of "encoding". Much like the different methods for quantum computing in general, there are many different ways we can encode photons to represent qubit states; there exists mixed polarisation encoding, parity encoding etc. but for the purposes of this article we'll focus on spatial encoding, specifically "dual rail" encoding. 
+The ways in which a photon can be made to represent a qubit is known as the method of "encoding". Much like the different methods for quantum computing in general, there are many different ways to encode photons to represent qubit states; there exists mixed polarisation encoding, parity encoding etc. For this report will focus on spatial encoding, specifically "dual rail" encoding. 
 
 \subsubsection{Spatial Modes}
-Single Rail encoding involves sending a photon down a single rail or cavity, imagine a photon travelling down a wire. We then say the existence of a photon in the rail is representative of a qubit with state $\ket{1}$ and then nothing but vacuum in the rail is representative of a qubit in state $\ket{0}$. Dual rail encoding is very similar but instead of a single rail/cavity there are two. In this case we can label the rails (sometimes called modes) A and B; when a photon is detected in mode A but not B this is representative of a qubit with the state $\ket{0}$ abd when a photon is detected in mode B but not A this is representative of a quibt with the state $\ket{1}$. \\ So what is the difference between these types of encoding? As it turns out, performing 2 qubit gate operations (and then entangling multiple qubits) in a single rail encoded quantum computer is very simple, it involves the use of a linear optical tool called the beamsplitter and the phenomena known as the Hong-Ou-Mandel effect (both of these we discuss in more detail later) but in a dual-rail representation achieving this deterministically isn't physically possible. Similarly, in the dual rail representation, performing 1 qubit operations is quite simple but is not physically possible to achieve deterministically in the single rail representation. For the rest of this section we will have a heavy focus on the dual-rail representation and we'll discuss how non-deterministic, or rather probabilistic, tools are used to create 2 qubit gate operations here. We should note that mathematically the horizontal-vertical polarisation representation is identical to the dual rail representation. 
+Single Rail encoding involves sending a photon down a single rail or cavity; imagine a photon travelling down a wire. The existence of a photon in the rail is representative of a qubit with state $\ket{1}$, whilst nothing but vacuum in the rail is representative of a qubit in state $\ket{0}$. Dual rail encoding is very similar but instead of a single rail/cavity there are two. In this case the rails (sometimes called modes) can be labelled A and B; when a photon is detected in mode A but not B this is representative of a qubit with the state $\ket{0}$. When a photon is detected in mode B but not A this is representative of a quibt with the state $\ket{1}$. \\ What is the difference between these types of encoding? As it turns out, performing 2 qubit gate operations (and then entangling multiple qubits) in a single rail encoded quantum computer is very simple; it involves the use of a linear optical tool called the beamsplitter and the phenomena known as the Hong-Ou-Mandel effect (both of these are discussed in more detail later). However, in a dual-rail representation achieving this deterministically isn't physically possible. Similarly, in the dual rail representation, performing 1 qubit operations is quite simple but it is not physically possible to achieve deterministically in the single rail representation. The rest of this section will have a heavy focus on the dual-rail representation and discuss how non-deterministic, or rather probabilistic, tools are used to create 2 qubit gate operations. It is important to note that mathematically, the horizontal-vertical polarisation representation, as introduced in \cref{sec:superposition}, is identical to the dual rail representation. 
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{Useful Linear Optical Tools and Single Qubit Representations}
-Before we go into any of the complex techniques that really make photonic quantum computers seem like a viable, scalable direction for quantum computers of the future we need to discuss some of the basic tools that we can use to manipulate our photons and by extension, our qubits.
+Before going into any of the complex techniques that really support photonic quantum computers as a viable, scalable direction for quantum computers of the future, the report will introduce some of the basic tools that can manipulate photons and by extension, qubits.
 \subsubsection{Beam Splitters}
 \begin{itemize}
-    \item The name is very apt, beam splitters divide a beam of light into two beams with the intensity of each beam being dependent on the angle the beam splitter is placed at in relation to the incoming beam
-    \item Depending on the type of encoding you choose, the 'beamsplitter' can be made in different ways due to the way it effects the photon but in our dual rail encoding the beamsplitter is made of two glass prisms placed back to back with a half-silvered mirror placed in between them %place image of this from QC&QI
-    \item When we apply a beamsplitter to a qubit it is the equivalent of performing some form of transformation to the state of that qubit, this transformation can be represented as $B_{\theta\phi} = $ $\begin{pmatrix}
+    \item The aptly named beam splitters divide a beam of light into two beams with the intensity of each beam being dependent on the angle the beam splitter is placed at in relation to the incoming beam
+    \item Depending on the type of encoding  chosen, the beam splitter can be made in different ways depending on how it affects the photon. In dual rail encoding the beam splitter is made of two glass prisms placed back to back with a half-silvered mirror placed in between them %place image of this from QC&QI
+    \item When a beam splitter is applied to a qubit, it is the equivalent of performing some form of transformation of the state of that qubit, this transformation can be represented as $B_{\theta\phi} = $ $\begin{pmatrix}
     cos(\theta) & -e^{i\phi}sin(\theta) \\
     e^{-i\phi}sin(\theta) & cos(\theta) 
-    \end{pmatrix}$ where $\theta$ is related to the transmission and reflection amplitudes of the outgoing beams (the reflection amplitude R= $sin^2(\theta)$ and the transmission amplitude T = 1-R = $cos^2(\theta)$) and $\phi$ is the phase shift applied by the beamsplitter
-    \item It should be noted that the Pauli X gate can be constructed from this beamsplitter by setting $\theta = \phi = \frac{\pi}{2}$
+    \end{pmatrix}$ where $\theta$ is related to the transmission and reflection amplitudes of the outgoing beams (the reflection amplitude R= $sin^2(\theta)$ and the transmission amplitude T = 1-R = $cos^2(\theta)$) and $\phi$ is the phase shift applied by the beam splitter
+    \item It should be noted that the Pauli X gate can be constructed from this beam splitter by setting $\theta = \phi = \frac{\pi}{2}$
     
 \end{itemize}
 \subsubsection{Phase Shifters}
 \begin{itemize}
-    \item Phase shifters are an even simpler tool but very useful. 
-    \item We simply use a material that has a higher refractive index than air (or whichever medium our photons are travelling through in the rails) and have the beams pass through this medium to phase shift them
+    \item Phase shifters are an even simpler tool but very useful.
+    \item You simply use a material that has a higher refractive index than air (or whichever medium the photons are travelling through in the rails) and have the beams pass through this medium to phase shift them
     \item The phase shifter performs a transformation on the qubit that can be described as $P_\phi = $ $\begin{pmatrix}
     1 & 0 \\
     0 & e^{i\phi}
     \end{pmatrix}$ where the phase shift $\phi$ is given by the thickness and refractive index of the phase shifter.
-    \item An important thing to note that applies for all phase shift gates (and not just specifically the optical one we describe here) is that when $\phi = \frac{\pi}{2}$ then this phase shift gate is equivalent to the Pauli Z transformation.
+    \item An important point to note that applies for all phase shift gates (and not just specifically the optical one described here) is that when $\phi = \frac{\pi}{2}$ this phase shift gate is equivalent to the Pauli Z transformation.
 \end{itemize}
 \subsubsection{Mirror}
-A mirror is even simpler than the tools listed before, it simply reflects 
+A mirror is a step further towards simplicity from the tools listed before.
 \begin{itemize}
-    \item A mirror is even simpler than the tools listed before. As you likely already know, a mirror simply reflects our beams with near 100\% intensity.
+    \item Without stating the obvious, a mirror simply reflects our beams with near 100\% intensity.
 
-    \item We can describe the action of a mirror on our photonic qubit as a special case of the beamsplitter where the reflection intensity is 100\% and the phase shift $\phi = 0$
+    \item We can describe the action of a mirror on a photonic qubit as a special case of the beam splitter where the reflection intensity is 100\% and the phase shift $\phi = 0$
 \end{itemize}
 \subsubsection{Photodetectors}
 A photodetector detects the arrival of photons. It accomplishes this by converting the energy deposited by the photon onto its surface into an electrical signal which can be measured and quantified. The quantum efficiency $\eta$ of a photodetector is the probability that a single incident photon generates an electrical signal that contributes to the overall detector current. This component is crucial in an optical quantum computer as it allows the readout of the output of the quantum computer. 

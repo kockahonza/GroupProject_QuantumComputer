@@ -9,21 +9,20 @@ The rest of the required features for quantum computing including state preparat
 The section is largely based on the review by Bruzewicz \cite{bruzewiczTrappedionQuantumComputing2019} and for a more detailed review on the subject we recommend that.
 
 \subsection{Ion Trapping and the Paul Trap}
-% \textbf{TODO: Also, a section on cooling might be a good idea}
 Ion trapping is an extensive field of expertise used for many purposes across physics and other sciences, it is an essential component of many devices and experiments that try to manipulate individual particles, molecules or so on.
 For a brief sketch of what this involves, these experiments must be done in vacuum (otherwise there would be too many other atoms around) and rely on complex electric and magnetic fields to manipulate the motion of charged atoms.
 For quantum computing we are interested in trapping individual ions in a stable way, and while we want to trap multiple of them (currently about 5-100 has been achieved \cite{paganoCryogenicTrappedionSystem2018}) it is important that we can tell them apart (as opposed to trapping them in bunches as is often done).
 
-There are currently 2 dominant, suitable classes of ion traps, Penning traps which uses a combination of magnetic and electric fields, and Paul traps (also known as Quadrupole or Radio-Frequency-Quadrupole ion traps) which uses time varying electric fields.
+There are currently 2 dominant, suitable classes of ion traps, Penning traps which uses a combination of magnetic and electric fields, and Paul traps (also known as Quadrupole or Radio-Frequency-Quadrupole (RFQ) ion traps) which uses time varying electric fields.
 Penning traps are able to hold larger amounts of ions and more stably (300 ion crystals have been achieved \cite{bohnetQuantumSpinDynamics2016}), however the motion of the ions themselves is much more complicated and leads to qubit manipulation being harder to perform.
 Because of that Paul traps are more commonly used for quantum computers and due to the scope of this report we will focus on them.
 
 \subsubsection{Simple Paul Trap}
 Paul trap designs use time varying fields as it is not possible to confine an ion in 3D space with only static fields.
 The simplest Paul trap design is composed of 4 conducting rods run in parallel to create a quadrupole electric field in the middle (\cref{fig:TIQC_RFQ_Flour} shows a demonstrative model).
-Then have each of the diagonally opposite rods connected at the same voltage and have these 2 voltages be some periodic function (usually a sine or a square wave at approximately radio frequencies, hence the name) in antiphase, so that if at some time one pair is set to positive voltage, the other should be at negative voltage.
-This results in a net effect of trapping a charged particle (within some range of mass to charge ratios of the ions, the setup can be used as a mass filter) along the axis of the quadrupole, why exactly this is so is well explained in (**add a source here).
-Finally, for trapping along the last axis a static electric field is used, this can be achieved by for example 2 more rod segments along the quadrupole axis at either end of the whole setup, both at some positive voltage, resulting in a potential well along the axis.
+Then have each of the diagonally opposite rods connected at the same voltage and have these 2 voltages be some periodic function (usually a sine or a square wave at approximately radio frequencies (RF), hence the name) in antiphase, so that if at some time one pair is set to positive voltage, the other should be at negative voltage.
+This results in a net effect of trapping a charged particle (within some range of mass to charge ratios of the ions, the setup can be used as a mass filter) along the axis of the quadrupole, for a more detailed explanation see \cite{paulElectromagneticTrapsCharged1990}.
+Finally, for trapping along the last axis a static electric field is used, for example 2 more rod segments along the quadrupole axis at either end of the whole setup, both at some positive voltage, result in a potential well along the axis.
 
 \begin{figure}[H]
     \centering
@@ -32,7 +31,7 @@ Finally, for trapping along the last axis a static electric field is used, this 
 \end{figure}
 
 \subsubsection{Notes on Other Paul Trap Designs} \label{sec:other_paultraps}
-The aforementioned simple Paul trap is in fact a linear Paul trap, in this type of Paul traps the ion's motion is confined in 2 dimensions by an RF quadrupole and the last is taken care of using a linear static potential, this is the type of trap on which we will focus.
+The aforementioned simple Paul trap is in fact a linear Paul trap, in this type of Paul traps the ion's motion is confined in 2 dimensions by an RFQ and the last is taken care of using a linear static potential, this is the type of trap on which we will focus.
 There are also point Paul traps, which utilise oscillating RF fields for trapping in all 3 dimensions, these are also used for quantum computing, however when multiple ions are trapped together (which is necessary for entanglement) their motion is significantly more complex.
 
 However there is still a plethora of different designs being explored for further progress, most interestingly there are "surface" Paul traps.
@@ -159,7 +158,7 @@ Further $t$ is the time for which the light acts (how long the pulse was) and $\
 % Further $t$ is the time (the effect of the light will depend on how long it was turned on for) and $\phi_l$ the phase of the laser light at the ion, so it can be manipulated by tuning the laser source position relative to the ion.
 This form of propagator then results in what is called Rabi oscillations, the state will be changing in some deterministic way periodically in time.
 
-In summary then as $\Omega_R$ and $\phi_l$ can be almost arbitrarily chosen we can choose in what way it oscillates, and by choosing the time for which the laser is kept on we can achieve any rotation of the qubit on the Bloch sphere \cite{schaferFastGatesMixedSpecies2020}.
+In summary then as $\Omega_R$ and $\phi_l$ can be almost arbitrarily chosen we can choose in what way it oscillates, and by choosing the time for which the laser is kept on we can achieve any rotation of the qubit on the Bloch sphere (see \cref{fig:bloch}) \cite{schaferFastGatesMixedSpecies2020}.
 Electric dipole transitions are usually preferred due to their simplicity and speed, however they are rarely available for the needed gate transitions, though they are often used as a part of state preparation or other qubit manipulations.
 % Electric dipole transitions are generally preferred both due to their relative simplicity and as they involve the highest energies and so allow very short wavelengths of the light (allowing for better localisation), however they are rarely available for the given states.
 
@@ -192,17 +191,19 @@ In this section we discuss how to practically prepare the \kz and \ko (ground an
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.3\textwidth]{images/States.png}
-    \caption{Schematic diagram of electrons being excited to a higher energy auxiliary state by absorption of circularly polarised light. Figure taken from \cite{schaferFastGatesMixedSpecies2020}}\label{fig:States}
+    \includegraphics[width=0.7\textwidth]{images/States.png}
+    \caption{Schematic diagram of electrons being excited to a higher energy auxiliary state by absorption of circularly polarised light. Here, $m_f$ refers to the same state as $m_j$ used in this report. Figure taken from \cite{JLExp11}}\label{fig:States}
 \end{figure}
 
-The ground state \kz is prepared by the process of 'optical pumping'. In an isolated system like ours, in the absence of a magnetic field, states with the same angular momentum quantum number $j$ are degenerate, but have different spins corresponding to different values of the magnetic quantum number $m_j$. In the process of optical pumping, we excite an electron in one of the degenerate states of some stable energy level into a higher auxiliary energy state using a specific light wavelength. The wavelength is chosen such that the electron is excited exactly one energy state plus one hyperfine spin state up. This auxiliary state will be short lived, and the electron will thus decay back into one of the degenerate spin states of the stable energy level. Using Fig. \ref{fig:States} as reference, an electron originally in the $m_j$ = -1 spin state of the lower level will be excited to the $m_j$ = 0 state of the higher auxiliary energy state. As it decays back down, it could decay into either of the $m_j$ states of the lower energy level, however, if it were to decay into the $m_j$ = +1 spin state, for instance, then the light frequency will not carry the exact energy needed to excite it one hyperfine spin state upwards because such a state does not exist. In this way we can bring all electrons to the required stable ground state, and this is a reliable high-fidelity process used in standard experiments. 
+\subsubsection{Creating the required electron states}
+The ground state \kz is prepared by the process of 'optical pumping'. In an isolated system like ours, in the absence of a magnetic field, states with the same angular momentum quantum number $j$ are degenerate, but have different spins corresponding to different values of the magnetic quantum number $m_j$. In the process of optical pumping, we excite an electron in one of the degenerate states of some stable energy level into a higher auxiliary energy state using a specific light wavelength. The wavelength is chosen such that the electron is excited exactly one energy state plus one hyperfine spin state up. This auxiliary state will be short lived, and the electron will thus decay back into one of the degenerate spin states of the stable energy level. Using Fig. \ref{fig:States} as reference, and electron could reside in any of the split levels in a given $j$ state, and we can choose any of these as our ground state \kz. A good choice is the $m_j$ = +1 state, for example, due  to reasons described below. 
+
+To make an accurate measurement, we need to ensure we know the exact state of the electron, and optical pumping enforces this condition. An electron originally in the $m_j$ = -1 spin state of the lower level will be excited to the $m_j$ = 0 state of the higher auxiliary energy state. As it decays back down, it could decay into either of the $m_j$ states of the lower energy level, however, if it were to decay into the $m_j$ = +1 spin state, for instance, then the light frequency will not carry the exact energy needed to excite it one hyperfine spin state upwards because such a state does not exist. This is why the $m_j$ = +1 state is a good choice in this example, and the electrons can be 'pumped' into this state with high-fidelity. 
 
 The excited state \ko is prepared in different ways depending on the ion and type of qubit used. For optical qubits the excited state can be achieved simply by choosing a higher energy metastable state as described previously, and exciting an electron to this state using a photon, usually in the visible range. In the case of hyperfine qubits, a hyperfine split level can be used as the \ko state. However, to bring an electron to this state, a process similar to optical pumping is used, wherein the electron first needs to be excited to an auxiliary state, since the direct transition between hyperfine states is forbidden quantum mechanically. It can then be made to decay into the required \ko state progressively.
 
-READOUT:
-
-Once the required computations have been performed, we need to be able to read which state the electron is in, and we need to do this without causing any large perturbations in the system, or else we would need to setup the states before every calculation. ;
+\subsubsection{Readout after computation}
+Once the required computations have been performed, we need to be able to read which state the electron is in, and we need to do this without causing any large perturbations in the system, otherwise the atoms would need to be trapped after every calculation. 
 
 The basic idea behind readout of an electron from all of these different states is predicated on the fact that electromagnetic radiation of a certain frequency is quantised to specific energies, and that electrons can only be excited between different states when they absorb energy exactly equal to the difference in the state energy levels. Therefore, after a computation is done, we can use a photon with frequency calculated to provide an energy equal to the difference between the ground state \kz and some short-lived auxiliary state. If the electron was in \kz after the computation, it will get excited to this auxiliary state, and return back to the ground state with emission of a photon of the same energy. This emission can be picked up by a detector as fluorescence, usually a CCD camera. On the other hand if the electron was in \ko after the computation then the incoming photon will be unable to excite it to the auxiliary state since the energy difference does not match, and the detector will remain dark. Therefore, upon performing the readout measurement, the state of the electron is determined by whether any fluorescence is detected. In this way we can ensure successful readout of the state without needing to trap the ions again, and the process is usually called a 'non-demolition measurement'.
 
@@ -265,7 +266,7 @@ Then to implement a CNOT equivalent gate between 2 ion internal states we will n
 \end{equation}
 
 The gate is then applied by first cooling the motional state to the ground state so that if we consider the system of some two ions $n$ and $m$ and the total motional state, it will be in a superposition of the following 4 states:
-\footnote{Also we only prepare the internal states into $\ket{0}_n$ and $\ket{1}_n$ states all the operations will leave them in these as well so that there is never a $\ket{2}_n$ component at the end of any operation.}
+\footnote{We also only prepare the internal states into $\ket{0}_n$ and $\ket{1}_n$ states and all the operations will leave them in these as well so that there is never a $\ket{2}_n$ component at the end of any operation.}
 \begin{equation}\label{eqn:ovrl_states}
     \begin{aligned}
         &\ket{0}_n\ket{0}_m\ket{0}, \\
@@ -285,7 +286,7 @@ and then applying $\hat{U}^{1,1}_n$, $\hat{U}^{2,2}_m$ and $\hat{U}^{1,1}_n$, so
 \end{equation}
 
 To see how this is equivalent to a CNOT consider expressing the $m$th ion's state in the basis $\ket{\pm}_m = \frac{\ket{0}_m \pm \ket{1}_m}{\sqrt{2}}$.
-It might be clear that in this basis $\hat{G}$ is the CNOT gate, if not then note that the Hadamard gate represents the transformation between the $\ket{0/1}_m$ and $\ket{\pm}_m$ basis, meaning we can apply the single qubit Hadamard to qubit $m$ before and after applying $\hat{G}$ to get a typical CNOT, in matrix representation where we take the states in the same order as in \cref{eqn:ovrl_states} it is done as follows
+It might be clear that in this basis $\hat{G}$ is the CNOT gate, if not then note that the Hadamard gate represents the transformation between the $\ket{0/1}_m$ and $\ket{\pm}_m$ basis, meaning we can apply the single qubit Hadamard to qubit $m$ before and after applying $\hat{G}$ to get a typical CNOT, in matrix representation where we take the states in the same order as in \cref{eqn:ovrl_states}\footnotemark it is done as follows
 \begin{equation}
     \hat{H_m}\hat{G}\hat{H_m} \leftrightarrow \frac{1}{2}
     \begin{bmatrix}
@@ -313,6 +314,8 @@ It might be clear that in this basis $\hat{G}$ is the CNOT gate, if not then not
         0 & 0 & 1 & 0
     \end{bmatrix}
 \end{equation}
+
+\footnotetext{As in the vector with the first component of 1 and the rest 0 corresponds to $\ket{0}_n\ket{0}_m$, the vector with the second component 1 and the rest 0 corresponds to $\ket{0}_n\ket{1}_m$ and so on.}
 
 Which is a recognisable CNOT, the Cirac and Zoller gate is one of the first to be theorized and demonstrated \cite{monroeDemonstrationFundamentalQuantum1995}, both in 1995, since then it has often been cited.
 Though many other designs have been developed they generally rely on similar techniques, specifically on coupling the ions internal states through their motion, it is often described as a quantum bus.
