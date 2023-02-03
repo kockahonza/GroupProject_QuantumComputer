@@ -45,8 +45,7 @@ Computer algorithms can be boiled down to passing bits through a circuit of diff
 \subsection{Relevant Quantum Physics}
 
 Quantum computing's advantages are a direct result of the quantum mechanical properties such as superposition and entanglement that distinguish it from classical computers. 
-These two properties along with quantum teleportation and the Bell inequality will be discussed.
-Finally decoherence times of quantum states will be introduced as a means of demonstrating the difficulty with scailability in quantum computing. 
+These two properties will be discussed then decoherence times of quantum states will be introduced as a means of demonstrating the difficulty with scailability in quantum computing. 
 
 
 \subsubsection{Superposition}
@@ -59,7 +58,7 @@ However when light interacts with surfaces their properties can change such as l
 Using a linear polariser one can control the direction of polarisation of the light passing through it.
 Constructing two polarisers at right angles (horizontal and vertical respectively) one would expect only horizontal polarised light to emitted from the first and then no light to be emitted from the second polariser. 
 This is what is experimentally observed - however if a third polariser is placed between the horizontal and vertical polarisers orientated at 45$^\circ$ (as in figure \ref{fig:polarisers}) from both then light will now be transmitted through the final horizontal polariser (at 50$\%$ intensity). \cite{noauthor_whatCal_nodate}
-This also emphasises this highly probabilistic behavior of QM where after exiting the second polariser the light is in a superposition of the states which allow diagonal polarisation - some of which is vertical and therefore can pass through the final filter.
+
 \begin{figure}[H]
   \centering
   \begin{subfigure}[t]{0.4\textwidth}
@@ -75,7 +74,7 @@ This also emphasises this highly probabilistic behavior of QM where after exitin
   \caption{Unpolarised light passing through linear polarising filters in two set ups. \cite{noauthor_whatCal_nodate}}
   \label{fig:polarisers}
 \end{figure}
-
+This also emphasises this highly probabilistic behavior of QM where after exiting the second polariser the light is in a superposition of the states which allow diagonal polarisation - some of which is vertical and therefore can pass through the final filter.
 It is this superposition of states which allows a single qubit to trial multiple values at once. \cite{sonialopezbravo_understanding_nodate}
 
 
@@ -83,7 +82,7 @@ It is this superposition of states which allows a single qubit to trial multiple
 Entanglement is a uniquely quantum mechanical phenomenon where the measurement of one particle's state will effect the state of another particle.
 I.e. for interacting states A and B their combined wavefunction cannot be expressed as the product of the individual wavefunctions of A and B if states A and B are entangled. \cite{bransden_quantum_2000}
 
-For example the LHS of equation \ref{eqn:superqubit} is not an entangled system (simply a superposition of states) as it can be expressed as the tensor product of both wavefunctions.
+For example the LHS of equation \ref{eqn:superqubit} is not an entangled system (simply a superposition of states) as it can be expressed as the tensor product of both wavefunctions $|phi\rangle$ and $|psi\rangle$.
 
 \begin{equation}\label{eqn:superqubit}
     |0\rangle_\phi|0\rangle_\psi + |0\rangle_\phi|1\rangle_\psi + |1\rangle_\phi|0\rangle_\psi +
@@ -105,7 +104,8 @@ It does play an integral role in quantum computing however and deeper investigat
 
 \subsubsection{Decoherence of States}
 Decoherence is when a quantum state collapses into a single state i.e. no longer a superposition.
-This is a consideration in quantum computing as qubits are fragile and decoherence may occur - it is especially challenging when trying to scale up to large multi-qubit operations and maintain control over the system. \cite{zhang_observation_2017}
+This is a consideration in quantum computing as qubits are fragile and decoherence may occur.
+It is especially challenging when trying to scale up to large multi-qubit operations and maintain control over the system. \cite{zhang_observation_2017}
 Quantum systems can have a `lifetime', $T_2$ after which the state `relaxes' into a classical single state. 
 Therefore a good physical system for quantum computing must have a long $T_2$ and have operations (gates) which are unlikely to cause decoherence. \cite{nielsen_quantum_2010}
 
@@ -132,7 +132,7 @@ The matrix representations of the $|0\rangle$ and $|1\rangle$ states can be seen
 \end{bmatrix}  
 \end{equation}
 
-Qubits can also be represented as a vector within a radius 1 bloch sphere and represented by angles $\theta$ and $\phi$ as opposed to the complex numbers $\alpha$ and $\beta$, see equation {eqn:bloch}
+Qubits can also be represented as a vector within a radius 1 bloch sphere and represented by angles $\theta$ and $\phi$ as opposed to the complex numbers $\alpha$ and $\beta$, see equation \ref{eqn:bloch}
 
 \begin{equation}\label{eqn:bloch}
     |\psi \rangle = \cos \frac{\theta}{2}|0\rangle + e^{i \phi}\sin \frac{\theta}{2} |1\rangle
@@ -231,6 +231,7 @@ There are {\bf three rotation} gates $R_x(\theta)$, $R_y(\theta)$ and $R_z(\thet
 Similar to classical computing there requires to be gates that act on multiple qubits for calculations to be preformed. 
 The quantum two bit gate is known as a controlled NOT or CNOT gate, where one qubit is the `control' qubit and the other is the `target' qubit. \cite{nielsen_quantum_2010}
 A two qubit state can be represented by $|\psi\rangle = \alpha |00\rangle + \beta|01\rangle + \gamma|10\rangle + \delta |11\rangle$ with $|ij\rangle=|i\rangle \otimes |j\rangle$ where $i$ is the control and $j$ is the target. 
+Note the notion of some two qubit states are represented as $|01\rangle = |2\rangle$ and $|11\rangle$.
 
 The matrix representation of the CNOT gate can be seen in equation \ref{eqn:CNOT}.
 
@@ -243,13 +244,13 @@ The matrix representation of the CNOT gate can be seen in equation \ref{eqn:CNOT
 \end{bmatrix}  
 \end{equation}
 The effect of the CNOT gate is that if the control qubit is in state $|0\rangle$ then the state of the target qubit is unchanged, however if the state of the control qubit is $|1\rangle$ then the state of the target qubit is flipped. 
-For each state the following occurs $|00\rangle \Rightarrow |00\rangle$,$ |01\rangle \Rightarrow |01\rangle$,$ |10\rangle \Rightarrow |11\rangle$ and $|11\rangle \Rightarrow |10\rangle$.
+For each state the following occurs $|00\rangle \Rightarrow |00\rangle$, $ |01\rangle \Rightarrow |01\rangle$, $ |10\rangle \Rightarrow |11\rangle$ and $|11\rangle \Rightarrow |10\rangle$.
 
 
-\subsubsection{The Universal Set of Quantum Gates}
+\subsubsection{The Universal Set of Quantum Gates} \label{sec:USoQG}
 As in classical computing, quantum algorithms are executed as qubits are passed through and manipulated by a series of consecutive gates. 
 
-The state in equation \ref{eqn:entqubit} (with a factor of $1/\sqrt{2}$ is an interesting illustration of this; it is known as the Bell state, which is 2 qubit entanglement frequently used in quantum computations. The Bell state is formed by applying a Hadamard gate to a qubit, which then acts as a control input for a CNOT gate. The CNOT is applied to this control and another, target, qubit. \cite{mermin_quantum_2007} 
+The state in equation \ref{eqn:entqubit} (with a factor of $1/\sqrt{2}$) is an interesting illustration of this; it is known as the Bell state, which is 2 qubit entanglement frequently used in quantum computations. The Bell state is formed by applying a Hadamard gate to a qubit, which then acts as a control input for a CNOT gate. The CNOT is applied to this control and another, target, qubit. \cite{mermin_quantum_2007} 
 By measuring one of the qubits in the Bell state, one can then reveal the state of the other qubit. If a $|0\rangle$ is measured then the other qubit must be $|0\rangle$ and vice versa. The probability of measuring $|0\rangle$ is 50$\%$ and similarly for measuring $|1\rangle$. 
 
 There are many quantum gates beyond those described so far, including the Toffoli, Controlled-Z and more. However, it can be mathematically proven that a small subset of the quantum gates can be combined to make any of the others. This is known as a universal set. Therefore, a physical quantum computer needs only to implement all of the gates in this set, in order to guarantee that any desired computation is attainable \cite{universalset}.
