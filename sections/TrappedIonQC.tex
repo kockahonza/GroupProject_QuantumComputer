@@ -168,11 +168,15 @@ While the Hamiltonian is very different, under certain conditions it results in 
 These type of transitions can be used with certain species of hyperfine qubits, however as microwave to radio frequency light is required, the level of addressability is limited \cite{bruzewiczTrappedionQuantumComputing2019}.
 
 \paragraph{Raman interactions}
-This is a more complicated process where to induce a transition between two states, we use two light beams to couple each of them to a third state.
+% This is a more complicated process where to induce a transition between two states, we use two light beams to couple each of them to a third state.
+This is a more complicated process where we induce a transition between two states using a third state, by applying two lasers at the same time.
 Say we want a transition between the \kz and \ko states, we need to find a suitable state $\ket{2}$ with a higher energy than both.
 Then we choose an energy offset $\Delta$ (and possibly $\delta$) and tune our two lasers to the differences between the $\ket{2}$ energy minus $\Delta$ and the energies of the \kz and \ko (possibly plus $\delta$) states, this is visualized in \cref{fig:TIQC_raman}.
-The energy offset $\Delta$ is very important to suppress the possible transitions to state $\ket{2}$, once tuned the transition can be neglected.
-The frequencies of light beams is usually denoted $\omega_b$ and $\omega_r$, standing for "blue" and "red" with the blue being the more energetic, this often carries through into terms like blue/red sideband transitions and similar.
+
+Then in lay terms it is possible for an electron to transition between the states by absorbing two photons at the same time.
+However it is important that in this process the electron never enters the state $\ket{2}$.
+Notably however that transition is possible which is why we have to detune the frequencies by $\Delta$ from $\ket{2}$, so that the energy offset is too big for that transition to occur (or at least unlikely enough to achieve very good fidelities).
+The frequencies of the light beams are usually denoted $\omega_b$ and $\omega_r$, standing for "blue" and "red" with the blue being the more energetic, this often carries through into terms like blue/red sideband transitions and similar.
 
 \begin{figure}[H]
     \centering
@@ -220,7 +224,8 @@ Aside from that ultrafast gates have been implemented using $^{171}$Yb$^+$ with 
 There is again a variety of methods, we will first describe in detail the CNOT gate theorized by Cirac and Zoller in 1995 \cite{ciracQuantumComputationsCold1995} as it was one of the earliest designs and is often mentioned and cited.
 % Here it is necessary to include the effect light has on the collective motional states, however it is a complex process and so is mostly glossed over, more details can be found in for example 
 
-\subsubsection{The Cirac and Zoller CNOT gate \cite{ciracQuantumComputationsCold1995}} This design is specifically for an array of ions confined in a linear Paul trap.
+\subsubsection{The Cirac and Zoller CNOT gate \cite{ciracQuantumComputationsCold1995}}
+This design is specifically for an array of ions confined in a linear Paul trap.
 The ions considered as trapped along the 3 dimensions in harmonic potentials at frequencies $f_x, f_y$ and $f_z$ and the ions are (laser) cooled to their ground state.
 Their motion can then be described in terms of normal modes and we setup the system so that $f_x, f_y > f_z$ where we take the z axis along the trap, this is so that the modes along the axis are the only to be excited (as it has the lowest energy and also as the excited motional states are well separated).
 We also require that the ions internal states has not only the 2 states required for qubits, but another excited internal state that will be used for the operation, notably we only ever use transitions between the ground states and one of the excited states, not between the two excite states directly.
@@ -245,7 +250,7 @@ The effect of this operation can then be described by the following operator
 \end{equation}
 
 which clearly entangles the internal and motional states.
-Then to implement a CNOT equivalent gate between 2 ion internal states we will need to apply 3 operations in total, which use the following versions of $\hat{U}^{k,q}_n$.
+Then to implement a CNOT equivalent gate (a controlled phase gate) between 2 ion internal states we will need to apply 3 operations in total, which use the following versions of $\hat{U}^{k,q}_n$.
 
 \begin{equation}
     \begin{aligned}
@@ -317,9 +322,16 @@ It might be clear that in this basis $\hat{G}$ is the CNOT gate, if not then not
 
 \footnotetext{As in the vector with the first component of 1 and the rest 0 corresponds to $\ket{0}_n\ket{0}_m$, the vector with the second component 1 and the rest 0 corresponds to $\ket{0}_n\ket{1}_m$ and so on.}
 
-Which is a recognisable CNOT, the Cirac and Zoller gate is one of the first to be theorized and demonstrated \cite{monroeDemonstrationFundamentalQuantum1995}, both in 1995, since then it has often been cited.
-Though many other designs have been developed they generally rely on similar techniques, specifically on coupling the ions internal states through their motion, it is often described as a quantum bus.
+Which is a recognisable CNOT, the Cirac and Zoller gate is the first to be theorized and demonstrated \cite{monroeDemonstrationFundamentalQuantum1995}, both in 1995, since then it has often been cited and in many ways has started the field of trapped ion quantum computing\cite{bruzewiczTrappedionQuantumComputing2019}.
+Though many other designs have been developed they generally rely on similar techniques, specifically on coupling the ions internal states through their motion, which is often described as a quantum bus.
 
+\subsubsection{Other multi-qubit gates}
+One of the most important design to mention is the Mølmer-Sørensen gate \cite{sorensenQuantumComputationIons1999}.
+It is also fundamentally a controlled phase gate and importantly can be used no matter what state the collective motion is in, which is a big advantage as keeping the ions cooled near the ground state is difficult.
+Some of the highest multi-qubit gate fidelities have also been achieved using the design, specifically for optical qubits 99.3\% with a gate time of $50\si{\micro s}$ has been shown \cite{benhelmFaulttolerantQuantumComputing2008} and for hyperfine qubits a fidelity of 99.91\% with gate time $30 \si{\micro s}$ has been demonstrated \cite{gaeblerHighFidelityUniversalGate2016}.
+
+However many other methods have been demonstrated as well including geometric phase gates \cite{leibfriedExperimentalDemonstrationRobust2003, milburnIonTrapQuantum2000} and Toffoli operations \cite{monzRealizationQuantumToffoli2009}.
+And it is still an active area of research, for example a newly theorized design from 2020 \cite{torronteguiUltrafastTwoqubitIon2020} could have a gate time of $~ 1 \si{\micro s}$.
 
 
 

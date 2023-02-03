@@ -1,0 +1,65 @@
+\contentsline {section}{\numberline {1}Introduction}{2}{section.1}%
+\contentsline {subsection}{\numberline {1.1}Why build a quantum computer?}{2}{subsection.1.1}%
+\contentsline {subsection}{\numberline {1.2}Current Methods of Quantum Computing}{3}{subsection.1.2}%
+\contentsline {section}{\numberline {2}Background}{5}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Fundamentals of Classical Computing}{5}{subsection.2.1}%
+\contentsline {subsubsection}{\numberline {2.1.1}What is a bit? Or a nibble, or even a byte...}{5}{subsubsection.2.1.1}%
+\contentsline {subsubsection}{\numberline {2.1.2}How is a bit physically stored?}{6}{subsubsection.2.1.2}%
+\contentsline {subsubsection}{\numberline {2.1.3}Gates - Manipulating bits}{6}{subsubsection.2.1.3}%
+\contentsline {subsubsection}{\numberline {2.1.4}Computation - Many gates}{6}{subsubsection.2.1.4}%
+\contentsline {subsection}{\numberline {2.2}Relevant Quantum Physics}{7}{subsection.2.2}%
+\contentsline {subsubsection}{\numberline {2.2.1}Superposition}{7}{subsubsection.2.2.1}%
+\contentsline {subsubsection}{\numberline {2.2.2}Entanglement}{8}{subsubsection.2.2.2}%
+\contentsline {subsubsection}{\numberline {2.2.3}Decoherence of States}{9}{subsubsection.2.2.3}%
+\contentsline {subsection}{\numberline {2.3}Quantum Computing}{9}{subsection.2.3}%
+\contentsline {subsubsection}{\numberline {2.3.1}Qubits}{9}{subsubsection.2.3.1}%
+\contentsline {subsubsection}{\numberline {2.3.2}Single Qubit Gates}{10}{subsubsection.2.3.2}%
+\contentsline {subsubsection}{\numberline {2.3.3}Two Qubit Gates}{11}{subsubsection.2.3.3}%
+\contentsline {subsubsection}{\numberline {2.3.4}The Universal Set of Quantum Gates}{11}{subsubsection.2.3.4}%
+\contentsline {subsubsection}{\numberline {2.3.5}The DiVincenzo Criteria}{12}{subsubsection.2.3.5}%
+\contentsline {section}{\numberline {3}Trapped Ion Quantum Computing}{14}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Ion Trapping and the Paul Trap}{14}{subsection.3.1}%
+\contentsline {subsubsection}{\numberline {3.1.1}Simple Paul Trap}{14}{subsubsection.3.1.1}%
+\contentsline {subsubsection}{\numberline {3.1.2}Notes on Other Paul Trap Designs}{15}{subsubsection.3.1.2}%
+\contentsline {subsection}{\numberline {3.2}The ions and types of qubits}{16}{subsection.3.2}%
+\contentsline {paragraph}{Zeeman qubits}{17}{section*.10}%
+\contentsline {paragraph}{Hyperfine qubits}{17}{section*.11}%
+\contentsline {paragraph}{Optical qubits}{17}{section*.12}%
+\contentsline {paragraph}{Fine structure qubits}{17}{section*.13}%
+\contentsline {subsection}{\numberline {3.3}Qubit manipulation}{18}{subsection.3.3}%
+\contentsline {subsubsection}{\numberline {3.3.1}Simple light ion interactions}{18}{subsubsection.3.3.1}%
+\contentsline {paragraph}{Electric dipole interactions}{19}{section*.14}%
+\contentsline {paragraph}{Magnetic dipole and electric quadrupole interactions}{19}{section*.15}%
+\contentsline {paragraph}{Raman interactions}{19}{section*.16}%
+\contentsline {subsection}{\numberline {3.4}State Prep and Readout}{20}{subsection.3.4}%
+\contentsline {subsubsection}{\numberline {3.4.1}Creating the required electron states}{20}{subsubsection.3.4.1}%
+\contentsline {subsubsection}{\numberline {3.4.2}Readout after computation}{21}{subsubsection.3.4.2}%
+\contentsline {subsection}{\numberline {3.5}Single qubit gates}{21}{subsection.3.5}%
+\contentsline {subsection}{\numberline {3.6}Multi qubit gates}{22}{subsection.3.6}%
+\contentsline {subsubsection}{\numberline {3.6.1}The Cirac and Zoller CNOT gate \blx@tocontentsinit {0}\cite {ciracQuantumComputationsCold1995}}{22}{subsubsection.3.6.1}%
+\contentsline {subsubsection}{\numberline {3.6.2}Other multi-qubit gates}{24}{subsubsection.3.6.2}%
+\contentsline {section}{\numberline {4}Linear Optical Quantum Computing}{25}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Types of Encoding}{25}{subsection.4.1}%
+\contentsline {subsubsection}{\numberline {4.1.1}Spatial Modes}{25}{subsubsection.4.1.1}%
+\contentsline {subsection}{\numberline {4.2}Useful Linear Optical Tools and Single Qubit Representations}{25}{subsection.4.2}%
+\contentsline {subsubsection}{\numberline {4.2.1}Beamsplitters}{26}{subsubsection.4.2.1}%
+\contentsline {subsubsection}{\numberline {4.2.2}Phase Shifters}{26}{subsubsection.4.2.2}%
+\contentsline {subsubsection}{\numberline {4.2.3}Mirror}{26}{subsubsection.4.2.3}%
+\contentsline {subsubsection}{\numberline {4.2.4}Photodetectors}{27}{subsubsection.4.2.4}%
+\contentsline {subsubsection}{\numberline {4.2.5}Kerr Media}{27}{subsubsection.4.2.5}%
+\contentsline {subsection}{\numberline {4.3}Two Qubit Operations}{27}{subsection.4.3}%
+\contentsline {subsubsection}{\numberline {4.3.1}Control-Z gate (Control Phase Shift Gate)}{28}{subsubsection.4.3.1}%
+\contentsline {subsubsection}{\numberline {4.3.2}Nonlinear sign shift gate}{28}{subsubsection.4.3.2}%
+\contentsline {subsection}{\numberline {4.4}Efficiency}{29}{subsection.4.4}%
+\contentsline {subsection}{\numberline {4.5}Scalability and the KLM Protocol}{30}{subsection.4.5}%
+\contentsline {subsubsection}{\numberline {4.5.1}How does Quantum Teleportation work?}{30}{subsubsection.4.5.1}%
+\contentsline {subsubsection}{\numberline {4.5.2}How Teleportation can be used in CZ gates}{32}{subsubsection.4.5.2}%
+\contentsline {subsubsection}{\numberline {4.5.3}KLM Near Deterministic Teleporter}{34}{subsubsection.4.5.3}%
+\contentsline {subsection}{\numberline {4.6}Bringing it all together}{35}{subsection.4.6}%
+\contentsline {section}{\numberline {5}Conclusion}{36}{section.5}%
+\contentsline {subsection}{\numberline {A}Commutativity of CZ}{40}{subsection.Alph0.1}%
+\contentsline {subsubsection}{\numberline {A.1}How CZ commutes with X}{40}{subsubsection.Alph0.1.1}%
+\contentsline {subsubsection}{\numberline {A.2}How CZ commutes with Z}{41}{subsubsection.Alph0.1.2}%
+\contentsline {subsubsection}{\numberline {A.3}How CZ commutes with XZ}{41}{subsubsection.Alph0.1.3}%
+\contentsline {subsubsection}{\numberline {A.4}How CZ commutes with 2 X gates}{42}{subsubsection.Alph0.1.4}%
+\contentsline {subsubsection}{\numberline {A.5}How CZ commutes with 2 XZ gate combinations}{42}{subsubsection.Alph0.1.5}%
