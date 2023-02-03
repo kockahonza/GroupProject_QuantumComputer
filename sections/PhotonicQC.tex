@@ -13,15 +13,15 @@ Single Rail encoding involves sending a photon down a single rail or cavity; ima
 
 \subsection{Useful Linear Optical Tools and Single Qubit Representations}
 Before going into any of the complex techniques that really support photonic quantum computers as a viable, scalable direction for quantum computers of the future, the report will introduce some of the basic tools that can manipulate photons and by extension, qubits.
-\subsubsection{Beam Splitters}
+\subsubsection{Beamsplitters}
 \begin{itemize}
-    \item The aptly named beam splitters divide a beam of light into two beams with the intensity of each beam being dependent on the angle the beam splitter is placed at in relation to the incoming beam
-    \item Depending on the type of encoding  chosen, the beam splitter can be made in different ways depending on how it affects the photon. In dual rail encoding the beam splitter is made of two glass prisms placed back to back with a half-silvered mirror placed in between them %place image of this from QC&QI
-    \item When a beam splitter is applied to a qubit, it is the equivalent of performing some form of transformation of the state of that qubit, this transformation can be represented as $B_{\theta\phi} = $ $\begin{pmatrix}
+    \item The aptly named beamsplitters divide a beam of light into two beams with the intensity of each beam being dependent on the angle the beamsplitter is placed at in relation to the incoming beam
+    \item Depending on the type of encoding  chosen, the beamsplitter can be made in different ways depending on how it affects the photon. In dual rail encoding the beamsplitter is made of two glass prisms placed back to back with a half-silvered mirror placed in between them %place image of this from QC&QI
+    \item When a beamsplitter is applied to a qubit, it is the equivalent of performing some form of transformation of the state of that qubit, this transformation can be represented as $B_{\theta\phi} = $ $\begin{pmatrix}
     cos(\theta) & -e^{i\phi}sin(\theta) \\
     e^{-i\phi}sin(\theta) & cos(\theta) 
-    \end{pmatrix}$ where $\theta$ is related to the transmission and reflection amplitudes of the outgoing beams (the reflection amplitude R= $sin^2(\theta)$ and the transmission amplitude T = 1-R = $cos^2(\theta)$) and $\phi$ is the phase shift applied by the beam splitter
-    \item It should be noted that the Pauli X gate can be constructed from this beam splitter by setting $\theta = \phi = \frac{\pi}{2}$
+    \end{pmatrix}$ where $\theta$ is related to the transmission and reflection amplitudes of the outgoing beams (the reflection amplitude R= $sin^2(\theta)$ and the transmission amplitude T = 1-R = $cos^2(\theta)$) and $\phi$ is the phase shift applied by the beamsplitter
+    \item It should be noted that the Pauli X gate can be constructed from this beamsplitter by setting $\theta = \phi = \frac{\pi}{2}$
     
 \end{itemize}
 \subsubsection{Phase Shifters}
@@ -39,7 +39,7 @@ A mirror is a step further towards simplicity from the tools listed before.
 \begin{itemize}
     \item Without stating the obvious, a mirror simply reflects our beams with near 100\% intensity.
 
-    \item We can describe the action of a mirror on a photonic qubit as a special case of the beam splitter where the reflection intensity is 100\% and the phase shift $\phi = 0$
+    \item We can describe the action of a mirror on a photonic qubit as a special case of the beamsplitter where the reflection intensity is 100\% and the phase shift $\phi = 0$
 \end{itemize}
 \subsubsection{Photodetectors}
 A photodetector detects the arrival of photons. It accomplishes this by converting the energy deposited by the photon onto its surface into an electrical signal which can be measured and quantified. The quantum efficiency $\eta$ of a photodetector is the probability that a single incident photon generates an electrical signal that contributes to the overall detector current. This component is crucial in an optical quantum computer as it allows the readout of the output of the quantum computer. 
@@ -92,10 +92,10 @@ As stated earlier, implementing two-qubit gates must have some probabilistic, no
     \caption{Circuit for probabilistic CZ gates in LOQC using NS gates}\label{fig:CZ_gate}
 \end{figure}
 
-As we can see in \ref{fig:CZ_gate}, when $\ket{\phi_1}$ and $\ket{\phi_2}$ are both equal to $\ket{1}$ then there will be a photon in the middle two modes ($\ket{\phi_2}$ is flipped). This means that the two photons will interact at the first beamsplitter, via the Hong-Ou-Mandel effect they will "bunch" and go down the same mode together towards the NS gate. The NS gate will sign shift the photons in the mode they went down due to the NS evolution \ref{NS evolution} and then the photons will interact with the second beamsplitter to finally give the state $-\ket{1,1}$.%\textbf{EVERYTHING AFTER THIS IS WRONG} What makes this circuit interesting is that because of the HOM effect, this situation only occurs when $\ket{\phi_1}$ and $\ket{\phi_2}$ are both equal to $\ket{1}$. In the case where only one photon goes through the middle modes, the photon will be split by the beam splitter into both modes, each mode will interact with the NS gate, acquiring a phase shift each but these phase shifts destructively cancel when the modes are brought together at the second beam splitter and the HOM effect occurs again. Due to the fact that the NS gate has a 1/4th probability of operating correctly and this gate requires two in tandem, the probability of the CZ gate operating as we expect is $p_{CZ} = p_{NS}^2 $
+As we can see in \ref{fig:CZ_gate}, when $\ket{\phi_1}$ and $\ket{\phi_2}$ are both equal to $\ket{1}$ then there will be a photon in the middle two modes ($\ket{\phi_2}$ is flipped). This means that the two photons will interact at the first beamsplitter, via the Hong-Ou-Mandel effect they will "bunch" and go down the same mode together towards the NS gate. The NS gate will sign shift the photons in the mode they went down due to the NS evolution \ref{NS evolution} and then the photons will interact with the second beamsplitter to finally give the state $-\ket{1,1}$.%\textbf{EVERYTHING AFTER THIS IS WRONG} What makes this circuit interesting is that because of the HOM effect, this situation only occurs when $\ket{\phi_1}$ and $\ket{\phi_2}$ are both equal to $\ket{1}$. In the case where only one photon goes through the middle modes, the photon will be split by the beamsplitter into both modes, each mode will interact with the NS gate, acquiring a phase shift each but these phase shifts destructively cancel when the modes are brought together at the second beamsplitter and the HOM effect occurs again. Due to the fact that the NS gate has a 1/4th probability of operating correctly and this gate requires two in tandem, the probability of the CZ gate operating as we expect is $p_{CZ} = p_{NS}^2 $
 
 \subsubsection{Nonlinear sign shift gate}
-As stated above, the nonlinear sign shift gate is a very useful tool as its non-deterministic effects allow us to achieve maximally entangled states when we otherwise couldn't but how is the NS gate made? The circuit is actually fairly simple; it involves 2 ancillary modes, one with a photon present and the other without, 3 beam splitters set at differing angles with no phase shift and then 2 "perfect" photon detectors. We can see this in \ref{fig:NS_gate}. Going through each case for this NS gate is quite exhaustive which we won't cover here but the important thing to note is that 1/4 of the time the fock states $\alpha\ket{0}$ and $\beta\ket{1}$ are left untouched and when two photons come through from $\phi$, $\gamma\ket{2} \rightarrow -\gamma\ket{2}$ 
+As stated above, the nonlinear sign shift gate is a very useful tool as its non-deterministic effects allow us to achieve maximally entangled states when we otherwise couldn't but how is the NS gate made? The circuit is actually fairly simple; it involves 2 ancillary modes, one with a photon present and the other without, 3 beamsplitters set at differing angles with no phase shift and then 2 "perfect" photon detectors. We can see this in \ref{fig:NS_gate}. Going through each case for this NS gate is quite exhaustive which we won't cover here but the important thing to note is that 1/4 of the time the fock states $\alpha\ket{0}$ and $\beta\ket{1}$ are left untouched and when two photons come through from $\phi$, $\gamma\ket{2} \rightarrow -\gamma\ket{2}$ 
 
 \begin{figure}[h]
     \centering
