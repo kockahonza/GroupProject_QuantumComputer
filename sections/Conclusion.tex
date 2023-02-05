@@ -2,31 +2,34 @@
 
 Recap motivation and introduction
 
+
+
 Trapped ion quantum computing was introduced as a current and feasible technique for constructing such machines. It serves as a good example for how the DiVincenzo criteria introduced in \cref{sec:DiVincenzo} can be practically implemented and satisfied.
 
 There are multiple methods of ion trapping and this report has described in detail Paul traps, however, it was noted that Penning traps are also used for quantum computing.
 Penning traps use both magnetic and electric fields to trap ions while Paul traps uses only a time varying electric field. Paul traps themselves have many different designs; this report described in detail the linear Paul trap where ions are orientated along a single axis.
 
-Using trapped ion technology, qubits are represented by the valence electron of a stable ion - there are various ways of representing $|0\rangle$ and $|1\rangle$  with this electron.
-Four methods of representing the qubit states were described: Zeeman, hyperfine, optical and fine structure qubits. 
-For each of these methods the states correspond to the electron being in different quantum states (such as different n, l or $m_l$ quantum numbers).
-Zeeman qubits arise from the splitting of hyperfine structure (i.e. same $m_l$ quantum number) due to an external electric field. 
-Hyperfine qubits are ground state electrons with different $m_l$ (hyperfine split). 
-Optical qubits are split by different fine structure levels (different l qunatum number). 
-{\bf not sure about 
-fine structure.}
+Using trapped ion technology, qubits are represented by the states of a valence electron of a stable ion - there are various ways of representing the $|0\rangle$ and $|1\rangle$ states with these electrons.
+Four methods of representing the qubit states (qubit types) were described: Zeeman, hyperfine, optical and fine structure qubits. 
+For each of these methods the quantum computing states correspond to a different choice of electron quantum states.
+Zeeman qubits arise from the splitting of hyperfine structure (i.e. same $n, l$ and $m_l$ quantum numbers and the same hyperfine splitting) due to an external electric field. 
+Hyperfine qubits use 2 near ground states within the same fine structure (i.e. same $n, l$ and $m_l$ too) that arise due to hyperfine splitting.
+Optical qubits use 2 different fine structure levels (different l quantum number) with a large energy gap.
+Fine qubits use 2 d states which are hyperfine seperated (i.e. $l=d$ and different $m_l$).
 The advantages and disadvantages of each method were described in detail in \cref{sec:trapqbit}. All methods are valid and viable implementations, with a specific choice made by researchers and companies depending in their specific needs. 
 
 Manipulation of trapped ion qubits is achieved by illumination of the ions using coherent light beams.
 The ground and excited states are prepared by 'optical pumping' described in \cref{sec:trappedreadout}.
 This ensures that electrons in the same fine state but different hyperfine states will reach the same hyperfine state, via a short lived auxiliary state.
-Quantum gates are acted on trapped ion qubits also by coherent lasers and both single and multi-qubit gates are achieved this way.
+Gates in quantum computers are implemented also by using coherent light beams, this is the case for both single and multi-qubit gates.
 
 In trapped ion systems the readout of a state is accomplished by using a frequency of light which can excite the $|0\rangle$ state to an auxiliary state but not the $|1\rangle$ state. The electron in the auxiliary state would then decay and emit a detectable photon. Therefore, if fluorescence is detected the electron is in the $|0\rangle $ state, if not then it is in the $|1\rangle$ state. 
 
 Multiple quantum computers have been built using trapped ion systems - including one by IonQ which is being used by Goldman Sachs in the financial industry. \cite{noauthor_goldman_2021} 
 The main constraint in the trapped ion technique is the difficultly in increasing number of qubits. The ions are all in the same trap to achieve entanglement, however increasing the numbers of ions in a single trap becomes increasingly difficult. As seen in the work by IonQ, progression can be made to increase the number of ion qubits in a quantum computer. Even if trapped ion quantum computers do not achieved thousands or millions of qubits, there will still be many uses for commercially available small scale trapped ion systems, as it is one of the more practical construction methods.
 
-Looking for a future and more scaleable system, we outlined how photonic quantum computing may become a prominent technique.
+Looking for a future and more scaleable system, we outlined how linear optical quantum computing (LOQC) may become a prominent technique. In this method, photons are used to represent the qubits. There are two spatial modes, single or dual rail encoding. This report focused on the dual rail mode in which implementing 2-qubit gates deterministically is very difficult. Therefore, a probabilistic implementation of a LOQC was explored. The nonlinear sign shift gate has a non-determinsitic effect which allows maximally entangles states to be created; this provides a probabilistic element necessary for two-qubit gates.
 
-By providing an initial understanding of quantum computing fundamentals, this report has explored how a quantum computer can be practically built. The trapped ion method highlighted one of the current approaches being taken by industry, and hopefully conveyed how the theory of quantum computing can be put into practice. Photonic quantum computing allowed us to look further ahead, at how the highly scaleable quantum computers of the future might be created. This report has shown not only the complexity behind building a quantum computer, but crucially the obstacles and challenges that the underlying physics poses. This report did not explore superconducting quantum computers in detail, as the technology proves a more challenging entrypoint to understand. However, research of superconducting quantum computers would be a natural next step beyond this report, as the technique is used in many of the world leading quantum computing implementations - such as in IBM's 433 qubit Osprey. The motivations for building a quantum computer, as described in \cref{sec:why} are significant; hopefully now you have some idea of how to do it.
+A significant challenge in LOQC is the reluctance of photons to interact with each other, a feature necessary for entanglement.
+
+By providing an initial understanding of quantum computing fundamentals, this report has explored how a quantum computer can be practically built. The trapped ion method highlighted one of the current approaches being taken by industry, and hopefully conveyed how the theory of quantum computing can be put into practice. linear optical quantum computing allowed us to look further ahead, at how the highly scaleable quantum computers of the future might be created. This report has shown not only the complexity behind building a quantum computer, but crucially the obstacles and challenges that the underlying physics poses. This report did not explore superconducting quantum computers in detail, as the technology proves a more challenging entrypoint to understand. However, research of superconducting quantum computers would be a natural next step beyond this report, as the technique is used in many of the world leading quantum computing implementations - such as in IBM's 433 qubit Osprey. The motivations for building a quantum computer, as described in \cref{sec:why} are significant; hopefully now you have some idea of how to do it.
