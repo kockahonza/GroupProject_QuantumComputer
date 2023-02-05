@@ -14,40 +14,33 @@ Single Rail encoding involves sending a photon down a single rail or cavity; ima
 \subsection{Useful Linear Optical Tools and Single Qubit Representations}
 Before going into any of the complex techniques that really support photonic quantum computers as a viable, scalable direction for quantum computers of the future, the report will introduce some of the basic tools that can manipulate photons and by extension, qubits.
 \subsubsection{Beamsplitters}
-\begin{itemize}
-    \item The aptly named beamsplitters divide a beam of light into two beams with the intensity of each beam being dependent on the angle the beamsplitter is placed at in relation to the incoming beam
-    \item Depending on the type of encoding  chosen, the beamsplitter can be made in different ways depending on how it affects the photon. In dual rail encoding the beamsplitter is made of two glass prisms placed back to back with a half-silvered mirror placed in between them %place image of this from QC&QI
-    \item When a beamsplitter is applied to a qubit, it is the equivalent of performing some form of transformation of the state of that qubit, this transformation can be represented as $B_{\theta\phi} = $ $\begin{pmatrix}
-    cos(\theta) & -e^{i\phi}sin(\theta) \\
-    e^{-i\phi}sin(\theta) & cos(\theta) 
-    \end{pmatrix}$ where $\theta$ is related to the transmission and reflection amplitudes of the outgoing beams (the reflection amplitude R= $sin^2(\theta)$ and the transmission amplitude T = 1-R = $cos^2(\theta)$) and $\phi$ is the phase shift applied by the beamsplitter
-    \item It should be noted that the Pauli X gate can be constructed from this beamsplitter by setting $\theta = \phi = \frac{\pi}{2}$
-    
-\end{itemize}
-\subsubsection{Phase Shifters}
-\begin{itemize}
-    \item Phase shifters are an even simpler tool but very useful.
-    \item You simply use a material that has a higher refractive index than air (or whichever medium the photons are travelling through in the rails) and have the beams pass through this medium to phase shift them
-    \item The phase shifter performs a transformation on the qubit that can be described as $P_\phi = $ $\begin{pmatrix}
-    1 & 0 \\
-    0 & e^{i\phi}
-    \end{pmatrix}$ where the phase shift $\phi$ is given by the thickness and refractive index of the phase shifter.
-    \item An important point to note that applies for all phase shift gates (and not just specifically the optical one described here) is that when $\phi = \frac{\pi}{2}$ this phase shift gate is equivalent to the Pauli Z transformation.
-\end{itemize}
-\subsubsection{Mirror}
-A mirror is a step further towards simplicity from the tools listed before.
-\begin{itemize}
-    \item Without stating the obvious, a mirror simply reflects our beams with near 100\% intensity.
 
-    \item We can describe the action of a mirror on a photonic qubit as a special case of the beamsplitter where the reflection intensity is 100\% and the phase shift $\phi = 0$
-\end{itemize}
+The aptly named beamsplitter divides a beam of light into two. The intensity of each outgoing beam is determined by the angle at which the beamsplitter is placed relative to the incoming beam. The type of encoding used affects the design of the beamsplitter. In dual rail encoding, two glass prisms are placed back to back and a half-silvered mirror is placed between them. %place image of this from QC&QI
+
+When applied to a qubit, the action of the beamsplitter is equivalent to performing a transformation on the qubit's state, which can be represented as $B_{\theta\phi} = $ $\begin{pmatrix}
+cos(\theta) & -e^{i\phi}sin(\theta) \\
+e^{-i\phi}sin(\theta) & cos(\theta) 
+\end{pmatrix}$. Here, $\theta$ determines the transmission and reflection amplitudes of the outgoing beams, the reflection amplitude R= $sin^2(\theta)$ and the transmission amplitude T = 1-R = $cos^2(\theta)$), and $\phi$ is the phase shift applied by the beamsplitter.
+
+\subsubsection{Phase Shifters}
+Phase shifters are a simple yet effective tool in quantum computing. To use them, one employs a material with a higher refractive index than the medium the photons are passing through (such as air), and guides the beams through this material to induce a phase shift. 
+
+The phase shifter performs a transformation on the qubit, described as $P_\phi = $ $\begin{pmatrix}
+1 & 0 \\
+0 & e^{i\phi}
+\end{pmatrix}$, where the phase shift $\phi$ is given by the thickness and refractive index of the phase shifter. It's worth noting that, when $\phi = \frac{\pi}{2}$, the phase shift gate is equivalent to the Pauli Z transformation. This is valid for all phase shift gates, not just the optical one mentioned here.
+
+\subsubsection{Mirror}
+A mirror is a step further towards simplicity from the tools listed before as it simply reflects beams with near 100\% intensity. We can describe the action of a mirror on a photonic qubit as a special case of the beamsplitter where the reflection intensity is 100\% and the phase shift $\phi = 0$.
+
 \subsubsection{Photodetectors}
 A photodetector detects the arrival of photons. It accomplishes this by converting the energy deposited by the photon onto its surface into an electrical signal which can be measured and quantified. The quantum efficiency $\eta$ of a photodetector is the probability that a single incident photon generates an electrical signal that contributes to the overall detector current. This component is crucial in an optical quantum computer as it allows the readout of the output of the quantum computer. 
 
 
-\subsubsection{Kerr Media}
-
-The most important property of a Kerr medium is the cross-phase modulation it provides. For a two qubit register, Kerr media has the following effect:
+\subsubsection{Nonlinear Kerr Media}
+As we will cover in the next section, in Linear Optical Quantum Computing, deterministic processes can only take us so far. What we mean by this is that when we want to employ phenomena such as entanglement, it is impossible to accurately entangle our qubits all the time with a 100\% success rate only using the tools we have listed above (deterministic, predictable tools). To get around this we can either use probabilistic (non-deterministic) qubit gates or Kerr media. Kerr media are physical materials that have a non-linear refractive index, these refractive indices may vary with the intensity of the incident photon beam and so a photon beam with a larger intensity will experience a greater phase shift as a result of a greater refractive index.
+\par 
+The most important property of a Kerr medium is the cross-phase modulation it provides. For a two-qubit register, Kerr media haave the following effect:
 
 \begin{align*} 
     K \ket{00} &=  \ket{00}\\
@@ -65,7 +58,9 @@ $$K = \begin{pmatrix}
     0 & 0 & 0 & -1\\
     \end{pmatrix}$$
 
-If the matrix K was then left and right multiplied by the Hadamard gate, acting individually on both qubits, a C-NOT gate could be constructed. If this was the only method to entangle photons, a single photon quantum computer would be extremely hard to physically construct. It is difficult to create nonlinear Kerr media with a large ratio of cross phase modulation without significant absorption loss. It is theoretically estimated that, in the best possible case, approximately 50 photons must be absorbed for each photon which experiences a $\pi$ phase modulation.  REFERENCE[quantum computation book]
+If the matrix K was then left and right multiplied by the Hadamard gate acting individually on both qubits, a C-NOT gate could be constructed. 
+
+The main issue with nonlinear Kerr media is the difficulty of producing a material with a high cross phase modulation ratio without incurring substantial losses due to absorption. It is theoretically estimated that, in the best possible case, approximately 50 photons must be absorbed for each photon which experiences a $\pi$ phase modulation, as stated in section of 7.4.2 of \cite{nielsen_chuang_2010}. Thus, if this were the only method to entangle photons, a single photon quantum computer would be extremely hard to physically construct.
 
 
 
@@ -76,11 +71,32 @@ If the matrix K was then left and right multiplied by the Hadamard gate, acting 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{Two Qubit Operations}
-With dual rail encoding of a linear quantum computer it turns out that implementing a two-qubit operation is quite difficult. The Bougoliubov transformation, which describes the linear optical circuit that is supposed to transform our computational basis states into the maximally entangled Bell states, is described by .... \\ Given that these are different we cannot actually reach maximal entanglement in a deterministic way; maximal entanglement can be achieved with the most simple of two-qubit gates and so this implies that two qubit gates cannot be implemented deterministically either. To work around this we could implement the use of Kerr media as discussed above, but for the purpose of readability, the rest of the report will focus on probabilistic methods.
+Now that we have looked at all of our linear optical tools that are used to create one qubit gates in our dual representation, we can start to look at how 2 qubit gates are implemented but there's a problem. We touched on this slightly in the previous section about the Kerr effect but it is actually very difficult to implement a deterministic 2-qubit gate operation in the dual rail model. We can see this in more detail when we consider the example of making a maximally entangled Bell state \footnote{We mentioned bell states in  \ref{eqn:entqubit} but we cover them in more detail in \ref{eqn:Bell States}.}. Below is the kind of transformation we hope to achieve, transforming a state such as $\ket{0,0}$ into the maximally entangled Bell state.
+\begin{equation} \label{bob bell state}
+    \ket{0,0} \rightarrow \frac{1}{\sqrt{2}}(\ket{0,1} + \ket{1,0})
+\end{equation}
+
+The circuit that is supposed to create the bell state on the right-hand side above is decribed by the following transformation:
+\begin{equation} \label{bogoliubov}
+    \hat{a}^{\dag}_{\color{red}0}\hat{b}^{\dag}_{\color{red}0} \rightarrow (\sum\limits_{k={\color{red}0},{\color{red}1}}\alpha_k\hat{a}^{\dag}_k + \beta_k\hat{b}^{\dag}_k)(\sum\limits_{k={\color{red}0},{\color{red}1}}\gamma_k\hat{a}^{\dag}_k + \delta_k\hat{b}^{\dag}_k)
+\end{equation}
+where $\hat{a}^\dag_{\color{red}0}$ is the creation operator acting on the zeroth mode \footnote{the ${\color{red}0}$ subscript signifies the operator acting on the zeroth mode} of the first qubit (creating the state $\ket{0}$ in the first qubit); $\hat{b}^\dag_{\color{red}0}$ is the creation operator acting on the zeroth mode of the second qubit; $\alpha, \beta, \gamma$ and $\delta$ are constants that can be varied.
+\par
+No matter how we vary the constants,  $\alpha, \beta, \gamma$ and $\delta$, the right-hand side of \ref{bogoliubov} can be (and is) separated in terms of each qubit where Bell states and entangle qubits cannot:
+\begin{equation}
+    (\sum\limits_{k={\color{red}0},{\color{red}1}}\alpha_k\hat{a}^{\dag}_k + \beta_k\hat{b}^{\dag}_k)(\sum\limits_{k={\color{red}0},{\color{red}1}}\gamma_k\hat{a}^{\dag}_k + \delta_k\hat{b}^{\dag}_k) \neq \hat{a}^{\dag}_{\color{red}0}\hat{b}^{\dag}_{\color{red}1} + \hat{a}^{\dag}_{\color{red}1}\hat{b}^{\dag}_{\color{red}0}
+\end{equation}
+The right-hand side represents the creation operators that, when applied to a vacuum state, create the Bell state seen in \ref{bob bell state}.
+
+It should be noted that this problem is not limited to dual rail encoding, in single rail encoding it is equally as hard to create single qubit gates but implementing two-qubit gates is as simple as using linear optical tools.
+\
+To work around the problem we have in creating two qubit gates one could implement the use of Kerr media as discussed above, however in this report, we will focus on probabilistic methods.
 
 
 \subsubsection{Control-Z gate (Control Phase Shift Gate)}
-The Hong-Ou-Mandel (HOM) effect was mentioned previously in \cref{sec:modes}. This is an interesting phenomenon that plays a pivotal role in optical quantum computing. Imagine two photons enter a 50:50 beamsplitter from rails A and B which can be written as $\ket{1,1}_{a,b}$. This state can be considered in terms of the creation operators $\hat{a}^\dagger$ (acting on A) and $\hat{b}^\dagger$ (acting on B) in the following way $\hat{a}^\dagger\hat{b}^\dagger\ket{0,0}$. When the photons exit the beamsplitter there is a 50:50 chance that the photons could come out through rail C or rail D. Therefore, by going through the beamsplitter, the state $\hat{a}^\dagger\hat{b}^\dagger\ket{0,0}_{a,b}$ is transformed into $\frac{1}{2}((\hat{c}^\dagger)^2 - (\hat{d}^\dagger)^2)\ket{0,0}_{c,d}$ \footnote{ the beamsplitter transforms $\hat{a}^\dagger\ket{0}_a$ into the state $\frac{1}{\sqrt{2}}(\hat{c}^\dagger + \hat{d}^\dagger)\ket{0}_c$ whilst transforming  $\hat{b}^\dagger\ket{0}_b$ into the state $\frac{1}{\sqrt{2}}(\hat{c}^\dagger - \hat{d}^\dagger)\ket{0}_c$. Physically this can be described as the photon from rail B being phase shifted by $\pi$ when reflected from the beamsplitter and going into rail D}. This is important because, recalling that $\hat{a}^\dagger, \hat{b}^\dagger, \hat{c}^\dagger$ and $\hat{d}^\dagger$ are creation operators, this is equivalent to $\frac{1}{\sqrt{2}}(\ket{2,0}_{c,d} - \ket{0,2}_{c,d})$. In words, when 2 photons coming from different rails enter into a 50:50 beamsplitter at the same time, they will both go down the exact same rail together, either C or D, but they will not exit in different rails like they came. This can be described as photon bunching but it is formally known as the Hong-Ou-Mandel effect and "lies at the heart of linear optical quantum computing" (cite peter kiok).
+The Hong-Ou-Mandel (HOM) effect was mentioned previously in \cref{sec:modes}. This is an interesting phenomenon that plays a pivotal role in optical quantum computing. Imagine two photons enter a 50:50 beamsplitter from modes A and B which can be written as $\ket{1,1}_{a,b}$. This state can be considered in terms of the creation operators $\hat{a}^\dagger$ (acting on A) and $\hat{b}^\dagger$ (acting on B) in the following way $\hat{a}^\dagger\hat{b}^\dagger\ket{0,0}_{a,b}$. When the photons exit the beamsplitter there is a 50:50 chance that the photons could come out through rail C or rail D. Therefore, by going through the beamsplitter, the state $\hat{a}^\dagger\hat{b}^\dagger\ket{0,0}_{a,b}$ is transformed into $\frac{1}{2}((\hat{c}^\dagger)^2 - (\hat{d}^\dagger)^2)\ket{0,0}_{c,d}$ \footnote{ the beamsplitter transforms $\hat{a}^\dagger\ket{0}_a$ into the state $\frac{1}{\sqrt{2}}(\hat{c}^\dagger + \hat{d}^\dagger)\ket{0}_c$ whilst transforming  $\hat{b}^\dagger\ket{0}_b$ into the state $\frac{1}{\sqrt{2}}(\hat{c}^\dagger - \hat{d}^\dagger)\ket{0}_c$. Physically this can be described as the photon from rail B being phase shifted by $\pi$ when reflected from the beamsplitter and going into rail D}. This is important because, recalling that $\hat{a}^\dagger, \hat{b}^\dagger, \hat{c}^\dagger$ and $\hat{d}^\dagger$ are creation operators, this is equivalent to $\frac{1}{\sqrt{2}}(\ket{2,0}_{c,d} - \ket{0,2}_{c,d})$.
+
+In words, when 2 photons coming from different rails enter into a 50:50 beamsplitter at the same time on separate rails A and B, they will both exit on the same rail, C or D. This can be described as photon bunching but it is formally known as the Hong-Ou-Mandel effect and "lies at the heart of linear optical quantum computing" (cite peter kiok).
 
 As stated earlier, implementing two-qubit gates must have some probabilistic, non-deterministic element to them and to achieve this we will be using the non-deterministic sign shift gates which we'll cover in more detail in the next section but the important thing to note now is that when looking at the 3 lowest Fock states, these NS gates phase flip the 3rd lowest:
 \begin{equation} \label{NS evolution}
@@ -98,7 +114,7 @@ As we can see in \ref{fig:CZ_gate}, when $\ket{\phi_1}$ and $\ket{\phi_2}$ are b
 \subsubsection{Nonlinear sign shift gate}
 As stated above, the nonlinear sign shift gate is a very useful tool as its non-deterministic effects allow us to achieve maximally entangled states when we otherwise couldn't but how is the NS gate made? The circuit is actually fairly simple; it involves 2 ancillary modes, one with a photon present and the other without, 3 beamsplitters set at differing angles with no phase shift and then 2 "perfect" photon detectors. We can see this in \ref{fig:NS_gate}. Going through each case for this NS gate is quite exhaustive which we won't cover here but the important thing to note is that 1/4 of the time the fock states $\alpha\ket{0}$ and $\beta\ket{1}$ are left untouched and when two photons come through from $\phi$, $\gamma\ket{2} \rightarrow -\gamma\ket{2}$ 
 
-\begin{figure}[h]
+\begin{figure}[H]
     \centering
     \includegraphics[width=0.9\textwidth]{images/NS gate.png}
     \caption{Circuit for probabilistic NS gates in LOQC using ancillary modes}\label{fig:NS_gate}
@@ -110,7 +126,7 @@ As stated above, the nonlinear sign shift gate is a very useful tool as its non-
 \subsection{Efficiency}
 As we know by now, the real magic of quantum computation occurs when we can implement two-qubit gates as this allows us to perform quantum entanglement between qubit states which is then instrumental in many other constructs such as Quantum Teleportation, Quantum Algorithms, etc.
 
-The issue we tend to run across with LOQC is that photons tend to not naturally interact with each other. This makes the practical implementation of a two-qubit gate a very difficult task. One suggested method is to use nonlinear Kerr media to provide a cross-phase modulation of $\pi$ between photon states. This combined with a beamsplitter can be used to construct a CNOT gate, from which a universal set of gates can be obtained. However, as stated in Section 7.4.3 in \cite{nielsen_chuang_2010}, obtaining nonlinear Kerr media with sufficient cross-phase modulation is not possible without incurring an excessive absorption loss: for every photon that incurs a $\pi$ cross-phase modulation, approximately 50 photons must be absorbed. Another suggested method of overcoming this uses photo-detectors to make projective measurements which can induce an interaction between photons\cite{Kok:2005jip}. This is a probabilistic approach with the probability of success being rather small and the method for increasing this probability to "near-one" values scales exponentially with resources (optical modes required). This makes optical computation seem quite unfeasible on the large scale but thanks to a few interesting results in quantum optics we can implement what is referred to as the KLM protocol to construct scalable 2-qubit gates.
+The issue we tend to run across with LOQC is that photons tend to not naturally interact with each other. This makes the practical implementation of a two-qubit gate a very difficult task. One suggested method is to use nonlinear Kerr media to provide a cross-phase modulation of $\pi$ between photon states. This combined with a beamsplitter can be used to construct a CNOT gate, from which a universal set of gates can be obtained. However, as stated in Section 7.4.3 in \cite{nielsen_chuang_2010}, obtaining nonlinear Kerr media with sufficient cross-phase modulation is not possible without incurring an excessive absorption loss: for every photon that incurs a $\pi$ cross-phase modulation, approximately 50 photons must be absorbed. Another suggested method of overcoming this uses photo-detectors to make projective measurements which can induce an interaction between photons\cite{Kok:2005jip}. This is a probabilistic approach with the probability of success being rather small and the more probabilistic photo-detectors (or non-deterministic operations in general) that are used, the probability of success for the entire circuit decreases exponentially. This makes optical computation seem quite unfeasible on the large scale but thanks to a few interesting results in quantum optics we can implement what is referred to as the KLM protocol to construct scalable 2-qubit gates.
 
 \subsection{Scalability and the KLM Protocol}
 As you probably might have guessed by now, there is a major problem with photonic quantum computing as we've discussed that uses probabilistic gates and that is the fact that the probabilities of these gates are quite low. Having a CZ gate that only works 1/nth of the time means that to get some reasonable result we need to run our circuit n times. As we implement more complicated circuits that involve some number, n, of deterministic gates with probabilities $\frac{1}{p}$, the chance of success of our circuit is $\frac{1}{p^n}$. This is obviously infeasible as any interesting circuit will require many gates and with our current set-up that means any scalable photonic quantum computer is too resource intensive to be worth it. \par
@@ -151,20 +167,16 @@ Since the Z and X gates are their own inverses, all Bob has to do is wait for Al
 \begin{figure}[h]
     \centering
     \includegraphics[width=0.9\textwidth]{images/QT circuit.png}
-    \caption{Quantum teleportation circuit where the state $\phi_j$ is teleported to the second qubit. The bell measurement B gives one of 4 possibilities denoted $I, X, Z$ and $XZ$. The outcome is 'sent' classically (or in this case we just measure what the outcome is) and then the corresponding gate is applied to the second qubit; the identity (nothing is done), the X gate (otherwise known as the not gate), the Z gate (otherwise known as the phase shifter), or the X followed by Z}\label{fig:QT circuit}
+    \caption{Quantum teleportation circuit where the state $\phi_j$ is teleported to the second qubit. The bell measurement B gives one of 4 possibilities denoted $I, X, Z$, and $XZ$. The outcome is 'sent' classically (or in this case, we just measure what the outcome is) and then the corresponding gate is applied to the second qubit; the identity (nothing is done), the X gate (otherwise known as the not gate), the Z gate (otherwise known as the phase shifter), or the X followed by Z}\label{fig:QT circuit}
 \end{figure}
 
 \subsubsection{How Teleportation can be used in CZ gates}
 Now that we understand how quantum teleportation works in theory, we now want to implement this with our non-deterministic CZ gate to see if we can improve our probability of success.
 \par 
-The first thing we must note is that the CZ gate operates on two qubits and because our teleporter only outputs a single mode, we need to double the circuit\ref{fig:QT circuit}, this looks like \ref{fig:QTCZ-1}.
+The first thing we must note is that the CZ gate operates on two qubits and because our teleporter only outputs a single mode, we need to double the circuit \ref{fig:QT circuit}, this looks like \ref{fig:QTCZ-1}. Now thanks to the fact that the CZ gate and the Pauli gates are in the Clifford group, we can commute the CZ gate with our X and Z gate operations (with some corrections) to achieve a circuit that is identical to \ref{fig:QTCZ-1} in output. This looks like \ref{fig:QTCZ-2} where the dashed X and Z boxes represent applying some combination of X and Z gates depending on the outcomes of the Bell Measurement. We can see a more comprehensive look at this in the Appendix\ref{Appendix}. The important takeaway from this is that we can apply a CZ gate to our inner modes in $\ket{\Phi^+}$, as shown in \ref{fig:QTCZ-2}, \textbf{before} the states $\ket{\phi_1}$ and $\ket{\phi_2}$ are teleported into these modes. This means that if we can prepare a successful $\ket{\Phi^+}$ 'offline', meaning before we put it into our circuit and perform teleportation we run $\ket{\Phi^+}$ multiple times until we have a successful result, then we can apply the teleportation when, and only when we have a successful $\ket{\Phi^+}$. This is significant because in \ref{fig:QTCZ-1} if the CZ gate fails then we have lost the states $\ket{\phi_1}$ and $\ket{\phi_2}$ so the probability of this circuit being correct hinges entirely on the CZ gate \textbf{but} in \ref{fig:QTCZ-2}, if everything highlighted in green is prepared offline, $\ket{\phi_1}$ and $\ket{\phi_2}$ are only teleported after a successful CZ gate operation, we essentially guarantee the success of the entire circuit in \ref{fig:QTCZ-2} and input states aren't destroyed.
+\par
+Unfortunately, there's a catch that we've neglected to mention up until now; performing a Bell Measurement is non-deterministic with a probability of $\frac{1}{2}$. Since we perform two Bell Measurements to teleport our two qubit states, the total probability of success for the \ref{fig:QTCZ-2} circuit is $\frac{1}{4}$ which is exactly what we started with. This is where the KLM near-deterministic teleporter comes in. 
 
-\begin{itemize}
-    \item If we're going to improve the CZ gate with quantum teleporters then we can immediately see that we're going to need to double the circuit in \ref{fig:QT circuit} (as this only teleports one qubit and the CZ gate operates on 2). This is done in \ref{fig:QTCZ-1}.
-    \item We can actually commute the CZ gate through the Pauli Operators such that we teleport the states after the CZ-gate is applied and get the same result. See \ref{fig:QTCZ-2}. 
-    \item Whilst we have not done anything to the CZ gate itself to improve its probability (it still has its probability of 1/4) the fact that we can apply the CZ gate before teleporting our states means that we can keep trying to make the state $\Phi^+$ until a success without losing our states $\ket{\phi_1}$ or $\ket{\phi_2}$. Essentially everything in the green box can be prepared 'offline' and the successful qubits could be stored until we want to use them on states $\ket{\phi_1}$ and $\ket{\phi_2}$
-    \item If quantum teleportation was deterministic then we wouldn't need to go any further, we could store our successful CZ results, and then whenever we need to apply a CZ gate we teleport our qubits into the circuit and get a result with 100\% success. Unfortunately performing the Bell Measurement in photonic quantum computing is also non-deterministic with each Bell Measurement having a probability of $\frac{1}{2}$ and so this new CZ gate is no improvement (there are two Bell Measurements being made and so the CZ has a probability of $\frac{1}{4}$).
-\end{itemize}
 
 
 %##############################
@@ -247,7 +259,7 @@ The first thing we must note is that the CZ gate operates on two qubits and beca
 
 
 \end{tikzpicture}
-    \caption{A circuit where quantum teleportation is used just before a CZ-gate is applied. The states $\ket{\phi_1}$ and $\ket{\phi_2}$ are teleported into the middle 2 modes using the Bell Measurement B, and the operations X and Z applied to the middle two modes depending on the Bell Measurement made. If the CZ gate has a probability of success of $\frac{1}{4}$ then the probability of losing the states $\ket{\phi_1}$ and $\ket{\phi_2}$ is $\frac{3}{4}$. It should be noted that this figure is equivalent to \ref{fig:QTCZ-2}. To see this proof see \ref{Appendix}}
+    \caption{A circuit where quantum teleportation is used just before a CZ-gate is applied. The states $\ket{\phi_1}$ and $\ket{\phi_2}$ are teleported into the middle 2 modes using the Bell Measurement B, and the operations X and Z are applied to the middle two modes depending on the Bell Measurement made. If the CZ gate has a probability of success of $\frac{1}{4}$ then the probability of losing the states $\ket{\phi_1}$ and $\ket{\phi_2}$ is $\frac{3}{4}$. It should be noted that this figure is equivalent to \ref{fig:QTCZ-2}. To see this proof see \ref{Appendix}}
     \label{fig:QTCZ-1}
 \end{figure}
 
@@ -358,16 +370,19 @@ The first thing we must note is that the CZ gate operates on two qubits and beca
 \end{figure}
 
 \subsubsection{KLM Near Deterministic Teleporter}
-\begin{itemize}
-    \item For this section only we'll be switching our qubit representation from a dual rail type of encoding to single rail as this KLM teleportation trick applies to a single rail state $\alpha\ket{0} + \beta\ket{1}$.
-    \item We start by preparing 2n optical modes and we're going to put them in the state:
+Due to the non-deterministic nature of the Bell Basis Measurement, the circuit \ref{fig:QTCZ-2} has a probability of success of $\frac{1}{4}$ but if there is a way we can deterministically (or near deterministically) teleport our input states $\ket{\phi_1}$ and $\ket{\phi_2}$ after a successful CZ gate (prepared offline) is implemented then we have a near deterministic CZ circuit.
+\par
+For this section alone we'll be considering the single-rail qubit representation as opposed to the dual-rail representation that we've been focused on until now because the CZ gate in single-rail encoding only requires one optical mode and so the picture here should be clearer to see when we teleport one optical mode. The aim is to teleport the initial qubit $\ket{\phi} = \alpha\ket{0} + \beta\ket{1}$.
+\par
+We start by preparing 2n optical modes and we're going to put them in the superposition state:
     \begin{equation}
         \ket{t_n} = \frac{1}{\sqrt{n+1}}\sum\limits_{j=0}^{n}\ket{1}^j\ket{0}^{n-j}\ket{0}^j\ket{1}^{n-j}
         \label{eqn: QFT Teleporter EQ}
     \end{equation}
-    \item here $\ket{k}^j \equiv \ket{k}_1 \otimes...\otimes\ket{k}_j$ where $\ket{k}_j$ signifies the $j^{th}$ mode being in the state $\ket{k}$ and $\otimes$ represents a tensor product which, for the purposes of this article, we can imagine as an operator which gives you a matrix that can represent a circuit with multiple modes. 
-    \item We're going to look at an example where we choose n=5 to see what $\ket{t_n}$ looks like. We must remember that  $\ket{t_5}$ describes 10 optical modes.
-    \begin{equation}
+here $\ket{k}^j \equiv \ket{k}_1 \otimes...\otimes\ket{k}_j$ where $\ket{k}_j$ signifies the $j^{th}$ mode being in the state $\ket{k}$ and $\otimes$ represents the tensor product. 
+\par
+We're going to look at an example where we choose n=5 to see what $\ket{t_n}$ looks like. Remembering that $\ket{t_n}$ represents 2n optical modes, $\ket{t_5}$ describes 10 optical modes.
+\begin{equation}
         \ket{t_5} = \frac{1}{\sqrt{5+1}}\sum\limits_{j=0}^5\ket{1}^j\ket{0}^{5-j}\ket{0}^j\ket{1}^{5-j}
     \end{equation}
     \begin{align} 
@@ -375,29 +390,33 @@ The first thing we must note is that the CZ gate operates on two qubits and beca
         + \\ & \ket{1}\ket{0}^{4}\ket{0}\ket{1}^{4} + 
  \\ & \ket{1}^2\ket{0}^{3}\ket{0}^2\ket{1}^{3} \label{t5:1} + \\ & \ket{1}^3\ket{0}^{2}\ket{0}^3\ket{1}^{2}\label{t5:2} + \\  & \ket{1}^4\ket{0}\ket{0}^4\ket{1} + \\ & \ket{1}^{5}\ket{0}^5  
  \label{eqn: t5 breakdown}
-   \end{align}
-    \item note that we've neglected the preceding normalisation term for conciseness. 
-    \item if we look at just one of the lines above, \ref{eqn: t5 breakdown}, for example, $\ket{1}^5\ket{0}^5$ and explicitly write it as a string of 0's and 1's representing whether a photon is present in a given optical mode then if $\ket{t_5} = \ket{1}^5\ket{0}^5$ alone:
+\end{align}
+\textit{note: we've neglected the preceding normalisation term for conciseness but each of the states in the $\ket{t_n}$ superposition have equal probability }
+\par
+If we look at just one of the lines above, \ref{eqn: t5 breakdown}, for example, $\ket{1}^5\ket{0}^5$ and explicitly write it as a string of 0's and 1's representing whether a photon is present in a given optical mode then if $\ket{t_5} = \ket{1}^5\ket{0}^5$:
     \begin{equation}
         \ket{t_5} = 1111100000
     \end{equation}
-    \item In this example the first 5 optical modes in $\ket{t_5}$ have a photon present whilst the latter 5 have none.
-    \item As you can see, $\ket{t_5}$ is a superposition of all of these states when we prepare it. In our near deterministic teleporter, we put the first n modes (in our example, the first 5) as well as the input mode $\ket{\phi}$ (the state we want to teleport) into the discrete Quantum Fourier Transform.
-    \item We haven't discussed the discrete QFT in detail and it goes beyond the scope of this article but the important thing to know about it is that the output mode gives us the number of photons present in the input and it destroys information about where these photons came from. 
-    \item As we can see from \ref{fig:Near deterministic tele}, the output of the QFT tells us there are m photons in the first $n+1$ modes and then we find that the $(n+m)^{th}$ mode has the exact state of $\ket{\phi}$. To see this we go back to our example of $\ket{t_5}$:
-    \item if m = 3 then logically we know that all 3 photons came from the first 5 modes of $\ket{t_5}$ or 2 photons came from $\ket{t_5}$ and the third from $\ket{\phi}$ (remembering that we are operating in the single rail encoding). 
-    \item this means that the only contributions to $\ket{t_5}$ from our large sum are \ref{t5:1} and \ref{t5:2}
-    \item Looking at the modes explicitly again, the two possibilities for our circuit, as shown in \ref{fig:Near deterministic tele}, looks like:
-    \begin{align} \label{t5 circuit modes}
-        &\alpha \;\;\; 0 \;\;\; 11100 \;\;\; 11000 \\
-        &\beta  \;\;\;1 \;\;\; 11000 \;\;\; 11100
-    \end{align}
-    \item where $\alpha$ and $\beta$ are the amplitudes in the $\ket{\phi} = \alpha\ket{0} + \beta\ket{1}$ state for our input mode (and therefore are also the amplitudes for the two possibilities for the entire circuit as each $\ket{t_5}$ state has equal probability) 
-    \item on the left of \ref{t5 circuit modes} we have the zeroth column of 0 and 1, the two possibilities for $\ket{\phi}$. Then we have the first 5 modes that go into the QFT. These first 6 modes show a total of 3 photons for each possibility so if our QFT says m=3 then these are the two possibilities that we get.
-    \item The 'teleportation' here happens when we look at the $(n+m)^{th}$ mode, in our example the 8th mode (the 8th column in \ref{t5 circuit modes} starting from zero on the left). We can see that this column is exactly the same as the zeroth column (our input mode). 
-   \item Now this teleportation is not deterministic, when the QFT says we have 0 or n+1 photons then we know the input state $\ket{\phi}$ collapsed and teleportation failed but this is near deterministic because the probability of this procedure working is $\frac{n}{n+1}$,
-   
+In this example the first 5 optical modes \footnote{and therefore the first 5 qubits since this is single-rail encoding} in $\ket{t_5}$ have a photon present whilst the latter 5 have none.
+\par 
+As you can see, $\ket{t_5}$ is a superposition of all of these states when we prepare it. In our near deterministic teleporter, we put the first n modes (in our example, the first 5) as well as the input mode $\ket{\phi}$ (the state we want to teleport) into the discrete Quantum Fourier Transform (QFT).  We haven't discussed the discrete QFT in detail and it goes beyond the scope of this report but there are two important results to know from applying it:
+\begin{itemize}
+    \item after inputting n+1 modes the QFT will output 1 singular mode with "m" photons
+    \item these m photons come from our input modes but the information about which exact modes they came from is destroyed, the 'which-path' information is erased.
 \end{itemize}
+So after the input mode $\ket{phi}$ and the first n modes of $\ket{t_n}$ are put through the QFT, the output 'm' tells us there are m photons in these first n+1 modes, we then find that the $(n+m)^{th}$ mode has the exact state of $\ket{\phi}$. This is shown diagrammatically in \ref{fig:Near deterministic tele}. To see this clearly we go back to our example of $\ket{t_5}$.
+\par
+Imagine, after applying the QFT over $\ket{\phi} (= \alpha\ket{0} + \beta\ket{1}$) and $\ket{t_5}$, the output is m=3. Logically we know then that either 1 photon came from $\ket{\phi}$ (in which case the other 2 came from the first 5 modes of $\ket{t_5}$) or 0 photons came from $\ket{\phi}$ (in which case all 3 came from the first 5 modes of $\ket{t_5}$). Due to the QFT destroying 'which-path' information, we don't know which of these two cases our output corresponds to but we know it can only be one of these two. This means that the only contributions to $\ket{t_5}$ from our large sum are \ref{t5:1} and \ref{t5:2}. With the modes for each circuit written explicitly, these two possibilities are:
+ \begin{alignat*}{0}
+        &\mathbf{0} \quad  &  &\mathbf{1 2 3 4 5}  \quad &  &\mathbf{6 7 8 9 (10)}\\
+        \alpha \;\;\;  &0 \quad &  &0 1 1 1 0 0  \quad  &  &1 1 {\color{red}0} 0 0 \\
+        \beta  \;\;\; &1 \quad  &  &1 1 1 0 0 0 \quad &  &1 1 {\color{red}1} 0 0 \\
+\end{alignat*}
+where the bold numbers are labels for each mode and $\alpha$ and $\beta$ are the amplitudes for each possibility. The zeroth column represents our input qubit $\ket{\phi}$, columns 1-5 represent the first 5 modes of $\ket{t_5}$ and columns 6-10 represent the last 5 modes of $\ket{t_5}$.
+\par
+The 'teleportation' happens when we look at the $(n+m)^{th}$ mode, in our case this is the 8th column as highlighted in red above.  We can see that this column is exactly the same as the zeroth column (our input mode). We have just teleported our input mode into the 8th mode of our circuit. 
+\par
+As you might have guessed, our QFT is not deterministic, it fails when the output m is equal to 0 or n+1 because in these cases we know the input state $\ket{\phi}$ collapsed and there is only one possible outcome of the $\ket{t_5}$ superposition our circuit could be in but since these are only 2 cases if we increase the number of modes n, the chances of m= 0,(n+1) diminishes. More explicitly we can say that as we increase the number of modes in the circuit in \ref{fig:Near deterministic tele} the probability, $= \frac{n}{n+1}$, approaches one.
 
 \begin{figure}
     \centering

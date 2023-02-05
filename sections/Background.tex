@@ -225,7 +225,24 @@ There are {\bf three rotation} gates $R_x(\theta)$, $R_y(\theta)$ and $R_z(\thet
 0 & \exp (i \theta/2) 
 \end{bmatrix}  
 \end{equation}
-
+Some gates that we can expect to encounter a lot are the Pauli X, Y and Z gates. These gates are special cases of the three rotation gates where $R_{x,y,z}(\pi) = -i\{X,Y,Z\}$. In matrix form these look like:
+\begin{equation}
+    X = 
+    \begin{bmatrix}
+        0 & 1\\
+        1 & 0\\
+    \end{bmatrix}, \\
+    Y = 
+    \begin{bmatrix}
+        0 & -i \\
+        i & 0 \\
+    \end{bmatrix},\\
+    Z = 
+    \begin{bmatrix}
+        1 & 0 \\
+        0 & -1 \\
+    \end{bmatrix}
+\end{equation}
 
 \subsubsection{Two Qubit Gates}\label{sec:twoqubit}
 Similar to classical computing there requires to be gates that act on multiple qubits for calculations to be preformed. 
@@ -263,7 +280,7 @@ There is no one universal set of quantum gates, and the choice of which gates to
 
 In fact, it is only necessary to use two of the three rotation gates.
 
-\subsubsection{The DiVincenzo Criteria}
+\subsubsection{The DiVincenzo Criteria}\label{sec:DiVincenzo}
 In 2000, the components of a quantum computer, which are introduced in the sections above, were formalised into the DiVincenzo criteria. These are a list of seven objectives that must be fulfilled in order to construct a physical quantum computer. This report will not focus on the final two criteria as they are only necessary for quantum communication, rather than computation \cite{bergou_quantum_2021}.
 
 The report will show how possible technologies for implementing a quantum computer are able to satisfy the following five DiVincenzo criteria.
