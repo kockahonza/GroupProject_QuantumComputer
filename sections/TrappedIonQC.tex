@@ -27,7 +27,8 @@ Finally, for trapping along the last axis a static electric field is used, for e
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.9\textwidth]{images/TIQC_RFQ_Flour.jpg}
-    \caption{Charged flour grains trapped in a simple Paul trap, the mentioned 4 parallel rods are visible and the electrodes creating the potential well are in the end caps.(**cite Pavelka, found on wikipedia)}\label{fig:TIQC_RFQ_Flour}
+    \caption{Charged flour grains trapped in a simple Paul trap, the mentioned 4 parallel rods are visible and the electrodes creating the potential well are in the end caps.
+    Figure taken from wikimedia \cite{pavelkaPaulTrap}}\label{fig:TIQC_RFQ_Flour}
 \end{figure}
 
 \subsubsection{Notes on Other Paul Trap Designs} \label{sec:other_paultraps}
@@ -38,8 +39,9 @@ However there is still a plethora of different designs being explored for furthe
 These are usually microfabricated plates with a layout of electrodes on their surface which when driven by the correct voltages give rise to a trapping field above their surface.
 These designs offer great advantages for quantum computing, as not only are they cheaper and quicker to manufacture, but can be produced with a much higher precision than manually assembled devices.
 They also have the benefit of the trapped ions being much more accessible for manipulation through lasers.
-Recently chips with integrated photonics have been developed too, these are surface Paul traps with optical channels running through them with openings in the surface aimed at the ion see \cref{fig:TIQC_MIT} for diagrams of one developed at MIT \cite{niffeneggerIntegratedMultiwavelengthControl2020}.
+Recently chips with integrated photonics have been developed too, these are surface Paul traps with optical channels running through them with openings in the surface aimed at the ion\footnotemark, see \cref{fig:TIQC_MIT} for diagrams of one developed at MIT \cite{niffeneggerIntegratedMultiwavelengthControl2020}.
 This further reduces the need for precision assembly and calibration, however complications arise with generating and maintaining entangled states if each ion is stored separately in these modules \cite{bruzewiczTrappedionQuantumComputing2019}.
+\footnotetext{The optical channels mentioned carry the different light beams used for qubit manipulation like state preparation and gates, these are further explained in \cref{sec:TIQC_qbmanipulation}.}
 
 
 \begin{figure}[H]
@@ -47,15 +49,16 @@ This further reduces the need for precision assembly and calibration, however co
     \begin{subfigure}[b]{0.45\textwidth}
         \centering
         \includegraphics[width=0.9\textwidth]{images/TIQC_MIT_1.jpg}
-        \subcaption{Layout of the surface Paul trap}
+        \subcaption{Top-down layout of the surface Paul trap}
     \end{subfigure}
     \hfill
     \begin{subfigure}[b]{0.45\textwidth}
         \centering
         \includegraphics[width=0.9\textwidth]{images/TIQC_MIT_2.jpg}
-        \subcaption{Diagram showing the photon beams}
+        \subcaption{Diagram showing how the photon beams are focused on the ion}
     \end{subfigure}
-    \caption{Surface Paul trap with integrated photonics for quantum computing developed at MIT in 2020.}\label{fig:TIQC_MIT}
+    \caption{Design of a surface Paul trap with integrated photonics developed at MIT in 2020, figures taken from their paper \cite{niffeneggerIntegratedMultiwavelengthControl2020}.
+    There are 4 diffraction gratings on the surface, into which light of different wavelengths is fed, and which then focus the light at the trapped ion.}\label{fig:TIQC_MIT}
 \end{figure}
 
 \subsection{The ions and types of qubits}\label{sec:trapqbit}
@@ -82,8 +85,11 @@ This gives rise to a plethora of options for the 2 levels and depending on their
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.9\textwidth]{images/TIQC_levels.jpeg}
-    \caption{Fine structure and Zeeman and hyperfine splittings of typical atoms used for quantum computing. Some of the possible choices for the sates are also shown.}\label{fig:TIQC_levels}
+    \includegraphics[width=0.9\textwidth]{images/TIQC_levels.jpg}
+    \caption{Fine structure and Zeeman splittings of typical atoms used for quantum computing, hyperfine splittings are not shown.
+    Some typical level choices for different qubit types are also denoted.
+    While Optical, Hyperfine and Fine structure qubits do not rely on Zeeman splitting, in practice some magnetic field is present and so it is still taken into account.
+    Figure based on \cite{bruzewiczTrappedionQuantumComputing2019}}\label{fig:TIQC_levels}
 \end{figure}
 
 \paragraph{Zeeman qubits}
@@ -112,7 +118,7 @@ As a downside comes a more complicated level structure, for example the readout 
 Overall there is not a clear winner and which choice is made depends on the particulars of the given company or research team, depending on their expertise and the equipment available to them.
 
 
-\subsection{Qubit manipulation}
+\subsection{Qubit manipulation}\label{sec:TIQC_qbmanipulation}
 In the previous sections we have described how we achieve the necessary 2 states from the 1st DiVincenzo criteria, however we still have all the others to address.
 All of these (ie state initialization and readout, a set of universal gates and long decoherence times) are achieved through different light beams interacting with the ions.
 % These are quite complex and we only describe them at a fairly surface level, for more detail we recommend \cite{schaferFastGatesMixedSpecies2020} (the main source for this section) and specifically section 3.2 as an introduction to these phenomena.
