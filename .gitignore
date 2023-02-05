@@ -1,4 +1,6 @@
 *.aux
+*.toc
+*.synctex
 *.bbl
 *.bcf
 *.blg
