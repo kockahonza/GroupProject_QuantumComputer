@@ -12,8 +12,10 @@ Individual bits don't allow us to represent much, however, we can chain them tog
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.6\textwidth]{images/binary.jpg}
-    \caption{A table illustrating how to convert the binary number 101101 into its decimal equivalent, 45 \cite{binary}}\label{fig:BINARY}
+    \caption{A table illustrating how to convert the binary number 101101 into its decimal equivalent, 45. We add up all the powers of 2 with a binary 1 above them in order to calculate the decimal.\cite{binary}}\label{fig:BINARY}
 \end{figure}
+
+In the context of a general computer, the set of bits which are all processed together, as one number, is known as a register. The larger your register (i.e the more bits it consists of), the greater range of numbers you can represent. 
 
 Clearly bits are a good way of representing numbers, however, they can also be mapped to other useful properties. For example, we can represent a text file by assigning a bit pattern to each letter. Or, we could apply our computer to DNA simulation using 2 bits to represent each of the four chemical bases. 
 
@@ -33,11 +35,11 @@ Clearly bits can be used to represent different values or states, however, it is
 There are many other gates, such as the NOT which takes a single bit as input and outputs a bit with the opposite state. The important point to highlight is that gates provide building blocks for computation.
 
 \subsubsection{Computation - Many gates}
-Computer algorithms can be boiled down to passing bits through a circuit of different gates. 
+Computer algorithms can be boiled down to passing bits through a circuit of different gates. Figure \ref{fig:ADDER} gives an example of how an AND and XOR gate can be combined to produce a useful computation. As described previously, the AND gate outputs 1 when both of its inputs are 1. The XOR gate outputs 1 when only one of its inputs is a 1. The circuit shown adds two binary bits together, with the sum column showing the $2^0$ unit of the result of the addition and the carry column showing the $2^1$ unit. The first three rows are simple with either $0 + 0$ or $0 + 1$. The final row corresponds to $1 + 1$ which has 0 in the sum column and 1 for the carry, since the answer, 2, is $10$ in binary with a 0 in the $2^0$ unit.
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.7\textwidth]{images/adder.jpeg}
-    \caption{A logic diagram of a binary half adder, including truth table output for all possible input combinations. \cite{adder}}\label{fig:ADDER}
+    \caption{A logic diagram of a binary half adder, including truth table output for all possible input combinations. It is a combination of a XOR gate, representing the sum, and an AND gate representing the carry. \cite{adder}}.\label{fig:ADDER}
 \end{figure}
 
  The ability to implement gates and process bits using them, is a fundamental pillar of computation whether that be classical or quantum. The report will know introduce concepts from quantum physics which are core to understanding how to build a quantum computer. With this knowledge, it will then be possible to draw analogies between classical and quantum computing implementations.
