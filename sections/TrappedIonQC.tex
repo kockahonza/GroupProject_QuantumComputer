@@ -58,7 +58,7 @@ This further reduces the need for precision assembly and calibration, however co
     \caption{Surface Paul trap with integrated photonics for quantum computing developed at MIT in 2020.}\label{fig:TIQC_MIT}
 \end{figure}
 
-\subsection{The ions and types of qubits}
+\subsection{The ions and types of qubits}\label{sec:trapqbit}
 As the trapping was briefly covered, the next logical step is to focus on the ion itself.
 First question is what element should be use and some of the main requirements are that it is radioactively stable, can be easily produced and singly ionized and finally that it has 2 suitable states to use as \kz and \ko from the DiVincenzo criteria.
 For this, the valence electron (also the one that is "free" due to ionization) is the important part, the energy levels available to it are used as our needed states.
@@ -184,7 +184,7 @@ The frequencies of the light beams are usually denoted $\omega_b$ and $\omega_r$
     \caption{Diagram of the level structure and process of a Raman transition between states \kz and \ko through $\ket{2}$ by use of 2 light beams of energies $\hbar \omega_b > \hbar \omega_r$. Figure taken from \cite{schaferFastGatesMixedSpecies2020}}\label{fig:TIQC_raman}
 \end{figure}
 
-\subsection{State Prep and Readout}
+\subsection{State Preperation and Readout}\label{sec:trappedreadout}
 
 % Using figure from http://web.mit.edu/8.13/www/JLExperiments/JLExp11.pdf
 % https://jonathan-hui.medium.com/qc-how-to-build-a-quantum-computer-with-trapped-ions-88b958b81484
@@ -200,7 +200,7 @@ In this section we discuss how to practically prepare the \kz and \ko (ground an
 \end{figure}
 
 \subsubsection{Creating the required electron states}
-The ground state \kz is prepared by the process of 'optical pumping'. In an isolated system like ours, in the absence of a magnetic field, states with the same angular momentum quantum number $j$ are degenerate, but have different spins corresponding to different values of the magnetic quantum number $m_j$. In the process of optical pumping, we excite an electron in one of the degenerate states of some stable energy level into a higher auxiliary energy state using a specific light wavelength. The wavelength is chosen such that the electron is excited exactly one energy state plus one hyperfine spin state up. This auxiliary state will be short lived, and the electron will thus decay back into one of the degenerate spin states of the stable energy level. Using Fig. \ref{fig:States} as reference, and electron could reside in any of the split levels in a given $j$ state, and we can choose any of these as our ground state \kz. A good choice is the $m_j$ = +1 state, for example, due  to reasons described below. 
+The ground state \kz is prepared by the process of 'optical pumping'. In an isolated system like ours, in the absence of a magnetic field, states with the same angular momentum quantum number $j$ are degenerate, but have different spins corresponding to different values of the magnetic quantum number $m_j$. In the process of optical pumping, we excite an electron in one of the degenerate states of some stable energy level into a higher auxiliary energy state using a specific light frequency. The frequency is chosen such that the electron is excited exactly one energy state plus one hyperfine spin state up. This auxiliary state will be short lived, and the electron will thus decay back into one of the degenerate spin states of the stable energy level. Using Fig. \ref{fig:States} as reference, and electron could reside in any of the split levels in a given $j$ state, and we can choose any of these as our ground state \kz. A good choice is the $m_j$ = +1 state, for example, due to reasons described below. 
 
 To make an accurate measurement, we need to ensure we know the exact state of the electron, and optical pumping enforces this condition. An electron originally in the $m_j$ = -1 spin state of the lower level will be excited to the $m_j$ = 0 state of the higher auxiliary energy state. As it decays back down, it could decay into either of the $m_j$ states of the lower energy level, however, if it were to decay into the $m_j$ = +1 spin state, for instance, then the light frequency will not carry the exact energy needed to excite it one hyperfine spin state upwards because such a state does not exist. This is why the $m_j$ = +1 state is a good choice in this example, and the electrons can be 'pumped' into this state with high-fidelity. 
 
