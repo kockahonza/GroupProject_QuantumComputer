@@ -14,10 +14,9 @@ Individual bits don't allow us to represent much, however, we can chain them tog
     \includegraphics[width=0.6\textwidth]{images/binary.jpg}
     \caption{A table illustrating how to convert the binary number 101101 into its decimal equivalent, 45. We add up all the powers of 2 with a binary 1 above them in order to calculate the decimal.\cite{binary}}\label{fig:BINARY}
 \end{figure}
-
 In the context of a general computer, the set of bits which are all processed together, as one number, is known as a register. The larger your register (i.e the more bits it consists of), the greater range of numbers you can represent. 
 
-Clearly bits are a good way of representing numbers, however, they can also be mapped to other useful properties. For example, we can represent a text file by assigning a bit pattern to each letter. Or, we could apply our computer to DNA simulation using 2 bits to represent each of the four chemical bases. 
+Clearly bits are a good way of representing numbers, however, they can also be mapped to other useful properties. For example, we can represent a text file by assigning a bit pattern to each letter. Or, we could apply our computer to DNA simulation using 2 bits to represent each of the four chemical bases. A bit pattern can be used to represent a possible outcome to a combinatoric problem; the more bits that are used the more possibilities that can be represented and simulated. As briefly explained in the introduction, this is key to the power of quantum computing and is why number of bits (or their quantum equivalent) will be referenced frequently throughout this report.
 
 \subsubsection{How is a bit physically stored?}
 In order to represent a bit, it must be possible to distinguish between two distinct states; like a light switch which can be off or on. Classical computers are formed of many complex, intricate electrical components. Therefore, it makes sense to represent bits as an electrical voltage. In a simple explanation, we can consider a bit with value 0 to be when there is no voltage (the ground state) and a bit with value 1 to be when the voltage is equal to the supply voltage. In practice, there is tolerance of approximately 30\% about these states \cite{voltage}.
@@ -31,7 +30,6 @@ Clearly bits can be used to represent different values or states, however, it is
     \includegraphics[width=0.4\textwidth]{images/andgate.jpeg}
     \caption{The circuit symbol for an AND gate, along with a truth table of all possible outputs for two inputs, A and B. \cite{andgate}}\label{fig:ANDGATE}
 \end{figure}
-
 There are many other gates, such as the NOT which takes a single bit as input and outputs a bit with the opposite state. The important point to highlight is that gates provide building blocks for computation.
 
 \subsubsection{Computation - Many gates}
@@ -41,8 +39,9 @@ Computer algorithms can be boiled down to passing bits through a circuit of diff
     \includegraphics[width=0.7\textwidth]{images/adder.jpeg}
     \caption{A logic diagram of a binary half adder, including truth table output for all possible input combinations. It is a combination of a XOR gate, representing the sum, and an AND gate representing the carry. \cite{adder}}.\label{fig:ADDER}
 \end{figure}
+By adding more and more gates to a circuit, it is possible to perform ever more complex calculations.
 
- The ability to implement gates and process bits using them, is a fundamental pillar of computation whether that be classical or quantum. The report will know introduce concepts from quantum physics which are core to understanding how to build a quantum computer. With this knowledge, it will then be possible to draw analogies between classical and quantum computing implementations.
+The ability to implement gates and process bits using them, is a fundamental pillar of computation whether that be classical or quantum. The report will now introduce concepts from quantum physics which are core to understanding how to build a quantum computer. With this knowledge, it will then be possible to draw analogies between classical and quantum computing implementations.
 
 \subsection{Relevant Quantum Physics}
 
@@ -82,21 +81,7 @@ It is this superposition of states which allows a single qubit to trial multiple
 
 \subsubsection{Entanglement}
 Entanglement is a uniquely quantum mechanical phenomenon where the measurement of one particle's state will effect the state of another particle.
-I.e. for interacting states A and B their combined wavefunction cannot be expressed as the product of the individual wavefunctions of A and B if states A and B are entangled. \cite{bransden_quantum_2000}
-
-For example the LHS of equation \ref{eqn:superqubit} is not an entangled system (simply a superposition of states) as it can be expressed as the tensor product of both wavefunctions $|phi\rangle$ and $|psi\rangle$.
-
-\begin{equation}\label{eqn:superqubit}
-    |0\rangle_\phi|0\rangle_\psi + |0\rangle_\phi|1\rangle_\psi + |1\rangle_\phi|0\rangle_\psi +
-    |1\rangle_\phi|1\rangle_\psi = |\phi\rangle \otimes |\psi\rangle
-\end{equation}
-
-However the system in equation \ref{eqn:entqubit} is entangled as the total system cannot be expressed as a product of the two single systems. 
-\begin{equation}\label{eqn:entqubit}
-    |0\rangle_\phi|0\rangle_\psi + 
-    |1\rangle_\phi|1\rangle_\psi
-\end{equation}
-
+I.e. for interacting states A and B their combined wavefunction cannot be expressed as the tensor product of the individual wavefunctions of A and B if states A and B are entangled. \cite{bransden_quantum_2000}
 
 
 Although progress has been made in studying quantum entanglement, there is no complete theory to explain it. 
@@ -112,10 +97,9 @@ Quantum systems can have a `lifetime', $T_2$ after which the state `relaxes' int
 Therefore a good physical system for quantum computing must have a long $T_2$ and have operations (gates) which are unlikely to cause decoherence. \cite{nielsen_quantum_2010}
 
 
-
 \subsection{Quantum Computing}
 \subsubsection{Qubits}
-Following the explanation of bits in a classical computer, a qubit is the quantum analogy to a classical bit. Qubits are crucical to perfoming calculations on a quantum computer but have fundamental variation on their classical counterpart.
+Following the explanation of bits in a classical computer, a qubit is the quantum analogy to a classical bit. Qubits are critical to performing calculations on a quantum computer but have fundamental variation on their classical counterpart.
 A classical bit can either hold the value of 0 or 1 while a qubit is a superposition of both $|0\rangle$ and $|1\rangle$ as seen in equation \ref{eqn:qubit}
 \begin{equation}\label{eqn:qubit}
     |\psi\rangle = \alpha|0\rangle + \beta|1\rangle
@@ -281,6 +265,15 @@ There is no one universal set of quantum gates, and the choice of which gates to
 \end{equation}
 
 In fact, it is only necessary to use two of the three rotation gates.
+
+\subsubsection{Tensor Product}
+Tensor products are the way to mathematically study and maniuplate systems of many qubits. If you take a set of quantum systems, each with its own state, then they can be combined into one unified quantum state by taking the tensor product of them all. This then allows the single state, representative of a register, to be processed by a quantum computer. Equation \ref{eq:tensor} shows $|\Phi\rangle$, the universal state, as the tensor product of all individual states, $|\Psi_i\rangle$.
+
+\begin{equation}\label{eq:tensor}
+    |\Phi\rangle = |\Psi_0\rangle \otimes |\Psi_1\rangle \otimes |\Psi_2\rangle \otimes |\Psi_3\rangle \otimes |\Psi_4\rangle \otimes ....
+\end{equation}
+
+Conceptually the tensor product captures every possible combination of different systems. Using an analogy from Medium, if each course at a restaurant is a state, and the meal as a whole is the universal state, the tensor product represents every possible meal you could have. In other words, it represents all the possible combinations of courses you could choose. 
 
 \subsubsection{The DiVincenzo Criteria}\label{sec:DiVincenzo}
 In 2000, the components of a quantum computer, which are introduced in the sections above, were formalised into the DiVincenzo criteria. These are a list of seven objectives that must be fulfilled in order to construct a physical quantum computer. This report will not focus on the final two criteria as they are only necessary for quantum communication, rather than computation \cite{bergou_quantum_2021}.
