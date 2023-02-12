@@ -15,47 +15,63 @@ Looking at the second qubit teleportation first, we'll consider the case of the 
 We first start by writing out what the X gate applied to the second qubit looks like as a matrix. This is:
 \begin{align}
     (X \otimes\mathbb{I}) & = 
-    \begin{pmatrix}
+    \begin{bmatrix}
     0 & 1\\ 
     1 & 0
-    \end{pmatrix} 
+    \end{bmatrix} 
     \otimes
-    \begin{pmatrix}
+    \begin{bmatrix}
     1 & 0\\ 
     0 & 1
-    \end{pmatrix}
+    \end{bmatrix}
     \\
     & = 
-    \begin{pmatrix}
+    \begin{bmatrix}
     0 & 0 & 1 & 0\\ 
     0 & 0 & 0 & 1\\
     1 & 0 & 0 & 0\\
     0 & 1 & 0 & 0\\
-\end{pmatrix} \label{X tens I}
-\end{align}
+\end{bmatrix} \label{X tens I}
+\end{align} \footnote{here we've used the tensor product where $\begin{bmatrix}
+    a & b\\ 
+    c & d
+    \end{bmatrix} 
+    \otimes
+    \begin{bmatrix}
+    w & x\\ 
+    y & z
+    \end{bmatrix}
+     = 
+     \begin{bmatrix}
+    aw & ax & bw & bx\\ 
+    ay & az & by & bz\\
+    cw & cx & dw & dx\\ 
+    cy & cz & dy & dz\\
+\end{bmatrix}
+     $}
 Which we can confirm is true by applying it to the state $ \ket{2} \equiv \ket{10} \equiv 
-\begin{pmatrix}
+\begin{bmatrix}
     0 \\ 
     0\\
     1\\
     0\\
-\end{pmatrix}$ and checking if we get the state $\ket{0} \equiv \ket{00} \equiv 
-\begin{pmatrix}
+\end{bmatrix}$ and checking if we get the state $\ket{0} \equiv \ket{00} \equiv 
+\begin{bmatrix}
     1 \\ 
     0\\
     0\\
     0\\
-\end{pmatrix}$
+\end{bmatrix}$
 \par
  We also write that the matrix for the 2 qubit CZ gate is:
 \begin{equation}
     CZ = 
-    \begin{pmatrix}
+    \begin{bmatrix}
     1 & 0 & 0 & 0 \\ 
     0 & 1 & 0 & 0 \\
     0 & 0 & 1 & 0 \\
     0 & 0 & 0 & -1\\
-    \end{pmatrix}
+    \end{bmatrix}
 \end{equation} which we can confirm with the state $\ket{3} \equiv \ket{11}$ which should transform to $-\ket{11}$.
 
 
@@ -90,55 +106,55 @@ What we want to find then is the combination of X and Z matrices that gives us a
 
 \begin{align} \label{eqn_APP: CZ commute X}
     CZ(X\otimes\mathbb{I}) & = 
-    \begin{pmatrix}
+    \begin{bmatrix}
         1 & 0 & 0 & 0 \\
         0 & 1 & 0 & 0 \\
         0 & 0 & 1 & 0 \\
         0 & 0 & 0 & -1 \\
-    \end{pmatrix} \cdot
-    \begin{pmatrix}
+    \end{bmatrix} \cdot
+    \begin{bmatrix}
         0 & 0 & 1 & 0 \\
         0 & 0 & 0 & 1 \\
         1 & 0 & 0 & 0 \\
         0 & 1 & 0 & 0 \\
-    \end{pmatrix}
+    \end{bmatrix}
     \\ & =
-    \begin{pmatrix}
+    \begin{bmatrix}
         0 & 0 & 1 & 0 \\
         0 & 0 & 0 & 1 \\
         1 & 0 & 0 & 0 \\
         0 & -1 & 0 & 0 \\
-    \end{pmatrix}
+    \end{bmatrix}
     \\ & = 
-    \begin{pmatrix}
+    \begin{bmatrix}
         0 & 0 & 1 & 0 \\
         0 & 0 & 0 & -1 \\
         1 & 0 & 0 & 0 \\
         0 & -1 & 0 & 0 \\
-    \end{pmatrix} \cdot
-    \begin{pmatrix}
+    \end{bmatrix} \cdot
+    \begin{bmatrix}
         1 & 0 & 0 & 0 \\
         0 & 1 & 0 & 0 \\
         0 & 0 & 1 & 0 \\
         0 & 0 & 0 & -1 \\
-    \end{pmatrix} 
+    \end{bmatrix} 
     \\ & = 
     \left(
-    \begin{pmatrix}
+    \begin{bmatrix}
         0 & 1 \\
         1 & 0 \\
-    \end{pmatrix}
+    \end{bmatrix}
     \otimes
-    \begin{pmatrix}
+    \begin{bmatrix}
         1 & 0 \\
         0 & -1 \\
-    \end{pmatrix}  \right) \cdot 
-    \begin{pmatrix}
+    \end{bmatrix}  \right) \cdot 
+    \begin{bmatrix}
         1 & 0 & 0 & 0 \\
         0 & 1 & 0 & 0 \\
         0 & 0 & 1 & 0 \\
         0 & 0 & 0 & -1 \\
-    \end{pmatrix} 
+    \end{bmatrix} 
     \\ & = 
     (X\otimes\mathbb{Z})CZ
 \end{align}

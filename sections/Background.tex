@@ -79,17 +79,13 @@ This also emphasises this highly probabilistic behavior of QM where after exitin
 It is this superposition of states which allows a single qubit to trial multiple values at once. \cite{sonialopezbravo_understanding_nodate}
 
 
-\subsubsection{Entanglement}
-Entanglement is a uniquely quantum mechanical phenomenon where the measurement of one particle's state will effect the state of another particle.
-I.e. for interacting states A and B their combined wavefunction cannot be expressed as the tensor product of the individual wavefunctions of A and B if states A and B are entangled. \cite{bransden_quantum_2000}
-
+\subsubsection{Entanglement}\label{sec:ent}
+Entanglement is a uniquely quantum mechanical phenomenon where the measurement of one particle's state will effect the state of another particle. A system is entangled if it cannot be separated out into distinct constituent states \cite{bransden_quantum_2000}.
 
 Although progress has been made in studying quantum entanglement, there is no complete theory to explain it. 
-It does play an integral role in quantum computing however and deeper investigation of it and how to manipulate this property is likely to lead to further applications. \cite{nielsen_quantum_2010}
+It plays an integral role in quantum computing however and deeper investigation of it and how to manipulate this property is likely to lead to further applications. \cite{nielsen_quantum_2010}
 
-
-
-\subsubsection{Decoherence of States}
+\subsubsection{Decoherence of states}
 Decoherence is when a quantum state collapses into a single state i.e. no longer a superposition.
 This is a consideration in quantum computing as qubits are fragile and decoherence may occur.
 It is especially challenging when trying to scale up to large multi-qubit operations and maintain control over the system. \cite{zhang_observation_2017}
@@ -141,7 +137,7 @@ Quantum gates must be able to modify the probabilities without decoherence or co
 In the next sections, a selection of common single and two qubit gates are introduced.
 The universal set of quantum gates is explained which can be comprised of the gates in section \ref{sec:singlequbit} and \ref{sec:twoqubit}  
 
-\subsubsection{Single Qubit Gates}\label{sec:singlequbit}
+\subsubsection{Single qubit gates}\label{sec:singlequbit}
 Single qubit gates are ones which act on only one qubit. 
 This section will describe the Hadamard, Phase Gate and the three Rotation gates. 
 
@@ -230,7 +226,7 @@ Some gates that we can expect to encounter a lot are the Pauli X, Y and Z gates.
     \end{bmatrix}
 \end{equation}
 
-\subsubsection{Two Qubit Gates}\label{sec:twoqubit}
+\subsubsection{Two qubit gates}\label{sec:twoqubit}
 Similar to classical computing there requires to be gates that act on multiple qubits for calculations to be preformed. 
 The quantum two bit gate is known as a controlled NOT or CNOT gate, where one qubit is the `control' qubit and the other is the `target' qubit. \cite{nielsen_quantum_2010}
 A two qubit state can be represented by $|\psi\rangle = \alpha |00\rangle + \beta|01\rangle + \gamma|10\rangle + \delta |11\rangle$ with $|ij\rangle=|i\rangle \otimes |j\rangle$ where $i$ is the control and $j$ is the target. 
@@ -250,11 +246,16 @@ The effect of the CNOT gate is that if the control qubit is in state $|0\rangle$
 For each state the following occurs $|00\rangle \Rightarrow |00\rangle$, $ |01\rangle \Rightarrow |01\rangle$, $ |10\rangle \Rightarrow |11\rangle$ and $|11\rangle \Rightarrow |10\rangle$.
 
 
-\subsubsection{The Universal Set of Quantum Gates} \label{sec:USoQG}
+\subsubsection{The Universal set of quantum gates} \label{sec:USoQG}
 As in classical computing, quantum algorithms are executed as qubits are passed through and manipulated by a series of consecutive gates. 
 
 The state in equation \ref{eqn:entqubit} (with a factor of $1/\sqrt{2}$) is an interesting illustration of this; it is known as the Bell state, which is 2 qubit entanglement frequently used in quantum computations. The Bell state is formed by applying a Hadamard gate to a qubit, which then acts as a control input for a CNOT gate. The CNOT is applied to this control and another, target, qubit. \cite{mermin_quantum_2007} 
 By measuring one of the qubits in the Bell state, one can then reveal the state of the other qubit. If a $|0\rangle$ is measured then the other qubit must be $|0\rangle$ and vice versa. The probability of measuring $|0\rangle$ is 50$\%$ and similarly for measuring $|1\rangle$. 
+
+\begin{equation}\label{eqn:entqubit}
+    \frac{|0\rangle_\phi|0\rangle_\psi + 
+    |1\rangle_\phi|1\rangle_\psi}{\sqrt{2}}
+\end{equation}
 
 There are many quantum gates beyond those described so far, including the Toffoli, Controlled-Z and more. However, it can be mathematically proven that a small subset of the quantum gates can be combined to make any of the others. This is known as a universal set. Therefore, a physical quantum computer needs only to implement all of the gates in this set, in order to guarantee that any desired computation is attainable \cite{universalset}.
 
@@ -266,14 +267,16 @@ There is no one universal set of quantum gates, and the choice of which gates to
 
 In fact, it is only necessary to use two of the three rotation gates.
 
-\subsubsection{Tensor Product}
+\subsubsection{Tensor product}
 Tensor products are the way to mathematically study and maniuplate systems of many qubits. If you take a set of quantum systems, each with its own state, then they can be combined into one unified quantum state by taking the tensor product of them all. This then allows the single state, representative of a register, to be processed by a quantum computer. Equation \ref{eq:tensor} shows $|\Phi\rangle$, the universal state, as the tensor product of all individual states, $|\Psi_i\rangle$.
 
 \begin{equation}\label{eq:tensor}
     |\Phi\rangle = |\Psi_0\rangle \otimes |\Psi_1\rangle \otimes |\Psi_2\rangle \otimes |\Psi_3\rangle \otimes |\Psi_4\rangle \otimes ....
 \end{equation}
 
-Conceptually the tensor product captures every possible combination of different systems. Using an analogy from Medium, if each course at a restaurant is a state, and the meal as a whole is the universal state, the tensor product represents every possible meal you could have. In other words, it represents all the possible combinations of courses you could choose. 
+Conceptually the tensor product captures every possible combination of different systems. Using an analogy from \cite{gupta_2021}, if each course at a restaurant is a state, and the meal as a whole is the universal state, the tensor product represents every possible meal you could have. In other words, it represents all the possible combinations of courses you could choose. In the picture of a quantum computer, $\ket{\Psi_i}$ would represent each individual qubit and $\ket{\Phi}$ would represent the register.  
+
+We can now define entanglement from \cref{sec:ent} more rigorously. A system of two qubits is entangled only if it cannot be represented as the tensor product of two distinct qubit states \cite{kuhn_2000}. 
 
 \subsubsection{The DiVincenzo Criteria}\label{sec:DiVincenzo}
 In 2000, the components of a quantum computer, which are introduced in the sections above, were formalised into the DiVincenzo criteria. These are a list of seven objectives that must be fulfilled in order to construct a physical quantum computer. This report will not focus on the final two criteria as they are only necessary for quantum communication, rather than computation \cite{bergou_quantum_2021}.
@@ -293,8 +296,10 @@ The first objective requires qubits to be in a superposition of two clearly defi
 
 The second objective is to initialise the qubits into a well defined determinate state i.e. initialise the qubit register so all are in the 0 state $\vert 0\rangle \vert 0\rangle$...$\vert 0 \rangle$. \cite{lapierre_divincenzo_2021}
 
-The third objective is to read out qubit state $\vert 0\rangle$ or $\vert 1 \rangle$ with high accuracy. Measurement that have a higher propbability of error can be repeated in order to mitigate this effect.
+The third objective is to read out qubit state $\vert 0\rangle$ or $\vert 1 \rangle$ with high accuracy. Measurements that have a higher probability of error can be repeated in order to mitigate this effect.
 
 The fourth objective is to implement a universal set of gates, as explained above. If an implementation includes all gates in a universal set, then such a computer could emulate any sequence of quantum gates, thus executing any desired  quantum algorithm. This is in many ways a positive simplification for building a quantum computer, as it only requires the assembler to create a few important gates. 
 
 The final objective is for long `relevant' decoherence times; this requires the qubit to stay in a superposition for longer than the duration of gate operations before the state collapses. Without this condition, there would not be a long enough time for taking useful measurements.
+
+We can now begin to explore how real quantum computers are built, bearing in mind the DiVincenzo criteria and how each implementation satisfies them. The next section will introduce trapped ion quantum computers; a technology currently in use and a useful first example.
